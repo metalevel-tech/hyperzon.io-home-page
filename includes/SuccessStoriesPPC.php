@@ -13,11 +13,11 @@
                     <br /><br />
                     Currently their best sellers are ranking on all the main keywords.
                 </div>
-                <!--
-							<div class="ss__button">
-								<a href="#">Read full story</a>
-							</div>
-                            -->
+                <?php /*
+                <div class="ss__button">
+                    <a href="#">Read full story</a>
+                </div>
+                */ ?>
             </div>
             <div class="ss__image">
                 <img src="public/images/stories/ppc/story_01.webp" width="583" height="463" alt="Media File story_01.webp" loading="lazy" decoding="async" />
@@ -37,16 +37,16 @@
                     <br /><br />
                     We optimised the main image in order to increase the CTR, optimised the title and made an extensive research from where our competitors are getting their sales and started targeting them and those keywords. In addition to the sales from PPC, the product ranked on top positions on 90% of the keywords.
                 </div>
-                <!--
-							<div class="ss__button">
-								<a href="#">Read full story</a>
-							</div>
-                            -->
+                <?php /*
+                <div class="ss__button">
+                    <a href="#">Read full story</a>
+                </div>
+                */ ?>
             </div>
         </div>
 
-        <?php 
-        /**
+        <?php
+        /* *
          * Disabled right now, but please don't disable it by 'display: none' :)
          * 
         <div class="success-stories__grid__single ss--right">
@@ -69,6 +69,6 @@
                 <img src="public/images/stories/ppc/story_03.png" />
             </div>
         </div>
-        */ ?>
+         */ ?>
     </div>
 </div>

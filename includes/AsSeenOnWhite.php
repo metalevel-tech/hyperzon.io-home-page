@@ -2,9 +2,7 @@
 
 <div class="seen-on">
     <div class="seen-on__grid">
-        <?php
-        /**
-         * 
+        <?php /* 
         <div class="seen-on__grid__single">
             <img class="logo-01" src="public/images/logos_seen_on/Logo_Forbes.jpg" />	
         </div>
@@ -38,9 +36,7 @@
             <img class="logo-08" src="public/images/logos_seen_on/white/Logo_AW.png" srcset="public/images/logos_seen_on/white/Logo_AW@2x.png 2x" />
         </div>
 
-        <?php
-        /**
-         * 
+        <?php /* 
         <div class="seen-on__grid__single">
             <img class="logo-09" src="public/images/logos_seen_on/Logo_Amazon_Ads.jpg" />	
         </div>

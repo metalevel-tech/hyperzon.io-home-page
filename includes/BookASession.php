@@ -5,7 +5,8 @@
         <p>HRISTO TODAY</p>
 
         <div class="book-a-session__button">
-            <a href="#" class="js-book-a-call"><span>Book Now</span></a>
+            <?php /* <a href="#" class="js-book-a-call"><span>Book Now</span></a> */ ?>
+            <a role="button" class="js-book-a-call" area-label="Book a free 30 minutes session"><span>Book Now</span></a>
         </div>
     </div>
 </div>

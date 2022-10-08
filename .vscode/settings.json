@@ -48,7 +48,9 @@
     "autopause",
     "mozallowfullscreen",
     "webkitallowfullscreen",
-    "Showreel"
+    "Showreel",
+    "Brandbook",
+    "Moodboards"
   ],
   "cSpell.words": [
     "Metalevel",
@@ -102,7 +104,9 @@
     "autopause",
     "mozallowfullscreen",
     "webkitallowfullscreen",
-    "Showreel"
+    "Showreel",
+    "Brandbook",
+    "Moodboards"
   ],
   "cSpell.ignoreWords": [
     "lastest"

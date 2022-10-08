@@ -11,7 +11,7 @@
         </div>
 
         <form autocomplete="off">
-            <!--
+            <?php /*
             <div class="book-a-call__fields">
                 <div class="book-a-call__fields__single">
                     <input type="text" name="name" placeholder="Name" tabindex="1" />
@@ -24,10 +24,11 @@
                 </div>
             </div>
             <div class="book-a-call__info">All fields are required.</div>
-            -->
+            */ ?>
 
             <div class="book-a-call__button">
-                <a href="#" class="js-book-a-call"><span><span>BOOK A FREE</span> STRATEGY SESSION</span></a>
+                <?php /* <a href="#" class="js-book-a-call"><span><span>BOOK A FREE</span> STRATEGY SESSION</span></a> */ ?>
+                <a role="button" class="js-book-a-call"><span><span>BOOK A FREE</span> STRATEGY SESSION</span></a>
             </div>
         </form>
     </div>
