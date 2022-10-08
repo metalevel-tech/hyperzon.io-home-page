@@ -21,15 +21,15 @@
                     $vimeo['NanoShield Unboxing'] = '';
                     */
 
-        $images = scandir('public/gallery/videos/thumb');
+        $images = scandir('public/gallery/videos/webp');
 
         foreach ($images as $index => $image) {
             if (in_array($image, array('.', '..'))) {
                 unset($images[$index]);
             } else {
                 $images[$index] = [
-                    'public/gallery/videos/mp4/' . str_replace('.png', '.mp4', $image),
-                    'public/gallery/videos/thumb/' . $image,
+                    'public/gallery/videos/webm/' . str_replace('.webp', '.webm', $image),
+                    'public/gallery/videos/webp/' . $image,
                     //  $vimeo[str_replace('.png', '', $image)]
                 ];
             }
@@ -42,7 +42,7 @@
                 <div class="gallery__videos-item">
                     <div class="gallery__videos-item__wrapper">
                         <video loop muted preload="none">
-                            <source src="<?php echo $image[0] ?>" type="video/mp4">
+                            <source src="<?php echo $image[0] ?>" type="video/webm">
                         </video>
 
                         <?php /* 
@@ -51,7 +51,7 @@
                                     href="https://player.vimeo.com/video/<?php echo $image[2] ?>">
                                     */ ?>
 
-                        <img src="<?php echo $image[1] ?>" />
+                        <img width='317' height='178' loading="lazy" decoding="async" src="<?php echo $image[1] ?>" alt="Motion Graphics presentation" />
 
                         <?php /*
                                     </a>
@@ -63,7 +63,9 @@
         </div>
     </div>
 
-    <div class="gallery__subtitle style-05 style-05--size-01">Motion Graphics</div>
+    <div class="gallery__subtitle style-05 style-05--size-01">
+        Motion Graphics
+    </div>
     <div class="gallery__videos_wrapper">
         <?php
         /*
@@ -78,15 +80,15 @@
                     $vimeo['NanoShield Unboxing'] = '';
                     */
 
-        $images = scandir('public/gallery/motion_graphics/thumb');
+        $images = scandir('public/gallery/motion_graphics/webp');
 
         foreach ($images as $index => $image) {
             if (in_array($image, array('.', '..'))) {
                 unset($images[$index]);
             } else {
                 $images[$index] = [
-                    'public/gallery/motion_graphics/mp4/' . str_replace('.png', '.mp4', $image),
-                    'public/gallery/motion_graphics/thumb/' . $image,
+                    'public/gallery/motion_graphics/webm/' . str_replace('.webp', '.webm', $image),
+                    'public/gallery/motion_graphics/webp/' . $image,
                     //  $vimeo[str_replace('.png', '', $image)]
                 ];
             }
@@ -99,9 +101,9 @@
                 <div class="gallery__videos-item">
                     <div class="gallery__videos-item__wrapper">
                         <video loop muted preload="none">
-                            <source src="<?php echo $image[0] ?>" type="video/mp4">
+                            <source src="<?php echo $image[0] ?>" type="video/webm">
                         </video>
-                        <img src="<?php echo $image[1] ?>" />
+                        <img width='317' height='178' loading="lazy" decoding="async" src="<?php echo $image[1] ?>" alt="Motion Graphics presentation" />
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -109,17 +111,20 @@
         </div>
     </div>
 
-    <div class="gallery__subtitle style-05 style-05--size-01">Photography</div>
+    <div class="gallery__subtitle style-05 style-05--size-01">
+        Photography
+    </div>
     <div class="gallery__items_wrapper">
         <?php
-        $images = scandir('public/gallery/photos/1x1/thumb');
+        $images = scandir('public/gallery/photos/1x1/webp-thumb');
 
         foreach ($images as $index => $image) {
             if (in_array($image, array('.', '..'))) {
                 unset($images[$index]);
             } else {
                 $images[$index] = [
-                    'public/gallery/photos/1x1/big/' . $image, 'public/gallery/photos/1x1/thumb/' . $image
+                    'public/gallery/photos/1x1/webp-big/' . $image,
+                    'public/gallery/photos/1x1/webp-thumb/' . $image
                 ];
             }
         }
@@ -131,7 +136,7 @@
             <?php foreach ($images as $image) : ?>
                 <div class="gallery__items-item">
                     <a href="<?php echo $image[0] ?>">
-                        <img width='235' height='225' loading="lazy" decoding="async" src="<?php echo $image[1] ?>" />
+                        <img width='235' height='225' loading="lazy" decoding="async" src="<?php echo $image[1] ?>" alt="Photography presentation" />
                     </a>
                 </div>
             <?php endforeach; ?>

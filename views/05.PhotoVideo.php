@@ -48,19 +48,6 @@
 </div>
 */ ?>
 
-<script>
-    $('.gallery__videos-item__wrapper').hover(function() {
-        $(this).find('video').get(0).play();
-    }, function() {
-        setTimeout(function() {
-            if ($(this).find('video').get(0)) {
-                $(this).find('video').get(0).pause();
-                $(this).find('video').get(0).currentTime = 0;
-            }
-        }, 100);
-    })
-</script>
-
 <?php /* 
 <script src="//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.gallery.min.js" type="text/javascript" charset="utf-8"></script>

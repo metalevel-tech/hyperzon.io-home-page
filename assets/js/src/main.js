@@ -127,6 +127,7 @@ $(window).on("resize", function () {
         testimonialsSlider();
         latestBlogPostsSlider();
         videoLoader();
+        videoGalleryHandler();
     }
 
     // Process single menu element
@@ -506,5 +507,21 @@ $(window).on("resize", function () {
             (top + height) <= (window.pageYOffset + window.innerHeight + verticalAdjustment) &&
             (left + width) <= (window.pageXOffset + window.innerWidth)
         );
+    }
+
+    /**
+     * Photos & Videos, Video Gallery handler
+     */
+    function videoGalleryHandler() {
+        $('.gallery__videos-item__wrapper').hover(function() {
+            $(this).find('video').get(0).play();
+        }, function() {
+            setTimeout(function() {
+                if ($(this).find('video').get(0)) {
+                    $(this).find('video').get(0).pause();
+                    $(this).find('video').get(0).currentTime = 0;
+                }
+            }, 100);
+        });
     }
 })();

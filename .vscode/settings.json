@@ -63,7 +63,9 @@
     "Optimisation",
     "ecom",
     "lastest",
-    "utilise"
+    "utilise",
+    "webm",
+    "webp"
   ],
   "cSpell.words": [
     "async",
@@ -121,7 +123,9 @@
     "webkitallowfullscreen",
     "WebP",
     "Webpack",
-    "YouTube"
+    "YouTube",
+    "webm",
+    "webp"
   ],
   "cSpell.ignoreWords": [
     "enim",

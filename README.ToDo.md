@@ -14,30 +14,31 @@
 
 ## `04.BrandDesign.php`
 
-- [ ] [1d] Deal with the **external gallery scripts** - **create own gallery** script
+- [ ] [1d*] Deal with the **external gallery scripts** - **create own gallery** script
 - [ ] [30m] Deal with the `<br /><br /><br /><br />` tags
 
 ## `GalleryBrandDesign.php`
 
-- [ ] [2h] Improve the for-loops logic
+- [ ] [  ] Improve?
 - [ ] [1h] Reorganize the gallery directory structure: `.png` > `.webp` - according to the **own gallery** logic
 
 ## `05.BrandDesign.php`
 
-- [ ] [1d] Deal with the **external gallery scripts** - **create own gallery** script
+- [ ] [1d*]? Deal with the **external gallery scripts** - **create own gallery** script
 - [ ] [30m] Deal with the `<br /><br /><br /><br />` tags
 
-## `GalleryPhotoVideo.php`
+## `05.PhotoVideo.php` && `GalleryPhotoVideo.php`
 
-- [ ] [2h] Improve the for-loops logic
-- [ ] [1h] Reorganize the gallery directory structure
-- [x] [2h] Convert all `mp4` videos to `h264.mp4` and `webm` videos:
-  - [x] `public/gallery/videos/mp4` from 329M (4K mp4) to 87M (FHD mp4)
-  - [x] `public/gallery/videos/mp4` from 87M (FHD mp4) to 67M (FHD webm)
-  - [x] `public/gallery/motion_graphics/mp4` from 104M (FHD mp4) to 84M (FHD mp4)
-  - [x] `public/gallery/motion_graphics/mp4` from 84M (FHD mp4) to 67M (FHD webm)
-
-- [ ] [1h] Convert all videos (max) to Full HD resolution 30fps
+- [ ] [1h] Improve the gallery - remove `<img>` tags an use video `<video poster="img.webp">`
+- [ ] [1d*] Better JS **gallery handler** with zoom option
+- [x] [1h] Reorganize the gallery directory structure
+- [x] [1h] Convert all `mp4` videos to `h264.mp4` and `webm` videos:
+  - [x] `public/gallery/videos/` from 329M (4K mp4) to 87M (FHD mp4)
+  - [x] `public/gallery/videos/` from 87M (FHD mp4) to 67M (FHD webm)
+  - [x] `public/gallery/motion_graphics/` from 104M (FHD mp4) to 84M (FHD mp4)
+  - [x] `public/gallery/motion_graphics/` from 84M (FHD mp4) to 67M (FHD webm)
+  - [x] `public/gallery/photos/1x1/` from 92M (png) to 55M (webp)
+- [x] [1h] Convert all videos (max) to Full HD resolution 30fps
 
 ## `MenuFooter.php`
 
