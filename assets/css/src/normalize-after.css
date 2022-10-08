@@ -1,0 +1,17 @@
+/**
+ * Check "assets/js/src/normalize-after.js" for more details.
+ */
+html,
+body {
+    width: 100%;
+    height: 100%;
+
+    /* Check index.html for the relevant JavaScript for --mlt-vf */
+    height: 100vh;
+    height: calc(var(--mlt-vh, 1vh) * 100);
+}
+
+
+[role="button"] {
+    cursor: pointer;
+}

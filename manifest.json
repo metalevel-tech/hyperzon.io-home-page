@@ -1,0 +1,37 @@
+{
+    "short_name": "Hyperzon",
+    "name": "Hyperzon | Full Service Amazon Marketing Agency",
+    "description": "A team of professionals and creators with 10+ years of industry experience and in-depth knowledge of the e-commerce universe. Our company helps brand owners grow their businesses on Amazon and achieve sustainability across different marketplaces. We assist our customers through every step of the process by providing Full Amazon Support Services, Brand Identity, as well as Photo & Video Content.",
+    "icons": [
+      {
+        "src": "public/images/interface/hyperzon-logo.svg",
+        "sizes": "any",
+        "type": "image/svg+xml",
+        "purpose": "any" 
+      },
+      {
+        "src": "public/images/interface/hyperzon-logo.svg",
+        "sizes": "any",
+        "type": "image/svg+xml",
+        "purpose": "maskable" 
+      },
+      {
+        "src": "public/images/interface/hyperzon-logo_x192.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "any" 
+      },
+      {
+        "src": "public/images/interface/hyperzon-logo_x512.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "any" 
+      }
+    ],
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "theme_color": "#c0fd45",
+    "background_color": "#003e8f",
+    "prefer_related_applications": false
+  }
