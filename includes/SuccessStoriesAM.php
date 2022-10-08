@@ -19,6 +19,7 @@
                     <br /><br />
                     Our team helped position the brand across all Amazon worldwide markets (USA, UK, Germany, France, Spain and Italy), including full listing optimizations with culturally adapted texts in locally supported languages, product ranking, review generation campaigns, PPC management and constant A/B testing. The results speak for themselves. <b>The results speak for themselves!</b>
                 </div>
+
                 <?php /*
                 <div class="ss__button">
                     <a href="#">Read full story</a>
@@ -37,15 +38,20 @@
             </div>
 
             <div class="ss__text">
-                <div class="success-stories__title style-05 style-05--size-01">Pet Care</div>
+                <div class="success-stories__title style-05 style-05--size-01">
+                    Pet Care
+                </div>
 
-                <div class="success-stories__subtitle style-07">From 0$ to A <span class="color-green">Bestseller</span> <br />in 5 months</div>
+                <div class="success-stories__subtitle style-07">
+                    From 0$ to A <span class="color-green">Bestseller</span> <br />in 5 months
+                </div>
 
                 <div class="success-stories__descr style-06">
                     Pet Care is one of Amazon’s most competitive niches, and listing hijackers are just waiting for you to start selling, so they can take advantage and produce a low-quality replica.
                     <br /><br />
                     We implemented a brand protection strategy, while taking advantage of pre-existing awareness to optimize the search volume, find the most relevant keywords and <b>push the product to best-seller status!</b>
                 </div>
+
                 <?php /*
                 <div class="ss__button">
                     <a href="#">Read full story</a>

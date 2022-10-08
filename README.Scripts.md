@@ -75,3 +75,47 @@ done
 FILE="Input_image.png"
 identify -format "%h x %w \n" "$FILE"
 ```
+
+## FFmpeg hints
+
+### Check the resolution and fps of all videos in a directory
+
+```bash
+for FILE in *.mp4;
+do
+    echo "$FILE"
+    ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0 "$FILE"
+    ffmpeg -i "$FILE" 2>&1 | sed -n "s/.*, \(.*\) fp.*/\1/p"
+done
+```
+
+### Convert all videos in a directory to Full HD
+
+```bash
+mkdir mp4/
+
+for i in *mp4; 
+# do ffmpeg -i "$i" "mp4/${i}"; 
+# do ffmpeg -i "$i" -vf scale=1920:1080 "mp4/${i}"; 
+do ffmpeg -i "$i" -vf scale=-1:1080 "mp4/${i}"; 
+# do ffmpeg -i "$i" -vf scale=-1:720 -c:v libx264 -crf 18 -preset veryslow -c:a copy "mp4/${i}"
+done
+```
+
+### Convert all videos in a directory to WebM
+
+```bash
+mkdir webm/
+
+for i in *mp4;
+do ffmpeg -i "$i" -c:v libvpx-vp9 -b:v 0 -crf 30 -c:a libopus "webm/${i%.*}.webm";
+done
+```
+
+References:
+
+* <https://superuser.com/questions/714804/converting-video-from-1080p-to-720p-with-smallest-quality-loss-using-ffmpeg>
+* <https://stackoverflow.com/questions/48341629/ffmpeg-4k-bluray-to-1080p-x264>
+* <https://askubuntu.com/questions/110264/how-to-find-frames-per-second-of-any-video-file>
+* <https://forum.videohelp.com/threads/397196-Best-FFmpeg-command-for-downscaling-h264-video-from-2160p-1080p>
+* <https://superuser.com/questions/841235/how-do-i-use-ffmpeg-to-get-the-video-resolution>

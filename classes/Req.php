@@ -34,11 +34,11 @@ class Req
             require($file);
             echo "\n";
         } else {
-            echo "Error: File not found: $resource";
+            echo "Error: File not found: $file";
         }
     }
 
-    // The current method in use
+    // The current find method in use
     private static function findRecursive($resource, $paths = ["views", "includes"])
     {
         foreach ($paths as $path) {
@@ -52,7 +52,7 @@ class Req
         }
     }
 
-    // A method that works for exact matches, but is not in use
+    // A find method that works for exact matches, but is not in use
     private static function findExact($resource, $paths = ["views", "includes"])
     {
         foreach ($paths as $path) {

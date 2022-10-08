@@ -3,10 +3,12 @@
 ## Text content
 
 - [ ] **The numbers in Hero.php are not the same in the production and stag stage releases!**
+- [ ] for **ecom** brand owners ??
 - [ ] Optimisation ??
 - [ ] optimisation ??
 - [ ] converstion ??
 - [ ] optimised ??
+- [ ] utilise ??
 - [x] communucation > communication
 - [x] Startegy > Strategy
 
@@ -19,6 +21,23 @@
 
 - [ ] [2h] Improve the for-loops logic
 - [ ] [1h] Reorganize the gallery directory structure: `.png` > `.webp` - according to the **own gallery** logic
+
+## `05.BrandDesign.php`
+
+- [ ] [1d] Deal with the **external gallery scripts** - **create own gallery** script
+- [ ] [30m] Deal with the `<br /><br /><br /><br />` tags
+
+## `GalleryPhotoVideo.php`
+
+- [ ] [2h] Improve the for-loops logic
+- [ ] [1h] Reorganize the gallery directory structure
+- [x] [2h] Convert all `mp4` videos to `h264.mp4` and `webm` videos:
+  - [x] `public/gallery/videos/mp4` from 329M (4K mp4) to 87M (FHD mp4)
+  - [x] `public/gallery/videos/mp4` from 87M (FHD mp4) to 67M (FHD webm)
+  - [x] `public/gallery/motion_graphics/mp4` from 104M (FHD mp4) to 84M (FHD mp4)
+  - [x] `public/gallery/motion_graphics/mp4` from 84M (FHD mp4) to 67M (FHD webm)
+
+- [ ] [1h] Convert all videos (max) to Full HD resolution 30fps
 
 ## `MenuFooter.php`
 
