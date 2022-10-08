@@ -2,6 +2,7 @@
 
 ## Text content
 
+- [ ] **The numbers in Hero.php are not the same in the production and stag stage releases!**
 - [ ] Optimisation ??
 - [ ] optimisation ??
 - [ ] converstion ??
@@ -11,13 +12,27 @@
 
 ## `04.BrandDesign.php`
 
-- [ ] [1d] Deal with the **external gallery scripts** - **create own** one
+- [ ] [1d] Deal with the **external gallery scripts** - **create own gallery** script
 - [ ] [30m] Deal with the `<br /><br /><br /><br />` tags
 
 ## `GalleryBrandDesign.php`
 
 - [ ] [2h] Improve the for-loops logic
-- [ ] [1h] Reorganize the gallery directory structure
+- [ ] [1h] Reorganize the gallery directory structure: `.png` > `.webp` - according to the **own gallery** logic
+
+## `MenuFooter.php`
+
+- [ ] [5m] `<a href="#" onclick="return false;">` -> `<a role="button">`
+- [ ] [5m] Suppress the HTML comments
+
+## Google Tag Manager
+
+- [ ] Create at least one tag!
+- [ ] Enable the scripts via `00.Header.php`
+
+## PHP MVC
+
+- [ ] [4h] Create PHP filter to output pretty HTML code
 
 ## [Done!] Initial fixes of some issues
 

@@ -25,15 +25,15 @@
         */ ?>
 
         <div class="seen-on__grid__single">
-            <img class="logo-07" src="public/images/logos_seen_on/white/Logo_GeekOut.png" srcset="public/images/logos_seen_on/white/Logo_GeekOut@2x.png 2x" />
+            <img width="93" height="60" class="logo-07" alt="seen-on-logo" src="public/images/logos_seen_on/white/Logo_GeekOut.webp" srcset="public/images/logos_seen_on/white/Logo_GeekOut@2x.webp 2x" />
         </div>
 
         <div class="seen-on__grid__single">
-            <img class="logo-06" src="public/images/logos_seen_on/white/Logo_White_Label.png" srcset="public/images/logos_seen_on/white/Logo_White_Label@2x.png 2x" />
+            <img width="162" height="60" class="logo-06" alt="seen-on-logo" src="public/images/logos_seen_on/white/Logo_White_Label.webp" srcset="public/images/logos_seen_on/white/Logo_White_Label@2x.webp 2x" />
         </div>
 
         <div class="seen-on__grid__single">
-            <img class="logo-08" src="public/images/logos_seen_on/white/Logo_AW.png" srcset="public/images/logos_seen_on/white/Logo_AW@2x.png 2x" />
+            <img width="78" height="60" class="logo-08" alt="seen-on-logo" src="public/images/logos_seen_on/white/Logo_AW.webp" srcset="public/images/logos_seen_on/white/Logo_AW@2x.webp 2x" />
         </div>
 
         <?php /* 
