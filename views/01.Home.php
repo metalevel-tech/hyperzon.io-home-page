@@ -44,7 +44,7 @@
 <div class="backgr-blue backgr-blue--end-02">
 	<div class="backgr-blue__content section-home-04">
 		<?php
-		Req::include("SuccessStories");
+		Req::include("SuccessStoriesAM");
 		?>
 	</div>
 </div>

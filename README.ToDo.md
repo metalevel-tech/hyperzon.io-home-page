@@ -12,6 +12,13 @@
 - [x] communucation > communication
 - [x] Startegy > Strategy
 
+## Common issues
+
+- [ ] [1h] Extract CSS for Menu and Hero and load it separately to increase the first paint time.
+- [ ] [1h] Lazy loading for the largest background images.
+- [ ] [1h] Fix the layout shift for the counters.
+- [ ] [2d?] Simplify the CSS, too complex rule chains that cause Long main thread tasks for Style & Layout.
+
 ## `04.BrandDesign.php`
 
 - [ ] [1d*] Deal with the **external gallery scripts** - **create own gallery** script

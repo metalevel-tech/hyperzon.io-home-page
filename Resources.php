@@ -147,9 +147,9 @@ ResourceLoader::add( # jQuery
     "head",
     "assets/vendor/jquery.min.js",
     active: true,
-    priority: 35,
-    embed: true,
-    options: "defer"
+    priority: 4,
+    embed: false,
+    options: "rel=\"preconnect\""
 );
 
 ResourceLoader::add( # jQuery.Easing 
@@ -158,7 +158,7 @@ ResourceLoader::add( # jQuery.Easing
     active: true,
     priority: 36,
     embed: true,
-    options: "defer"
+    options: "async"
 );
 
 // ResourceLoader::add( # External Libraries @slick-carousel.css
@@ -239,7 +239,7 @@ ResourceLoader::add( # External Libraries @anime.js (moved from Footer.php)
 );
 
 ResourceLoader::add( # JavaScript: main.js
-    "body-bottom",
+    "head",
     // "assets/js/src/main.js?v=$version",
     "assets/js/dist/main.min.js?v=$version",
     // "assets/js/dist/main.js?v=$version",
@@ -254,7 +254,7 @@ ResourceLoader::add( # JavaScript: hero-counter.js
     "hero-after",
     "assets/js/dist/hero-counter.min.js?v=$version",
     priority: 72,
-    embed: true,
+    embed: false,
     active: true,
     options: "defer"
     // type="text/css" is auto detected

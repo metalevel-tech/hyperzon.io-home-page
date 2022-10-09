@@ -1,13 +1,28 @@
+<div class="backgr-white backgr-white--end-01 section-home-01">
+    <div class="backgr-white__content">
+        <?php
+        Req::include("AsSeenOnBlack");
+        ?>
+    </div>
+</div>
+<div class="backgr-white backgr-white--default" style="margin-top: -200px; padding-top: 280px;">
+	<div class="backgr-white__content section-home-05">
+        <div class="wrapper-1366">
+            <?php
+            Req::include("BlogPostsLatest");
+            ?>
+        </div>
+   </div>
+</div>
 <?php
-
 echo "\n\t\t<h1>Posts!</h1>\n";
 
-$posts = BlogPosts::QueryPosts(); 
+$posts = BlogPosts::queryPosts(); 
 
 if ($posts) {
     $div = "+-------+---------------+-------------------------------+-----------------------------------------------+\n";
     
-    echo "\t\t<pre>\n";
+    echo "\t\t<pre style=\"color: black;\">\n";
     echo $div;
     echo "| Id\t| Title\t\t| Description\t\t\t| Content\t\t\t\t\t|\n";
     echo $div;

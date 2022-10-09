@@ -1,12 +1,28 @@
-// (() => {
-//     console.log('JS test log.');
-//     try {
-//         if ($('body').length) console.log('jQuery is active.');
-//     }
-//     catch (error) {
-//         console.log('jQuery is not enabled.');
-//     }
-// })();
+/**
+ * Fix it and removes the PageSpeed Insight warning,
+ * "Does not use passive listeners to improve scrolling performance" @jquery
+ * Refs: https://stackoverflow.com/a/62177358/6543935
+ */
+jQuery.event.special.touchstart = {
+    setup: function( _, ns, handle ) {
+        this.addEventListener("touchstart", handle, { passive: !ns.includes("noPreventDefault") });
+    }
+};
+jQuery.event.special.touchmove = {
+    setup: function( _, ns, handle ) {
+        this.addEventListener("touchmove", handle, { passive: !ns.includes("noPreventDefault") });
+    }
+};
+jQuery.event.special.wheel = {
+    setup: function( _, ns, handle ){
+        this.addEventListener("wheel", handle, { passive: true });
+    }
+};
+jQuery.event.special.mousewheel = {
+    setup: function( _, ns, handle ){
+        this.addEventListener("mousewheel", handle, { passive: true });
+    }
+};
 
 /**
  * Hyperzon.io main.js, miscellaneous functions
