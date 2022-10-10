@@ -1,7 +1,7 @@
 <div class="backgr-white backgr-white--end-01 section-home-01">
     <div class="backgr-white__content">
         <?php
-        Req::include("AsSeenOnBlack");
+        Req::element("AsSeenOnBlack");
         VideoPlayer::vimeo("726019853?h=f9e8b0b08e", "Video PPC");
         ?>
     </div>
@@ -12,18 +12,18 @@
     <div class="backgr-blue__content section-home-02">
         <div class="wrapper-1366">
             <?php
-            Req::include("SloganSellingOnAmazon");
-            Req::include("BulletsAmazonAM");
+            Req::element("SloganSellingOnAmazon");
+            Req::element("BulletsAmazonAM");
             ?>
         </div>
 
         <?php
-        Req::include("Testimonials");
+        Req::element("Testimonials");
         ?>
         
         <div class="wrapper-1366">
             <?php
-            Req::include("SuccessStoriesAM");
+            Req::element("SuccessStoriesAM");
             ?>
         </div>
     </div>
@@ -34,11 +34,11 @@
         <!-- The wrapper intentionally is not inside the module -->
         <div class="wrapper-1366 brands-on-right-white">
             <?php
-            Req::include("BrandsWeBoosted");
+            Req::element("BrandsWeBoosted");
             ?>
         </div>
         <?php
-        Req::include("BookACallGreen");
+        Req::element("BookACallGreen");
         ?>
     </div>
 </div>

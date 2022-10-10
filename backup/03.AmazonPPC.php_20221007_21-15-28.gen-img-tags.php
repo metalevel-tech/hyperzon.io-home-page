@@ -1,7 +1,7 @@
 <div class="backgr-white backgr-white--end-01 section-home-01">
     <div class="backgr-white__content">
         <?php
-        Req::include("AsSeenOn");
+        Req::element("AsSeenOn");
         VideoPlayer::vimeo("726020031?h=7139cb6a3a", "Video PPC");
         ?>
     </div>
@@ -11,8 +11,8 @@
     <div class="backgr-blue__content section-home-02">
         <div class="wrapper-1366">
             <?php
-            Req::include("SloganUpUpAndAway");
-            Req::include("BulletsAmazonPPC");
+            Req::element("SloganUpUpAndAway");
+            Req::element("BulletsAmazonPPC");
             ?>
         </div>
 

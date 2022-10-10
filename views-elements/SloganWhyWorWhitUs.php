@@ -12,6 +12,6 @@
         </div>
     </div>
     <?php
-    Req::resource("BookACallButton");
+    Req::element("BookACallButton");
     ?>
 </div>

@@ -2,7 +2,7 @@
  * Fix it and removes the PageSpeed Insight warning,
  * "Does not use passive listeners to improve scrolling performance" @jquery
  * Refs: https://stackoverflow.com/a/62177358/6543935
- */
+ */ 
 jQuery.event.special.touchstart = {
     setup: function( _, ns, handle ) {
         this.addEventListener("touchstart", handle, { passive: !ns.includes("noPreventDefault") });

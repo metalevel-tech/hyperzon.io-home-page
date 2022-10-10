@@ -1,20 +1,20 @@
 <?php
 
 /**
- * Req - require/load parts from includes/*.php and views/*.php
+ * Req - require/load parts from views-elements/*.php and views/*.php
  */
 
 class Req
 {
-    // Require a file from "views/" or "includes/"
-    public static function resource($resource, $paths = ["views", "includes"])
+    // Require a file from "views/" or "views-elements/"
+    public static function resource($resource, $paths = ["views", "views-elements"])
     {
         $file = self::findRecursive($resource, $paths);
         self::requireFile($file);
     }
     
-    // Require a file from "includes/" only
-    public static function include($resource, $paths = ["includes"])
+    // Require a file from "views-elements/" only
+    public static function element($resource, $paths = ["views-elements"])
     {
         $file = self::findRecursive($resource, $paths);
         self::requireFile($file);
@@ -34,12 +34,12 @@ class Req
             require($file);
             echo "\n";
         } else {
-            echo "Error: File not found: $file";
+            echo "Error: Req::File not found!";
         }
     }
 
     // The current find method in use
-    private static function findRecursive($resource, $paths = ["views", "includes"])
+    private static function findRecursive($resource, $paths = ["views", "views-elements"])
     {
         foreach ($paths as $path) {
             $iterator = new RecursiveDirectoryIterator("$path");
@@ -53,7 +53,7 @@ class Req
     }
 
     // A find method that works for exact matches, but is not in use
-    private static function findExact($resource, $paths = ["views", "includes"])
+    private static function findExact($resource, $paths = ["views", "views-elements"])
     {
         foreach ($paths as $path) {
             $file = "$path/$resource";

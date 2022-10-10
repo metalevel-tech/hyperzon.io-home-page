@@ -1,7 +1,7 @@
 <div class="backgr-white backgr-white--end-01 section-home-01">
     <div class="backgr-white__content">
         <?php
-        Req::include("AsSeenOnBlack");
+        Req::element("AsSeenOnBlack");
         ?>
     </div>
 </div>
@@ -9,7 +9,7 @@
 	<div class="backgr-white__content section-home-05">
         <div class="wrapper-1366">
             <?php
-            Req::include("BlogPostsLatest");
+            Req::element("BlogPostsLatest");
             ?>
         </div>
    </div>

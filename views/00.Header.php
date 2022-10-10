@@ -43,13 +43,13 @@
     // Req::resource("GoogleTagManager-body");
     ResourceLoader::hook("body-top");
 
-    Req::include("MenuMain");
+    Req::element("MenuMain");
     ResourceLoader::hook("mine-menu-after");
     ?>
 
     <div id="body-scrollable-content">
         <?php
-        Req::include("Hero");
+        Req::element("Hero");
         ResourceLoader::hook("hero-after");
         ?>
         <div id="body-content" class="body-wrapper">

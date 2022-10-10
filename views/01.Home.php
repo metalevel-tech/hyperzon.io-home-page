@@ -1,7 +1,7 @@
 <div class="backgr-white backgr-white--end-01 section-home-01">
 	<div class="backgr-white__content">
 		<?php
-		Req::include("AsSeenOnBlack");
+		Req::element("AsSeenOnBlack");
 		VideoPlayer::vimeo("726019783?h=e93e779fa0", "Welcome to Hyperzon");
 		?>
 	</div>
@@ -11,17 +11,17 @@
 	<div class="backgr-blue__content section-home-02">
 		<div class="wrapper-1366">
 			<?php
-			Req::include("SloganWhyWorWhitUs");
+			Req::element("SloganWhyWorWhitUs");
 			?>
 		</div>
 
 		<?php
-		Req::include("Testimonials");
+		Req::element("Testimonials");
 		?>
 
 		<div class="wrapper-1366" id="services">
 			<?php
-			Req::include("WhatWeDo");
+			Req::element("WhatWeDo");
 			?>
 		</div>
 	</div>
@@ -32,11 +32,11 @@
 		<!-- The wrapper intentionally is not inside the module -->
 		<div class="wrapper-1366 brands-on-right-white">
 			<?php
-			Req::include("BrandsWeBoosted");
+			Req::element("BrandsWeBoosted");
 			?>
 		</div>
 		<?php
-		Req::include("BookACallGreen");
+		Req::element("BookACallGreen");
 		?>
 	</div>
 </div>
@@ -44,7 +44,7 @@
 <div class="backgr-blue backgr-blue--end-02">
 	<div class="backgr-blue__content section-home-04">
 		<?php
-		Req::include("SuccessStoriesAM");
+		Req::element("SuccessStoriesAM");
 		?>
 	</div>
 </div>
@@ -53,8 +53,8 @@
 	<div class="backgr-white__content section-home-05">
 	<div class="wrapper-1366">
 		<?php
-		Req::include("BlogPostsLatest");
-		Req::include("BookASession");
+		Req::element("BlogPostsLatest");
+		Req::element("BookASession");
 		?>
 	</div>
 </div>

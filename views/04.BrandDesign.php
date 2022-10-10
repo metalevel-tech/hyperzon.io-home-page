@@ -5,7 +5,7 @@
 <div class="backgr-blue-svg backgr-blue-svg--01 section-home-01">
     <div class="backgr-blue-svg__content">
         <?php
-        Req::include("AsSeenOnWhite");
+        Req::element("AsSeenOnWhite");
         VideoPlayer::vimeo("721342097?h=ae5ac7bcaf", "Hyperzon Showreel - Design work");
         ?>
     </div>
@@ -15,14 +15,14 @@
     <div class="backgr-white-svg__content section-home-02 section-home-02--white">
         <div class="wrapper-1366">
             <?php
-            Req::include("SloganGoodDesignGoodBusiness");
-            Req::include("BulletsBrandDesign");
-            Req::include("GalleryBrandDesign");
+            Req::element("SloganGoodDesignGoodBusiness");
+            Req::element("BulletsBrandDesign");
+            Req::element("GalleryBrandDesign");
             ?>
         </div>
 
         <?php
-        Req::include("BookACallGreen");
+        Req::element("BookACallGreen");
         ?>
 
         <br /><br /><br /><br /><br />
@@ -30,7 +30,7 @@
         <!-- The wrapper intentionally is not inside the module -->
         <div class="wrapper-1366 brands-on-right-gray">
             <?php
-            Req::include("BrandsWeBoosted");
+            Req::element("BrandsWeBoosted");
             ?>
         </div>
 
