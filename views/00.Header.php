@@ -39,18 +39,18 @@
 </head>
 
 <body class="<?php echo $_GET["url"] ?>">
-    <?php
-    // Req::resource("GoogleTagManager-body");
-    ResourceLoader::hook("body-top");
-
-    Req::element("MenuMain");
-    ResourceLoader::hook("mine-menu-after");
-    ?>
-
-    <div id="body-scrollable-content">
+    <div id="app">
         <?php
-        Req::element("Hero");
-        ResourceLoader::hook("hero-after");
+        // Req::resource("GoogleTagManager-body");
+        ResourceLoader::hook("body-top");
+
+        Req::element("MenuMain");
         ?>
-        <div id="body-content" class="body-wrapper">
-        
+        <div id="body-scrollable-content">
+
+            <?php
+            Req::element("Hero");
+            ResourceLoader::hook("hero-after");
+            ?>
+            <div id="body-content">
+

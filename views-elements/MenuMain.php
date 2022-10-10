@@ -66,8 +66,8 @@
 
         <!-- mobile menu button -->
         <div class="main-menu__menu-mobile">
-            <?php /*  <a href="#" class="nav-trigger" aria-label="Mobile menu button"> */ ?>
-            <a role="button" class="nav-trigger" aria-label="Mobile menu button">
+            <?php /*  <a href="#" class="mobile-menu-button" aria-label="Mobile menu button"> */ ?>
+            <a role="button" class="mobile-menu-button" aria-label="Mobile menu button">
                 <span></span>
                 <!-- Don't remove this span and the span tags -->
                 <span></span>

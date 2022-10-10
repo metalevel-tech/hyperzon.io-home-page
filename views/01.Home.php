@@ -51,10 +51,11 @@
 
 <div class="backgr-white backgr-white--default">
 	<div class="backgr-white__content section-home-05">
-	<div class="wrapper-1366">
-		<?php
-		Req::element("BlogPostsLatest");
-		Req::element("BookASession");
-		?>
+		<div class="wrapper-1366">
+			<?php
+			Req::element("BlogPostsLatest");
+			Req::element("BookASession");
+			?>
+		</div>
 	</div>
 </div>

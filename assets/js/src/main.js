@@ -2,24 +2,24 @@
  * Fix it and removes the PageSpeed Insight warning,
  * "Does not use passive listeners to improve scrolling performance" @jquery
  * Refs: https://stackoverflow.com/a/62177358/6543935
- */ 
+ */
 jQuery.event.special.touchstart = {
-    setup: function( _, ns, handle ) {
+    setup: function (_, ns, handle) {
         this.addEventListener("touchstart", handle, { passive: !ns.includes("noPreventDefault") });
     }
 };
 jQuery.event.special.touchmove = {
-    setup: function( _, ns, handle ) {
+    setup: function (_, ns, handle) {
         this.addEventListener("touchmove", handle, { passive: !ns.includes("noPreventDefault") });
     }
 };
 jQuery.event.special.wheel = {
-    setup: function( _, ns, handle ){
+    setup: function (_, ns, handle) {
         this.addEventListener("wheel", handle, { passive: true });
     }
 };
 jQuery.event.special.mousewheel = {
-    setup: function( _, ns, handle ){
+    setup: function (_, ns, handle) {
         this.addEventListener("mousewheel", handle, { passive: true });
     }
 };
@@ -62,58 +62,33 @@ $(window).on("resize", function () {
     });
 })();
 
-/**
- * Hyperzon on-scroll-menu handler
- */
-(function () {
-    lastScrollTop = 17;
-    var $pageHeader = $(".main-menu");
 
-    $(window).on("scroll", function () {
-        let st = $(this).scrollTop();
-
-        if (st * 1 > lastScrollTop) {
-            var vid = document.getElementById("video-backgr");
-            vid.play();
-
-            // console.log("true");
-            if (!$pageHeader.hasClass("white")) {
-                $pageHeader.addClass("white");
-                // $(".nav-trigger-backgr").addClass("scrolling-down");
-            }
-        } else {
-            if ($pageHeader.hasClass("white")) {
-                $pageHeader.removeClass("white");
-                // $(".nav-trigger-backgr").removeClass("scrolling-down");
-            }
-        }
-        // lastScrollTop = st;
-    });
-})();
 
 /**
  * Hyperzon mobile-menu handler
  */
 (function () {
+    let mobileMenuButton = document.querySelector(".mobile-menu-button");
+
+    
     let mobile_menu_opened = 0;
 
-    $(".nav-trigger, .js-nav-close").on("click", function (e) {
+    $(".mobile-menu-button").on("click", function (e) {
         e.preventDefault();
 
         if (mobile_menu_opened == 0) {
             mobile_menu_opened = 1;
-            $(this).addClass("nav-trigger--active");
+            // $(this).addClass("active");
             $(".menu__mobile").addClass("opened");
             $(".main-menu").addClass("opened");
-            $(".body-wrapper").hide();
+            $("body").addClass("no-scroll");
         } else {
             mobile_menu_opened = 0;
-            $(this).removeClass("nav-trigger--active");
+            // $(this).removeClass("active");
             $(".menu__mobile").removeClass("opened");
             $(".main-menu").removeClass("opened");
-            $(".body-wrapper").show();
+            $("body").removeClass("no-scroll");
         }
-        // $(".main-menu").toggleClass("opened");
     });
 })();
 
@@ -129,11 +104,21 @@ $(window).on("resize", function () {
         menuItems: document.querySelectorAll("a.main-menu-item")
     };
 
-    const bodyClasses = [];
-
-    function hrefToClass(element) {
-        return element.getAttribute("href").replace(/^\/|\/$/g, "");
+    // Add class .white{position:sticky;} to the main menu when the page is scrolled.
+    // Within this condition we should create back to top button to pop up.
+    function addStickyClass() {
+        if (window.pageYOffset >= 56 && !nodes.mainMenu.classList.contains("sticky")) {
+            nodes.mainMenu.classList.add("sticky");
+        } else if (window.pageYOffset < 56 && nodes.mainMenu.classList.contains("sticky")) {
+            nodes.mainMenu.classList.remove("sticky");
+        }
     }
+
+    addStickyClass();
+
+    window.addEventListener("scroll", function () {
+        addStickyClass();
+    });
 
     // These functions are defined in the code below, 
     // but we need run them much times them together,
@@ -147,15 +132,13 @@ $(window).on("resize", function () {
     }
 
     // Process single menu element
-    const changeMenuElement = async (e) => {
+    const changeMenuElementFunctionality = async (e) => {
         e.preventDefault();
         // const item = e.currentTarget.parentNode.querySelector("a");
         const item = e.currentTarget;
 
-        // console.log(item);
-
         // Close the mobile menu
-        const closeButton = document.querySelector(".nav-trigger.nav-trigger--active");
+        const closeButton = document.querySelector(".mobile-menu-button");
         if (closeButton) {
             closeButton.click();
         }
@@ -232,11 +215,20 @@ $(window).on("resize", function () {
         }
     }
 
+    // Helper function to convert href of menu item to body class
+    function hrefToClass(element) {
+        return element.getAttribute("href").replace(/^\/|\/$/g, "");
+    }
+
+    // Array of the possible body classes, that will be filed by the 
+    const bodyClasses = [];
+
+    // The main trigger of the menu processing,
     // Process the menu elements
     nodes.menuItems.forEach(item => {
         // console.log(item);
         bodyClasses.push(hrefToClass(item));
-        item.addEventListener("click", changeMenuElement);
+        item.addEventListener("click", changeMenuElementFunctionality);
     });
 
     // Trigger the initial page state
@@ -437,15 +429,17 @@ $(window).on("resize", function () {
             function autoEmbedVideo() {
                 if (isFullyVisible(node, 100)) embedVideo();
             }
+            const splashImg = node.querySelector('img');
 
             function fadeoutSplashImage(timeout) {
                 setTimeout(function () {
                     // Apply fade out effect to the splash image
-                    const splashImg = node.querySelector('img');
                     splashImg
                         .animate(fadeOut.effect, fadeOut.timing)
                         .finished.then(animate => {
-                            splashImg.remove();
+                            // setTimeout(function () {
+                            //     splashImg.remove();
+                            // }, 100);
                         })
                         .catch(error => { throw new Error(`Animate error: ${error}`); });
                 }, timeout);
@@ -529,15 +523,53 @@ $(window).on("resize", function () {
      * Photos & Videos, Video Gallery handler
      */
     function videoGalleryHandler() {
-        $('.gallery__videos-item__wrapper').hover(function() {
-            $(this).find('video').get(0).play();
-        }, function() {
-            setTimeout(function() {
-                if ($(this).find('video').get(0)) {
-                    $(this).find('video').get(0).pause();
-                    $(this).find('video').get(0).currentTime = 0;
-                }
-            }, 100);
+        const galleryOverlay = document.getElementById('gallery-preview-overlay');
+
+        galleryOverlay.addEventListener('click', function (e) {
+            e.target.querySelectorAll('video').forEach(function (video) {
+                video.remove();
+            });
+            
+            document.body.classList.remove('no-scroll');
+
+            e.target.classList.remove('active');
         });
+
+        const videoGallery = document.querySelectorAll('.video-gallery');
+        videoGallery.forEach(function (gallery) {
+            const videoItems = gallery.querySelectorAll('.video-item');
+
+            videoItems.forEach(function (video) {
+                video.addEventListener('mouseenter', function () {
+                    video.play();
+                });
+
+                video.addEventListener('mouseleave', function () {
+                    video.pause();
+                });
+
+                video.addEventListener('click', function (e) {
+                    const video = e.target;
+                    const src = video.querySelector('source').src;
+
+                    const videoPlayer = document.createElement('video');
+                    videoPlayer.setAttribute('controls', '');
+                    videoPlayer.setAttribute('autoplay', '');
+                    videoPlayer.setAttribute('loop', '');
+                    videoPlayer.setAttribute('muted', '');
+                    videoPlayer.setAttribute('playsinline', '');
+                    videoPlayer.setAttribute('preload', 'auto');
+                    videoPlayer.src = src;
+                    // video.classList.add('active');
+                    // videoWrapper.classList.add('active');
+                    galleryOverlay.classList.add('active');
+                    galleryOverlay.appendChild(videoPlayer);
+
+                    document.body.classList.add('no-scroll');
+                });
+            });
+        });
+
+
     }
 })();

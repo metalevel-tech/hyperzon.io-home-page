@@ -1,9 +1,17 @@
-        </div> <!-- body-content -->
-    </div> <!-- body-scrollable-content -->
-       
+            </div> <!-- body-content -->
+
+            <?php
+            Req::element("MenuFooter");
+            Req::element("SvgReferences");
+            ?>
+        </div> <!-- body-scrollable-content -->
+        
+        <?php
+        Req::element("GalleryOverlay");
+        ?>
+    </div> <!-- app -->
+
     <?php
-    Req::element("MenuFooter");
-    Req::element("SvgReferences");
     ResourceLoader::hook("body-bottom");
     ?>
 </body>
