@@ -33,11 +33,11 @@ function closeInfoModal() {
 }
 
 function openCookiesModal() {
-    $.featherlight(base_url + 'info/cookies');
+    $.featherlight(base_url + "info/cookies");
 }
 
 function resizeWindow() {
-    $('.measure').css('height', window.innerHeight);
+    $(".measure").css("height", window.innerHeight);
 }
 
 resizeWindow();
@@ -56,12 +56,11 @@ $(window).on("resize", function () {
             e.preventDefault();
 
             Calendly.initPopupWidget({
-                url: 'https://calendly.com/hyperzon/30-minute-call-website?hide_gdpr_banner=1'
+                url: "https://calendly.com/hyperzon/30-minute-call-website?hide_gdpr_banner=1"
             });
         });
     });
 })();
-
 
 
 /**
@@ -120,7 +119,7 @@ $(window).on("resize", function () {
     // but we need run them much times them together,
     // especially when manipulating the menu 
     // and the browser's states.
-    function runHoistedFunctions() {
+    function interfaceSetUp() {
         testimonialsSlider();
         latestBlogPostsSlider();
         videoLoader();
@@ -131,14 +130,9 @@ $(window).on("resize", function () {
     // Process single menu element
     const changeMenuElementFunctionality = async (e) => {
         e.preventDefault();
+
         // const item = e.currentTarget.parentNode.querySelector("a");
         const item = e.currentTarget;
-
-        // Close the mobile menu
-        const closeButton = document.querySelector("#mobile-menu-button");
-        if (closeButton) {
-            closeButton.click();
-        }
 
         // Break if it is the current selected item
         if (item.classList.contains("selected-item")) {
@@ -186,7 +180,7 @@ $(window).on("resize", function () {
 
             // Run the sliders scripts,
             // see the function definitions below
-            runHoistedFunctions();
+            interfaceSetUp();
 
             // Change the URI
             window.history.pushState({
@@ -203,7 +197,7 @@ $(window).on("resize", function () {
                     nodes.mainMenu.innerHTML = e.state.mainMenu;
                     document.title = e.state.pageTitle;
                     document.body.className = e.state.bodyClassList;
-                    runHoistedFunctions();
+                    interfaceSetUp();
                 }
             };
         }
@@ -252,7 +246,7 @@ $(window).on("resize", function () {
             }
         }, 100);
 
-        runHoistedFunctions();
+        interfaceSetUp();
     });
 
     /**
@@ -516,55 +510,144 @@ $(window).on("resize", function () {
 
     /**
      * Photos & Videos, Video Gallery handler
+     * Little bit ugly solution but it works for now.
      */
     function videoGalleryHandler() {
-        const galleryOverlay = document.getElementById('gallery-preview-overlay');
+        const galleryOverlay = document.getElementById("gallery-preview-overlay");
+        const overlayButtonClose = galleryOverlay.querySelector(".button-3x");
+        const overlayButtonNext = galleryOverlay.querySelector(".gallery-preview-next");
+        const overlayButtonBack = galleryOverlay.querySelector(".gallery-preview-back");
+        const videoGalleriesOnAPage = document.querySelectorAll(".video-gallery");
 
-        galleryOverlay.addEventListener('click', function (e) {
-            e.target.querySelectorAll('video').forEach(function (video) {
+        class videoGalleryUrl {
+            constructor(current = false, list = []) {
+                this.current = current;
+                this.list = list;
+            }
+            findNext() {
+                const index = this.list.indexOf(this.current);
+                if (index === -1) return false;
+                return this.list[index + 1] || this.list[0];
+            }
+            findBack() {
+                const index = this.list.indexOf(this.current);
+                if (index === -1) return false;
+                return this.list[index - 1] || this.list[this.list.length - 1];
+            }
+        }
+
+        function galleryOverlayVideoClean() {
+            galleryOverlay.querySelectorAll("video").forEach(function (video) {
+                video.pause();
+                video.load()
+                video.src = "";
                 video.remove();
             });
+        }
 
-            document.body.classList.remove('no-scroll');
+        // Process each video gallery on the page
+        videoGalleriesOnAPage.forEach((gallery) => {
+            const videoItemsList = [...gallery.querySelectorAll(".video-item")];
+            const currentGallery = new videoGalleryUrl(
+                false,
+                videoItemsList.map(item => item.querySelector("source").src)
+            );
 
-            e.target.classList.remove('active');
-        });
+            // Close the gallery Button functionality
+            overlayButtonClose.addEventListener("click", function (e) {
+                document.body.classList.remove("no-scroll");
+                galleryOverlay.classList.remove("active");
+                overlayButtonClose.classList.remove("active");
+                overlayButtonNext.classList.remove("active");
+                overlayButtonBack.classList.remove("active");
+                overlayButtonBack.removeEventListener("click", playNext);
+                overlayButtonNext.removeEventListener("click", playBack);
 
-        const videoGallery = document.querySelectorAll('.video-gallery');
-        videoGallery.forEach(function (gallery) {
-            const videoItems = gallery.querySelectorAll('.video-item');
+                galleryOverlayVideoClean();
+            });
+            try {
+                overlayButtonBack.removeEventListener("click", playNext);
+                overlayButtonNext.removeEventListener("click", playBack);
+            } catch (error) { }
 
-            videoItems.forEach(function (video) {
-                video.addEventListener('mouseenter', function () {
-                    video.play();
+            function playNext(currentGallery) {
+                const videoPlayer = galleryOverlay.querySelector("video");
+                if (!videoPlayer) return false;
+                const nextVideo = currentGallery.findNext();
+                if (!nextVideo) return false;
+
+                currentGallery.current = nextVideo;
+                videoPlayer.pause();
+                videoPlayer.setAttribute("src", nextVideo);
+            }
+
+            function playBack(currentGallery) {
+                const videoPlayer = galleryOverlay.querySelector("video");
+                if (!videoPlayer) return false;
+                const backVideo = currentGallery.findBack();
+                if (!backVideo) return false;
+
+                currentGallery.current = backVideo;
+                videoPlayer.pause();
+                videoPlayer.setAttribute("src", backVideo);
+            }
+
+            function videoPlayerGenerator(video) {
+                galleryOverlayVideoClean();
+                currentGallery.current = video.querySelector("source").src;
+
+                const videoPlayer = document.createElement("video");
+
+                videoPlayer.setAttribute("autoplay", "");
+                videoPlayer.setAttribute("controls", "");
+                videoPlayer.setAttribute("playsinline", "");
+                // videoPlayer.setAttribute("loop", "");
+                videoPlayer.setAttribute("muted", "");
+                videoPlayer.setAttribute("class", "video-player");
+                
+                videoPlayer.volume = 0.4;
+                videoPlayer.setAttribute("src", currentGallery.current);
+
+                videoPlayer.onended = (e) => { 
+                    playNext(currentGallery) 
+                };
+
+                galleryOverlay.appendChild(videoPlayer);
+            }
+
+            // Process each video in the gallery
+            videoItemsList.forEach((video) => {
+                currentGallery.list.push(video.querySelector("source").src);
+
+                video.addEventListener("mouseenter", function () {
+                    try {
+                        video.play();
+                    } catch (error) { console.log(error) }
                 });
 
-                video.addEventListener('mouseleave', function () {
-                    video.pause();
+                video.addEventListener("mouseleave", function () {
+                    try {
+                        video.pause();
+                    } catch (error) { console.log(error) }
                 });
 
-                video.addEventListener('click', function (e) {
+                video.addEventListener("click", (e) => {
                     const video = e.target;
-                    const src = video.querySelector('source').src;
+                    videoPlayerGenerator(video);
+   
+                    document.body.classList.add("no-scroll");
+                    galleryOverlay.classList.add("active");
 
-                    const videoPlayer = document.createElement('video');
-                    videoPlayer.setAttribute('controls', '');
-                    videoPlayer.setAttribute('autoplay', '');
-                    videoPlayer.setAttribute('loop', '');
-                    videoPlayer.setAttribute('muted', '');
-                    videoPlayer.setAttribute('playsinline', '');
-                    videoPlayer.setAttribute('preload', 'auto');
-                    videoPlayer.src = src;
-                    // video.classList.add('active');
-                    // videoWrapper.classList.add('active');
-                    galleryOverlay.classList.add('active');
-                    galleryOverlay.appendChild(videoPlayer);
+                    setTimeout(function () {
+                        overlayButtonClose.classList.add("active");
+                        overlayButtonNext.classList.add("active");
+                        overlayButtonBack.classList.add("active");
+                    }, 100);
 
-                    document.body.classList.add('no-scroll');
+                    overlayButtonNext.addEventListener("click", playNext.bind(this, currentGallery));
+                    overlayButtonBack.addEventListener("click", playBack.bind(this, currentGallery));
                 });
             });
         });
-
-
     }
 })();

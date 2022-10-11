@@ -49,7 +49,6 @@
 
         <!-- mobile menu button -->
         <div id="mobile-menu-button">
-
             <div class="button-3x">
                 <span></span>
                 <!-- Don't remove this span and the span tags -->
