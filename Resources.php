@@ -126,7 +126,7 @@ ResourceLoader::add( # FontAwesome
 ResourceLoader::add( # CSS for production
     "head",
     "assets/css/dist/style.min.css?v=$version",
-    active: true,
+    active: false,
     priority: 20,
     embed: true,
     options: "rel=\"stylesheet\""
@@ -136,7 +136,7 @@ ResourceLoader::add( # CSS for production
 ResourceLoader::add( # LESS for dev tests
     "head",
     "assets/css/src/style.less?v=$random#!watch",
-    active: false,
+    active: true,
     priority: 25,
     embed: false,
     options: "rel=\"stylesheet/less\""

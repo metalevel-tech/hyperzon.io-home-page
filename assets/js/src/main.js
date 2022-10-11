@@ -65,34 +65,6 @@ $(window).on("resize", function () {
 
 
 /**
- * Hyperzon mobile-menu handler
- */
-(function () {
-    let mobileMenuButton = document.querySelector(".mobile-menu-button");
-
-    
-    let mobile_menu_opened = 0;
-
-    $(".mobile-menu-button").on("click", function (e) {
-        e.preventDefault();
-
-        if (mobile_menu_opened == 0) {
-            mobile_menu_opened = 1;
-            // $(this).addClass("active");
-            $(".menu__mobile").addClass("opened");
-            $(".main-menu").addClass("opened");
-            $("body").addClass("no-scroll");
-        } else {
-            mobile_menu_opened = 0;
-            // $(this).removeClass("active");
-            $(".menu__mobile").removeClass("opened");
-            $(".main-menu").removeClass("opened");
-            $("body").removeClass("no-scroll");
-        }
-    });
-})();
-
-/**
  * This is the AJAX script for the main menu.
  * It replaces the content of <div id="body-content">,
  * without page reload.
@@ -101,7 +73,8 @@ $(window).on("resize", function () {
     const nodes = {
         content: document.getElementById("body-content"),
         mainMenu: document.getElementById("main-menu"),
-        menuItems: document.querySelectorAll("a.main-menu-item")
+        menuItems: document.querySelectorAll("a.main-menu-item"),
+        mobileMenuButton: document.querySelector("#mobile-menu-button .button-3x")
     };
 
     // Add class .white{position:sticky;} to the main menu when the page is scrolled.
@@ -109,7 +82,7 @@ $(window).on("resize", function () {
     function addStickyClass() {
         if (window.pageYOffset >= 56 && !nodes.mainMenu.classList.contains("sticky")) {
             nodes.mainMenu.classList.add("sticky");
-        } else if (window.pageYOffset < 56 && nodes.mainMenu.classList.contains("sticky")) {
+        } else if (window.pageYOffset < 36 && nodes.mainMenu.classList.contains("sticky")) {
             nodes.mainMenu.classList.remove("sticky");
         }
     }
@@ -118,6 +91,29 @@ $(window).on("resize", function () {
 
     window.addEventListener("scroll", function () {
         addStickyClass();
+    });
+
+    // Handle the mobile menu
+    function mobileMenuOpen() {
+        nodes.mobileMenuButton.classList.add("active");
+        nodes.mainMenu.classList.add("mobile-menu");
+        document.body.classList.add("no-scroll");
+    }
+
+    function mobileMenuClose() {
+        nodes.mobileMenuButton.classList.remove("active");
+        nodes.mainMenu.classList.remove("mobile-menu");
+        document.body.classList.remove("no-scroll");
+    }
+
+    nodes.mobileMenuButton.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        if (nodes.mobileMenuButton.classList.contains("active")) {
+            mobileMenuClose();
+        } else {
+            mobileMenuOpen();
+        }
     });
 
     // These functions are defined in the code below, 
@@ -129,6 +125,7 @@ $(window).on("resize", function () {
         latestBlogPostsSlider();
         videoLoader();
         videoGalleryHandler();
+        mobileMenuClose();
     }
 
     // Process single menu element
@@ -138,7 +135,7 @@ $(window).on("resize", function () {
         const item = e.currentTarget;
 
         // Close the mobile menu
-        const closeButton = document.querySelector(".mobile-menu-button");
+        const closeButton = document.querySelector("#mobile-menu-button");
         if (closeButton) {
             closeButton.click();
         }
@@ -437,9 +434,7 @@ $(window).on("resize", function () {
                     splashImg
                         .animate(fadeOut.effect, fadeOut.timing)
                         .finished.then(animate => {
-                            // setTimeout(function () {
-                            //     splashImg.remove();
-                            // }, 100);
+                            splashImg.remove();
                         })
                         .catch(error => { throw new Error(`Animate error: ${error}`); });
                 }, timeout);
@@ -529,7 +524,7 @@ $(window).on("resize", function () {
             e.target.querySelectorAll('video').forEach(function (video) {
                 video.remove();
             });
-            
+
             document.body.classList.remove('no-scroll');
 
             e.target.classList.remove('active');
