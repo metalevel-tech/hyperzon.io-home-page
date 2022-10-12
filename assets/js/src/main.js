@@ -71,9 +71,15 @@ $(window).on("resize", function () {
 (function () {
     const nodes = {
         content: document.getElementById("body-content"),
+
         mainMenu: document.getElementById("main-menu"),
         menuItems: document.querySelectorAll("a.main-menu-item"),
-        mobileMenuButton: document.querySelector("#mobile-menu-button .button-3x")
+        mobileMenuButton: document.querySelector("#mobile-menu-button .button-3x"),
+
+        galleryOverlay: document.getElementById("gallery-preview-overlay"),
+        overlayButtonClose: document.getElementById("gallery-preview-overlay").querySelector(".button-3x"),
+        overlayButtonNext: document.getElementById("gallery-preview-overlay").querySelector(".gallery-preview-next"),
+        overlayButtonBack: document.getElementById("gallery-preview-overlay").querySelector(".gallery-preview-back")
     };
 
     // Add class .white{position:sticky;} to the main menu when the page is scrolled.
@@ -124,6 +130,7 @@ $(window).on("resize", function () {
         latestBlogPostsSlider();
         videoLoader();
         videoGalleryHandler();
+        imageGalleryHandler();
         mobileMenuClose();
     }
 
@@ -509,116 +516,222 @@ $(window).on("resize", function () {
     }
 
     /**
-     * Photos & Videos, Video Gallery handler
-     * Little bit ugly solution but it works for now.
+     * Gallery Handler scripts begin
      */
-    function videoGalleryHandler() {
-        const galleryOverlay = document.getElementById("gallery-preview-overlay");
-        const overlayButtonClose = galleryOverlay.querySelector(".button-3x");
-        const overlayButtonNext = galleryOverlay.querySelector(".gallery-preview-next");
-        const overlayButtonBack = galleryOverlay.querySelector(".gallery-preview-back");
-        const videoGalleriesOnAPage = document.querySelectorAll(".video-gallery");
 
-        class videoGalleryUrl {
-            constructor(current = false, list = []) {
-                this.current = current;
-                this.list = list;
-            }
-            findNext() {
-                const index = this.list.indexOf(this.current);
-                if (index === -1) return false;
-                return this.list[index + 1] || this.list[0];
-            }
-            findBack() {
-                const index = this.list.indexOf(this.current);
-                if (index === -1) return false;
-                return this.list[index - 1] || this.list[this.list.length - 1];
-            }
+    // Gallery accumulator class, used by the gallery handlers below
+    // The following functions could be methods of this class
+    class galleryUrlArray {
+        constructor(current = false, list = []) {
+            this.current = current;
+            this.list = list;
         }
+        findNext() {
+            const index = this.list.indexOf(this.current);
+            if (index === -1) return false;
+            return this.list[index + 1] || this.list[0];
+        }
+        findBack() {
+            const index = this.list.indexOf(this.current);
+            if (index === -1) return false;
+            return this.list[index - 1] || this.list[this.list.length - 1];
+        }
+    }
 
-        function galleryOverlayVideoClean() {
-            galleryOverlay.querySelectorAll("video").forEach(function (video) {
+    // Function to clear the gallery overlay
+    function galleryOverlayClear() {
+        // Clear videos
+        nodes.galleryOverlay.querySelectorAll("video").forEach(function (video) {
+            try {
                 video.pause();
                 video.load()
                 video.src = "";
                 video.remove();
+            } catch (error) { console.log(error) }
+        });
+        nodes.overlayButtonBack.removeEventListener("click", changeVideo);
+        nodes.overlayButtonNext.removeEventListener("click", changeVideo);
+        window.removeEventListener("resize", setHeight_16_9);
+
+        // Clear images
+        nodes.galleryOverlay.querySelectorAll("img").forEach(function (image) {
+            try {
+                image.src = "";
+                image.remove();
+            } catch (error) { console.log(error) }
+        });
+        nodes.overlayButtonBack.removeEventListener("click", changeImage);
+        nodes.overlayButtonNext.removeEventListener("click", changeImage);
+
+        // Clear additional classes from DOM
+        document.body.classList.remove("no-scroll");
+        nodes.galleryOverlay.classList.remove("active");
+        nodes.overlayButtonClose.classList.remove("active");
+        nodes.overlayButtonNext.classList.remove("active");
+        nodes.overlayButtonBack.classList.remove("active");
+    }
+
+    // Function to change the image within the gallery overlay
+    function changeImage(currentGallery, forward = true) {
+        const imagePreview = nodes.galleryOverlay.querySelector("img.image-preview");
+        if (!imagePreview) return false;
+
+        const newImage = (forward) ? currentGallery.findNext() : currentGallery.findBack();
+        if (!newImage) return false;
+
+        currentGallery.current = newImage;
+
+        imagePreview.classList.add("static");
+
+        setTimeout(function () {
+            imagePreview.setAttribute("src", "");
+            setTimeout(function () {
+                imagePreview.setAttribute("src", newImage);
+                imagePreview.classList.remove("static");
+            }, 150);
+        }, 150);
+    }
+
+    // Function to change the video within the gallery overlay
+    function changeVideo(currentGallery, forward = true) {
+        const videoPlayer = nodes.galleryOverlay.querySelector("video.video-preview");
+        if (!videoPlayer) return false;
+
+        const newVideo = (forward) ? currentGallery.findNext() : currentGallery.findBack();
+        if (!newVideo) return false;
+
+        currentGallery.current = newVideo;
+        
+        // videoPlayer.classList.add("static");
+        
+        // videoPlayer.pause();
+        videoPlayer.src = newVideo;
+
+        // setTimeout(function () {
+        //     videoPlayer.classList.remove("static");
+        // }, 110);
+    }
+
+    // Function to open the gallery overlay and prepare for image preview
+    function overlaySetUp_Image(image, currentGallery) {
+        galleryOverlayClear();
+
+        // actually this is the anchor <a> that holds link to the HQ image
+        currentGallery.current = image.href;
+
+        const imagePreview = document.createElement("img");
+        imagePreview.setAttribute("class", "image-preview");
+        imagePreview.setAttribute("src", currentGallery.current);
+
+        // imageContainer.appendChild(imagePreview);
+        nodes.galleryOverlay.appendChild(imagePreview);
+    }
+    
+    // Function to open the gallery overlay and prepare for video preview
+    function overlaySetUp_Video(video, currentGallery) {
+        galleryOverlayClear();
+
+        currentGallery.current = video.querySelector("source").src;
+
+        const videoPlayer = document.createElement("video");
+        videoPlayer.setAttribute("autoplay", "");
+        videoPlayer.setAttribute("controls", "");
+        videoPlayer.setAttribute("playsinline", "");
+        videoPlayer.setAttribute("muted", "");
+        videoPlayer.setAttribute("class", "video-preview");
+        // videoPlayer.setAttribute("loop", "");  // auto change is not possible with loop
+
+        videoPlayer.volume = 0.4;
+        videoPlayer.setAttribute("src", currentGallery.current);
+
+        videoPlayer.onended = (e) => {
+            // playNext(currentGallery)
+            changeVideo(currentGallery, true);
+        };
+
+        nodes.galleryOverlay.appendChild(videoPlayer);
+
+        setTimeout(function () {
+            setHeight_16_9(videoPlayer);
+        }, 100);
+        window.addEventListener("resize", setHeight_16_9.bind(this, videoPlayer));
+    }
+
+    // Function to automatically set video height, based on width * 9/16
+    function setHeight_16_9(node) {
+        if (!node) return false;
+        node.style.height = `${Math.floor((node.offsetWidth * 9 / 16) + 2)}px`;
+        // `+ n` px to compensate the border width
+    }
+
+    /**
+     * Image (Photo) Gallery handler
+     * Little bit ugly solution but it works for now.
+     */
+    function imageGalleryHandler() {
+        const imageGalleriesOnAPage = document.querySelectorAll(".image-gallery");
+        if (!imageGalleriesOnAPage.length) return;
+
+        imageGalleriesOnAPage.forEach(function (gallery) {
+            const imageItemsList = [...gallery.querySelectorAll(".image-item")];
+            const currentGallery = new galleryUrlArray(
+                false,
+                imageItemsList.map(item => item.href)
+            );
+
+            // Close the gallery Button functionality
+            nodes.overlayButtonClose.addEventListener("click", function (e) {
+                galleryOverlayClear();
             });
-        }
+
+            // Process each image in the gallery
+            imageItemsList.forEach((image) => {
+                image.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    galleryOverlayClear();
+
+                    const image = e.target;
+                    overlaySetUp_Image(image.closest(".image-item"), currentGallery);
+
+                    document.body.classList.add("no-scroll");
+                    nodes.galleryOverlay.classList.add("active");
+
+                    setTimeout(function () {
+                        nodes.overlayButtonClose.classList.add("active");
+                        nodes.overlayButtonNext.classList.add("active");
+                        nodes.overlayButtonBack.classList.add("active");
+                    }, 100);
+
+                    nodes.overlayButtonNext.addEventListener("click", changeImage.bind(this, currentGallery, true));
+                    nodes.overlayButtonBack.addEventListener("click", changeImage.bind(this, currentGallery, false));
+                });
+            });
+        });
+    }
+
+    /**
+     * Video Gallery handler
+     * Little bit ugly solution but it works for now.
+     */
+    function videoGalleryHandler() {
+        const videoGalleriesOnAPage = document.querySelectorAll(".video-gallery");
+        if (!videoGalleriesOnAPage.length) return;
 
         // Process each video gallery on the page
         videoGalleriesOnAPage.forEach((gallery) => {
             const videoItemsList = [...gallery.querySelectorAll(".video-item")];
-            const currentGallery = new videoGalleryUrl(
+            const currentGallery = new galleryUrlArray(
                 false,
                 videoItemsList.map(item => item.querySelector("source").src)
             );
 
             // Close the gallery Button functionality
-            overlayButtonClose.addEventListener("click", function (e) {
-                document.body.classList.remove("no-scroll");
-                galleryOverlay.classList.remove("active");
-                overlayButtonClose.classList.remove("active");
-                overlayButtonNext.classList.remove("active");
-                overlayButtonBack.classList.remove("active");
-                overlayButtonBack.removeEventListener("click", playNext);
-                overlayButtonNext.removeEventListener("click", playBack);
-
-                galleryOverlayVideoClean();
+            nodes.overlayButtonClose.addEventListener("click", function (e) {
+                galleryOverlayClear();
             });
-            try {
-                overlayButtonBack.removeEventListener("click", playNext);
-                overlayButtonNext.removeEventListener("click", playBack);
-            } catch (error) { }
-
-            function playNext(currentGallery) {
-                const videoPlayer = galleryOverlay.querySelector("video");
-                if (!videoPlayer) return false;
-                const nextVideo = currentGallery.findNext();
-                if (!nextVideo) return false;
-
-                currentGallery.current = nextVideo;
-                videoPlayer.pause();
-                videoPlayer.setAttribute("src", nextVideo);
-            }
-
-            function playBack(currentGallery) {
-                const videoPlayer = galleryOverlay.querySelector("video");
-                if (!videoPlayer) return false;
-                const backVideo = currentGallery.findBack();
-                if (!backVideo) return false;
-
-                currentGallery.current = backVideo;
-                videoPlayer.pause();
-                videoPlayer.setAttribute("src", backVideo);
-            }
-
-            function videoPlayerGenerator(video) {
-                galleryOverlayVideoClean();
-                currentGallery.current = video.querySelector("source").src;
-
-                const videoPlayer = document.createElement("video");
-
-                videoPlayer.setAttribute("autoplay", "");
-                videoPlayer.setAttribute("controls", "");
-                videoPlayer.setAttribute("playsinline", "");
-                // videoPlayer.setAttribute("loop", "");
-                videoPlayer.setAttribute("muted", "");
-                videoPlayer.setAttribute("class", "video-player");
-                
-                videoPlayer.volume = 0.4;
-                videoPlayer.setAttribute("src", currentGallery.current);
-
-                videoPlayer.onended = (e) => { 
-                    playNext(currentGallery) 
-                };
-
-                galleryOverlay.appendChild(videoPlayer);
-            }
 
             // Process each video in the gallery
             videoItemsList.forEach((video) => {
-                currentGallery.list.push(video.querySelector("source").src);
-
                 video.addEventListener("mouseenter", function () {
                     try {
                         video.play();
@@ -632,20 +745,23 @@ $(window).on("resize", function () {
                 });
 
                 video.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    galleryOverlayClear();
+
                     const video = e.target;
-                    videoPlayerGenerator(video);
-   
+                    overlaySetUp_Video(video, currentGallery);
+
                     document.body.classList.add("no-scroll");
-                    galleryOverlay.classList.add("active");
+                    nodes.galleryOverlay.classList.add("active");
 
                     setTimeout(function () {
-                        overlayButtonClose.classList.add("active");
-                        overlayButtonNext.classList.add("active");
-                        overlayButtonBack.classList.add("active");
+                        nodes.overlayButtonClose.classList.add("active");
+                        nodes.overlayButtonNext.classList.add("active");
+                        nodes.overlayButtonBack.classList.add("active");
                     }, 100);
 
-                    overlayButtonNext.addEventListener("click", playNext.bind(this, currentGallery));
-                    overlayButtonBack.addEventListener("click", playBack.bind(this, currentGallery));
+                    nodes.overlayButtonNext.addEventListener("click", changeVideo.bind(this, currentGallery, true));
+                    nodes.overlayButtonBack.addEventListener("click", changeVideo.bind(this, currentGallery, false));
                 });
             });
         });

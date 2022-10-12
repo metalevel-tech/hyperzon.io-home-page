@@ -1,4 +1,5 @@
 <div class="gallery">
+    <?php /* Galleri section */ ?>
     <div class="gallery__title style-03">
         Recent Projects
     </div>
@@ -7,9 +8,8 @@
         Product Videos
     </div>
 
-    <div class="video-gallery">
+    <div class="video-gallery grid-3-2-1">
         <?php
-
         $images = scandir('public/gallery/videos/webp');
 
         foreach ($images as $index => $image) {
@@ -34,14 +34,13 @@
         <?php endforeach; ?>
     </div>
 
-    <!-- -- -->
+    <?php /* Galleri section */ ?>
     <div class="gallery__subtitle style-05 style-05--size-01">
         Motion Graphics
     </div>
 
-    <div class="video-gallery">
+    <div class="video-gallery grid-3-2-1">
         <?php
-
         $images = scandir('public/gallery/motion_graphics/webp');
 
         foreach ($images as $index => $image) {
@@ -65,4 +64,36 @@
             </div>
         <?php endforeach; ?>
     </div>
+
+    <?php /* Galleri section */ ?>
+    <div class="gallery__subtitle style-05 style-05--size-01">
+        Photography
+    </div>
+
+    <div class="image-gallery grid-3-2-1">
+        <?php
+        $images = scandir('public/gallery/photos/1x1/webp-thumb');
+
+        foreach ($images as $index => $image) {
+            if (in_array($image, array('.', '..'))) {
+                unset($images[$index]);
+            } else {
+                $images[$index] = [
+                    'public/gallery/photos/1x1/webp-big/' . $image,
+                    'public/gallery/photos/1x1/webp-thumb/' . $image
+                ];
+            }
+        }
+        ?>
+
+        <?php foreach ($images as $image) : ?>
+            <div class="item-wrapper">
+                    <a class="image-item" href="<?php echo $image[0] ?>" area-label="Photography presentation FHD">
+                        <img class="zoom-rotate" width='317' height='178' loading="lazy" decoding="async" src="<?php echo $image[1] ?>" alt="Photography presentation" />
+                        <?php /* <img width='235' height='225' /> */ ?>
+                    </a>
+            </div>
+        <?php endforeach; ?>
+    </div>
+
 </div>
