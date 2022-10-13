@@ -17,7 +17,7 @@ Route::set("amazon-account-management",   function () { Controller::CreateView("
 Route::set("amazon-ppc-management",       function () { Controller::CreateView("AmazonPPC"); });
 Route::set("branding-and-package-design", function () { Controller::CreateView("BrandDesign"); });
 Route::set("photo-and-video-content",     function () { Controller::CreateView("PhotoVideo"); });
-Route::set("hyperzon-blog",               function () { BlogPosts::CreateView("Blog"); });
+// Route::set("hyperzon-blog",               function () { BlogPosts::CreateView("Blog"); });
 
 if (!in_array($_GET["url"], Route::list())) { Controller::CreateView("HTTP404"); }
 

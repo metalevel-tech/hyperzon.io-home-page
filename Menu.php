@@ -25,4 +25,4 @@ Menu::addItem(1, "amazon-account-management",   "Account Management", "Amazon Fu
 Menu::addItem(2, "amazon-ppc-management",       "Advertising",        "Amazon PPC Management");
 Menu::addItem(3, "branding-and-package-design", "Design",             "Branding & Package Design");
 Menu::addItem(4, "photo-and-video-content",     "Photo & Video",      "Photo & Video Content");
-Menu::addItem(5, "hyperzon-blog",               "Blog",               "Hyperzon Blog");
+// Menu::addItem(5, "hyperzon-blog",               "Blog",               "Hyperzon Blog");
