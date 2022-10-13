@@ -81,9 +81,10 @@ $(window).on("resize", function () {
     menuItems: document.querySelectorAll("a.main-menu-item"),
     mobileMenuButton: document.querySelector("#mobile-menu-button .button-3x"),
     galleryOverlay: document.getElementById("gallery-preview-overlay"),
-    overlayButtonClose: document.getElementById("gallery-preview-overlay").querySelector(".button-3x"),
-    overlayButtonNext: document.getElementById("gallery-preview-overlay").querySelector(".gallery-preview-next"),
-    overlayButtonBack: document.getElementById("gallery-preview-overlay").querySelector(".gallery-preview-back")
+    galleryContent: document.getElementById("gallery-preview-overlay").querySelector(".gallery-preview-content"),
+    galleryButtonClose: document.getElementById("gallery-preview-overlay").querySelector(".button-3x"),
+    galleryButtonNext: document.getElementById("gallery-preview-overlay").querySelector(".gallery-preview-next"),
+    galleryButtonBack: document.getElementById("gallery-preview-overlay").querySelector(".gallery-preview-back")
   }; // Add class .white{position:sticky;} to the main menu when the page is scrolled.
   // Within this condition we should create back to top button to pop up.
 
@@ -550,8 +551,8 @@ $(window).on("resize", function () {
         console.log(error);
       }
     });
-    nodes.overlayButtonBack.removeEventListener("click", changeVideo);
-    nodes.overlayButtonNext.removeEventListener("click", changeVideo);
+    nodes.galleryButtonBack.removeEventListener("click", changeVideo);
+    nodes.galleryButtonNext.removeEventListener("click", changeVideo);
     window.removeEventListener("resize", setHeight_16_9); // Clear images
 
     nodes.galleryOverlay.querySelectorAll("img").forEach(function (image) {
@@ -562,19 +563,19 @@ $(window).on("resize", function () {
         console.log(error);
       }
     });
-    nodes.overlayButtonBack.removeEventListener("click", changeImage);
-    nodes.overlayButtonNext.removeEventListener("click", changeImage); // Clear additional classes from DOM
+    nodes.galleryButtonBack.removeEventListener("click", changeImage);
+    nodes.galleryButtonNext.removeEventListener("click", changeImage); // Clear additional classes from DOM
 
     document.body.classList.remove("no-scroll");
     nodes.galleryOverlay.classList.remove("active");
-    nodes.overlayButtonClose.classList.remove("active");
-    nodes.overlayButtonNext.classList.remove("active");
-    nodes.overlayButtonBack.classList.remove("active");
+    nodes.galleryButtonClose.classList.remove("active");
+    nodes.galleryButtonNext.classList.remove("active");
+    nodes.galleryButtonBack.classList.remove("active");
   } // Function to change the image within the gallery overlay
 
 
   function changeImage(currentGallery, forward = true) {
-    const imagePreview = nodes.galleryOverlay.querySelector("img.image-preview");
+    const imagePreview = nodes.galleryContent.querySelector("img.image-preview");
     if (!imagePreview) return false;
     const newImage = forward ? currentGallery.findNext() : currentGallery.findBack();
     if (!newImage) return false;
@@ -591,7 +592,7 @@ $(window).on("resize", function () {
 
 
   function changeVideo(currentGallery, forward = true) {
-    const videoPlayer = nodes.galleryOverlay.querySelector("video.video-preview");
+    const videoPlayer = nodes.galleryContent.querySelector("video.video-preview");
     if (!videoPlayer) return false;
     const newVideo = forward ? currentGallery.findNext() : currentGallery.findBack();
     if (!newVideo) return false;
@@ -612,7 +613,7 @@ $(window).on("resize", function () {
     imagePreview.setAttribute("class", "image-preview");
     imagePreview.setAttribute("src", currentGallery.current); // imageContainer.appendChild(imagePreview);
 
-    nodes.galleryOverlay.appendChild(imagePreview);
+    nodes.galleryContent.appendChild(imagePreview);
   } // Function to open the gallery overlay and prepare for video preview
 
 
@@ -634,7 +635,7 @@ $(window).on("resize", function () {
       changeVideo(currentGallery, true);
     };
 
-    nodes.galleryOverlay.appendChild(videoPlayer);
+    nodes.galleryContent.appendChild(videoPlayer);
     setTimeout(function () {
       setHeight_16_9(videoPlayer);
     }, 100);
@@ -659,7 +660,7 @@ $(window).on("resize", function () {
       const imageItemsList = [...gallery.querySelectorAll(".image-item")];
       const currentGallery = new galleryUrlArray(false, imageItemsList.map(item => item.href)); // Close the gallery Button functionality
 
-      nodes.overlayButtonClose.addEventListener("click", function (e) {
+      nodes.galleryButtonClose.addEventListener("click", function (e) {
         galleryOverlayClear();
       }); // Process each image in the gallery
 
@@ -672,12 +673,12 @@ $(window).on("resize", function () {
           document.body.classList.add("no-scroll");
           nodes.galleryOverlay.classList.add("active");
           setTimeout(function () {
-            nodes.overlayButtonClose.classList.add("active");
-            nodes.overlayButtonNext.classList.add("active");
-            nodes.overlayButtonBack.classList.add("active");
+            nodes.galleryButtonClose.classList.add("active");
+            nodes.galleryButtonNext.classList.add("active");
+            nodes.galleryButtonBack.classList.add("active");
           }, 100);
-          nodes.overlayButtonNext.addEventListener("click", changeImage.bind(this, currentGallery, true));
-          nodes.overlayButtonBack.addEventListener("click", changeImage.bind(this, currentGallery, false));
+          nodes.galleryButtonNext.addEventListener("click", changeImage.bind(this, currentGallery, true));
+          nodes.galleryButtonBack.addEventListener("click", changeImage.bind(this, currentGallery, false));
         });
       });
     });
@@ -696,7 +697,7 @@ $(window).on("resize", function () {
       const videoItemsList = [...gallery.querySelectorAll(".video-item")];
       const currentGallery = new galleryUrlArray(false, videoItemsList.map(item => item.querySelector("source").src)); // Close the gallery Button functionality
 
-      nodes.overlayButtonClose.addEventListener("click", function (e) {
+      nodes.galleryButtonClose.addEventListener("click", function (e) {
         galleryOverlayClear();
       }); // Process each video in the gallery
 
@@ -723,12 +724,12 @@ $(window).on("resize", function () {
           document.body.classList.add("no-scroll");
           nodes.galleryOverlay.classList.add("active");
           setTimeout(function () {
-            nodes.overlayButtonClose.classList.add("active");
-            nodes.overlayButtonNext.classList.add("active");
-            nodes.overlayButtonBack.classList.add("active");
+            nodes.galleryButtonClose.classList.add("active");
+            nodes.galleryButtonNext.classList.add("active");
+            nodes.galleryButtonBack.classList.add("active");
           }, 100);
-          nodes.overlayButtonNext.addEventListener("click", changeVideo.bind(this, currentGallery, true));
-          nodes.overlayButtonBack.addEventListener("click", changeVideo.bind(this, currentGallery, false));
+          nodes.galleryButtonNext.addEventListener("click", changeVideo.bind(this, currentGallery, true));
+          nodes.galleryButtonBack.addEventListener("click", changeVideo.bind(this, currentGallery, false));
         });
       });
     });

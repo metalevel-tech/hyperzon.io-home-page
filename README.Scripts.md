@@ -69,6 +69,13 @@ do
 done
 ```
 
+```bash
+for FILE in *.png;
+do
+    convert -resize "x300" "$FILE" -quality 80 -strip -define webp:lossless=true -define webp:method=4 "../webp-thumb/${FILE%.*}.webp"
+done
+```
+
 ### Get the image's dimensions
 
 ```bash
@@ -87,6 +94,17 @@ do
     ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0 "$FILE"
     ffmpeg -i "$FILE" 2>&1 | sed -n "s/.*, \(.*\) fp.*/\1/p"
 done
+```
+
+### Trim first "n.x" seconds from a video
+
+```bash
+FILE="Input_video.mp4"
+ffmpeg -ss 1.90 -i "$FILE" -c copy "${FILE%.*}_trimmed.mp4"
+```
+
+```bash
+ffmpeg -ss 2 -i "mp4/COCOSOLIS - Stretch Mark.mp4" -c:v libvpx-vp9 -b:v 0 -crf 30 -c:a libopus "webm/COCOSOLIS - Stretch Mark.webm"
 ```
 
 ### Convert all videos in a directory to Full HD

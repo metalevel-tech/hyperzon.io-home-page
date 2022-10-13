@@ -1,4 +1,5 @@
 <div id="gallery-preview-overlay">
+    <div class="gallery-preview-content"></div>
     <div class="gallery-preview-controls">
         <div class="gallery-preview-next"></div>
         <div class="gallery-preview-back"></div>
@@ -10,4 +11,5 @@
             <span></span>
         </div>
     </div>
+
 </div>

@@ -240,9 +240,9 @@ ResourceLoader::add( # External Libraries @anime.js (moved from Footer.php)
 
 ResourceLoader::add( # JavaScript: main.js
     "head",
-    // "assets/js/src/main.js?v=$version",
     "assets/js/dist/main.min.js?v=$version",
     // "assets/js/dist/main.js?v=$version",
+    // "assets/js/src/main.js?v=$version",
     priority: 70,
     embed: false,
     active: true,
