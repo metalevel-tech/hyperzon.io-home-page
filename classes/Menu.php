@@ -22,6 +22,8 @@ class Menu
 
     public static function getItems()
     {
+        global $ROUTE;
+        
         // Sort the array by item_id
         usort(self::$menu_items, function ($a, $b) {
             return ($a["item_id"] <= $b["item_id"]) ? -1 : 1;
@@ -35,7 +37,7 @@ class Menu
             }
             
             // Add classes "selected-item"
-            if ($_GET["url"] == $item["uri"]) {
+            if ($ROUTE == $item["uri"]) {
                 self::$menu_items[$key]["class"][] = "selected-item";
             }
         }

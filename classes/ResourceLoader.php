@@ -38,11 +38,6 @@
  *   [99] - you can use integer number to define the priority (order) of the resource within a hook,
  *          lower number -> higher priority
  * 
- * $route  !!! Since there is AJAX navigation, this feature become nonsense !!!
- *    [] - Array of URIs where the resource can be active. 
- *         By default it is empty array which means the resource will be activated for all URIs/Routes.
- *         The list of the available URIs/Routes is defined in `Routes.php`.
- * 
  * $kind
  *    [auto] - automatically determinate it is CSS/LESS or JavaScript, and choose the relevant HTML <tag>
  *    script,style,link - override the auto generated value,
@@ -77,10 +72,9 @@ class ResourceLoader
         $resource,
         $type = "default",
         $options = "default",
-        $embed = false,
         $active = true,
+        $embed = false,
         $priority = 99,
-        $route = [],
         $kind = "auto"
     ) {
         if (!$active) return;
@@ -138,7 +132,6 @@ class ResourceLoader
             "embed" => $embed,
             "active" => $active,
             "priority" => $priority,
-            "route" => $route,
             "kind" => $kind
         ];
     }
@@ -149,10 +142,7 @@ class ResourceLoader
         $hooked_resources = [];
 
         foreach (self::$available_resources as $resource) {
-            if (
-                ($resource["hook"] == $hook && $resource["active"]) &&
-                (!$resource["route"] || in_array($_GET["url"], $resource["route"]))
-            ) {
+            if (($resource["hook"] == $hook && $resource["active"])) {
                 $hooked_resources[] = $resource;
             }
         }
@@ -228,11 +218,18 @@ class ResourceLoader
      */
     public static function addLessSupport()
     {
-        // if (self::$options["less"]) {
-        self::add("head", "assets/vendor/less.conf.js",  embed: true,  priority: 10001);
-        self::add("head", "assets/vendor/less.min.js",   embed: false, priority: 10002, options: false);
-        self::add("head", "assets/vendor/less.watch.js", embed: true,  priority: 10003);
-        // }
+        /**
+         * PHP 8.0+
+         // if (self::$options["less"]) {
+         self::add("head", "assets/vendor/less.conf.js",  embed: true,  priority: 10001);
+         self::add("head", "assets/vendor/less.min.js",   embed: false, priority: 10002, options: false);
+         self::add("head", "assets/vendor/less.watch.js", embed: true,  priority: 10003);
+         // }
+         */
+
+        self::add("head", "assets/vendor/less.conf.js",   "default", "default", true, true,  10001);
+        self::add("head", "assets/vendor/less.min.js",    "default", false,     true, false, 10002);
+        self::add("head", "assets/vendor/less.watch.js",  "default", "default", true, true,  10003);
     }
 
     /**

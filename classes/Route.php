@@ -10,9 +10,11 @@ class Route
 
     public static function set($route, $function)
     {
+        global $ROUTE;
+
         self::$valid_routes[] = $route;
 
-        if ($_GET["url"] == $route) {
+        if ($ROUTE == $route) {
             $function->__invoke();
         }
     }

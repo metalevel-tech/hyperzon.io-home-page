@@ -38,7 +38,7 @@
 
 </head>
 
-<body class="<?php echo $_GET["url"] ?>">
+<body class="<?php global $ROUTE;  echo $ROUTE ?>">
     <div id="app">
         <?php
         // Req::resource("GoogleTagManager-body");

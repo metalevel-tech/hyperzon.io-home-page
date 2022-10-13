@@ -20,7 +20,8 @@
  *      grep -rni "Menu::get.*By.*(" views/ includes/
  *      grep -rli "Menu::get.*By.*(" views/ includes/
  */
-Menu::addItem(0, "home", "Home" );
+
+Menu::addItem(0, "home",                        "Home",               "Hyperzon home page" );
 Menu::addItem(1, "amazon-account-management",   "Account Management", "Amazon Full Account Management");
 Menu::addItem(2, "amazon-ppc-management",       "Advertising",        "Amazon PPC Management");
 Menu::addItem(3, "branding-and-package-design", "Design",             "Branding & Package Design");

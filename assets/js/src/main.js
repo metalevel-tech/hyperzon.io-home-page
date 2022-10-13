@@ -1,30 +1,4 @@
 /**
- * Fix it and removes the PageSpeed Insight warning,
- * "Does not use passive listeners to improve scrolling performance" @jquery
- * Refs: https://stackoverflow.com/a/62177358/6543935
- */
-jQuery.event.special.touchstart = {
-    setup: function (_, ns, handle) {
-        this.addEventListener("touchstart", handle, { passive: !ns.includes("noPreventDefault") });
-    }
-};
-jQuery.event.special.touchmove = {
-    setup: function (_, ns, handle) {
-        this.addEventListener("touchmove", handle, { passive: !ns.includes("noPreventDefault") });
-    }
-};
-jQuery.event.special.wheel = {
-    setup: function (_, ns, handle) {
-        this.addEventListener("wheel", handle, { passive: true });
-    }
-};
-jQuery.event.special.mousewheel = {
-    setup: function (_, ns, handle) {
-        this.addEventListener("mousewheel", handle, { passive: true });
-    }
-};
-
-/**
  * Hyperzon.io main.js, miscellaneous functions
  */
 
@@ -234,7 +208,8 @@ $(window).on("resize", function () {
     window.addEventListener("load", function () {
         // Handle the case when URI is index.php -> home
         setTimeout(function () {
-            if ([...document.body.classList].indexOf("index.php") > -1) {
+            const bodyClasses = [...document.body.classList];
+            if (bodyClasses.indexOf("index.php") > -1 || bodyClasses.indexOf("home") > -1) {
                 // nodes.homeButton.click();
                 document.body.classList.replace("index.php", "home");
 
@@ -262,32 +237,34 @@ $(window).on("resize", function () {
      */
     function testimonialsSlider() {
         setTimeout(function () {
-            $('.testimonials__slider').slick({
-                infinite: true,
-                slidesToShow: 4,
-                slidesToScroll: 1,
-                dots: false,
-                arrows: true,
-                autoplay: false,
-                autoplaySpeed: 5000,
-                responsive: [
-                    {
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToShow: 3,
-                            slidesToScroll: 1,
-                            infinite: true
+            try {
+                $(".testimonials__slider").slick({
+                    infinite: true,
+                    slidesToShow: 4,
+                    slidesToScroll: 1,
+                    dots: false,
+                    arrows: true,
+                    autoplay: false,
+                    autoplaySpeed: 5000,
+                    responsive: [
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                slidesToShow: 3,
+                                slidesToScroll: 1,
+                                infinite: true
+                            }
+                        },
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                slidesToShow: 2,
+                                slidesToScroll: 2
+                            }
                         }
-                    },
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 2
-                        }
-                    }
-                ]
-            });
+                    ]
+                });
+            } catch (error) { }
         }, 50);
     }
 
@@ -768,3 +745,29 @@ $(window).on("resize", function () {
         });
     }
 })();
+
+/**
+ * Fix it and removes the PageSpeed Insight warning,
+ * "Does not use passive listeners to improve scrolling performance" @jquery
+ * Refs: https://stackoverflow.com/a/62177358/6543935
+ */
+ jQuery.event.special.touchstart = {
+    setup: function (_, ns, handle) {
+        this.addEventListener("touchstart", handle, { passive: !ns.includes("noPreventDefault") });
+    }
+};
+jQuery.event.special.touchmove = {
+    setup: function (_, ns, handle) {
+        this.addEventListener("touchmove", handle, { passive: !ns.includes("noPreventDefault") });
+    }
+};
+jQuery.event.special.wheel = {
+    setup: function (_, ns, handle) {
+        this.addEventListener("wheel", handle, { passive: true });
+    }
+};
+jQuery.event.special.mousewheel = {
+    setup: function (_, ns, handle) {
+        this.addEventListener("mousewheel", handle, { passive: true });
+    }
+};
