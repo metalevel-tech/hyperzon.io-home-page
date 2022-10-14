@@ -5,19 +5,19 @@
 			<div class="brands-we-boosted__grid__track brands-we-boosted__grid__track--left">
 				<?php
 				$brands = [
-					'Logo_Uproot_Clean.png',
-					'Logo_StarPack.png',
-					'Logo_Lumero.png',
-					'Logo_Shine_Armor.png',
-					'Logo_Bella_Verite.png',
-					'Logo_WorkoutLabs.png',
-					'Logo_Noobru.png',
-					'Logo_BioluzLED.png',
-					'Logo_Gopure.png',
-					'Logo_ShroomzUP.png',
-					'Logo_Chess_Armory.png',
-					'Logo_Tropicana.png',
-					'Logo_Woods_Foods.png'
+					"Logo_Uproot_Clean.png",
+					"Logo_StarPack.png",
+					"Logo_Lumero.png",
+					"Logo_Shine_Armor.png",
+					"Logo_Bella_Verite.png",
+					"Logo_WorkoutLabs.png",
+					"Logo_Noobru.png",
+					"Logo_BioluzLED.png",
+					"Logo_Gopure.png",
+					"Logo_ShroomzUP.png",
+					"Logo_Chess_Armory.png",
+					"Logo_Tropicana.png",
+					"Logo_Woods_Foods.png"
 				];
 
 				foreach ($brands as $brand) :

@@ -1,25 +1,28 @@
 /**
- * Hook 'hero'
+ * Hook "hero"
  *  @ Resources.php
  *  @ includes/Hero.php
  */
 (function () {
-    $('.counter').each(function () {
-        var $this = $(this),
-            countTo = $this.attr('data-count');
+    $(".counter").each(function () {
+        const counter = $(this);
+        const countTo = counter.attr("data-count");
 
-        $({ countNum: $this.text() }).animate({
-            countNum: countTo
-        }, {
-            duration: 3000,
-            easing: 'easeOutCubic',
-            step: function () {
-                $this.text(Math.floor(this.countNum));
+        $({ countNum: counter.text() }).animate(
+            {
+                countNum: countTo
             },
-            complete: function () {
-                $this.text(this.countNum);
-                //alert('finished');
+            {
+                duration: 3000,
+                easing: "easeOutCubic",
+                step: function () {
+                    counter.text(Math.floor(this.countNum));
+                },
+                complete: function () {
+                    counter.text(this.countNum);
+                    //alert("finished");
+                }
             }
-        });
+        );
     });
 })();

@@ -1,6 +1,6 @@
 <div class="what-we-do">
     <div class="what-we-do__title style-03">
-        LET’S BOOST YOUR BUSINESS <br /> 
+        LET’S BOOST YOUR BUSINESS <br />
         TO THE NEXT LEVEL
     </div>
 
@@ -84,11 +84,11 @@
                 <div class="wwd__descr style-06">
                     The Walmart Marketplace has grown exponentially in recent years, becoming the 2nd largest US e-commerce market in terms of net sales. With competitive seller fees, flexible return conditions and an almost inexhaustible product assortment, it’s an opportunity your business can’t afford to miss. Our team will assist you in every step of the process, from listing specifics and promotions to content creation, optimization campaigns and beyond!
                 </div>
-                <!--
-                    <div class="wwd__button">
-                        <a href="#">Learn more</a>
-                    </div>
-                    -->
+                <?php /*
+                <div class="wwd__button">
+                    <a href="#">Learn more</a>
+                </div>
+                */ ?>
             </div>
         </div>
     </div>

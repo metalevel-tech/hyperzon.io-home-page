@@ -12,14 +12,14 @@ class Req
         $file = self::findRecursive($resource, $paths);
         self::requireFile($file);
     }
-    
+
     // Require a file from "views-elements/" only
     public static function element($resource, $paths = ["views-elements"])
     {
         $file = self::findRecursive($resource, $paths);
         self::requireFile($file);
     }
-    
+
     // Require a file from "views/" only
     public static function view($resource, $paths = ["views"])
     {
@@ -52,7 +52,8 @@ class Req
         }
     }
 
-    // A find method that works for exact matches, but is not in use
+    /**
+     * A find method that works for exact matches, but is not in use
     private static function findExact($resource, $paths = ["views", "views-elements"])
     {
         foreach ($paths as $path) {
@@ -63,4 +64,5 @@ class Req
             }
         }
     }
+    */
 }

@@ -21,26 +21,26 @@
             </div>
             <div class="footer__content">
                 <div><a href="#" onclick="return false;">Coming soon!</a></div>
-                <!--
-                        <div><a href="#">HyperCast</a></div>
-                        <div><a href="#">Hyperzon Blog</a></div>
-                        <div><a href="#">HyperBoost</a></div>
-                        <div><a href="#">FREE E-book</a></div>
-                        -->
+                <?php /* 
+                <div><a href="#">HyperCast</a></div>
+                <div><a href="#">Hyperzon Blog</a></div>
+                <div><a href="#">HyperBoost</a></div>
+                <div><a href="#">FREE E-book</a></div>
+                */ ?>
             </div>
         </div>
 
+        <?php /* 
         <div class="footer__col">
-            <!--
-                    <div class="footer__title">About Us</div>
-                    <div class="footer__content">
-                        <div><a href="#">Our Team</a></div>
-                        <div><a href="#">Partners</a></div>
-                        <div><a href="#">Careers</a></div>
-                        <div><a href="#">Success Stories</a></div>
-                    </div>
-                    -->
+            <div class="footer__title">About Us</div>
+            <div class="footer__content">
+                <div><a href="#">Our Team</a></div>
+                <div><a href="#">Partners</a></div>
+                <div><a href="#">Careers</a></div>
+                <div><a href="#">Success Stories</a></div>
+            </div>
         </div>
+        */ ?>
 
         <div class="footer__col">
             <div class="footer__title">
@@ -53,11 +53,11 @@
                 <div>
                     <a role="button">Denver, Colo., 80202, USA</a>
                 </div>
-                <!--
-                        <div class="footer__top-line"><a href="#">Privacy Policy</a></div>
-                        <div><a href="#">Terms of Service</a></div>
-                        <div><a href="#">Cookies</a></div>
-                        -->
+                <?php /* 
+                <div class="footer__top-line"><a href="#">Privacy Policy</a></div>
+                <div><a href="#">Terms of Service</a></div>
+                <div><a href="#">Cookies</a></div>
+                */ ?>
             </div>
         </div>
 
@@ -66,7 +66,7 @@
                 Let's Connect
             </div>
             <div class="footer__content">
-                <!-- <div>M: +359 878 22 45 33</div> -->
+                <?php /* <div>M: +359 878 22 45 33</div> */ ?>
                 <div>
                     E: <a href="mailto:hello@hyperzon.io">hello@hyperzon.io</a>
                 </div>

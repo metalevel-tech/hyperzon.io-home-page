@@ -58,7 +58,7 @@
         <?php
         /* *
          * Disabled right now, but please don't disable it by 'display: none' :)
-         * 
+         *
         <div class="success-stories__grid__single ss--right">
             <div class="ss__text">
                 <div class="success-stories__title style-05 style-05--size-01">Cosmetics</div>
@@ -81,6 +81,6 @@
                 <img src="public/images/stories/ppc/story_03.png" />
             </div>
         </div>
-         */ ?>
+        */ ?>
     </div>
 </div>

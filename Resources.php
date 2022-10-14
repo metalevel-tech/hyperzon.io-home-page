@@ -5,7 +5,7 @@
  *  - https://css-tricks.com/how-to-load-fonts-in-a-way-that-fights-fout-and-makes-lighthouse-happy/
  *  - https://web.dev/fast/#lazy-load-images-and-video
  *  - https://web.dev/lazy-loading-video/
- * 
+ *
  */
 // ResourceLoader::add(
 //     $hook,
@@ -141,7 +141,7 @@ ResourceLoader::add( # LESS for dev tests
     25
 );
 
-ResourceLoader::add( # jQuery 
+ResourceLoader::add( # jQuery
     "head",
     "assets/vendor/jquery.min.js",
     "default",
@@ -151,7 +151,7 @@ ResourceLoader::add( # jQuery
     2
 );
 
-ResourceLoader::add( # jQuery.Easing 
+ResourceLoader::add( # jQuery.Easing
     "head",
     "assets/vendor/jquery.easing.min.js",
     "default",
@@ -277,4 +277,3 @@ ResourceLoader::add( # External Libraries @Calendly.js wigged (Book a Call)
     false,
     109,
 );
-

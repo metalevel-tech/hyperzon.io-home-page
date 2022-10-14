@@ -5,7 +5,7 @@
             Req::element("SvgReferences");
             ?>
         </div> <!-- body-scrollable-content -->
-        
+
         <?php
         Req::element("GalleryOverlay");
         ?>

@@ -79,7 +79,19 @@
     "libopus",
     "veryslow",
     "libx264",
-    "ffprobe"
+    "ffprobe",
+    "MenuFooter",
+    "MenuMain",
+    "LiteSpeed",
+    "Apache2",
+    "blog",
+    "Blog",
+    "Blogs",
+    "blogpost",
+    "Blogpost",
+    "blogposts",
+    "Blogposts",
+    "Codacy"
   ],
   "cSpell.words": [
     "async",
@@ -162,7 +174,19 @@
     "libopus",
     "veryslow",
     "libx264",
-    "ffprobe"
+    "ffprobe",
+    "MenuFooter",
+    "MenuMain",
+    "LiteSpeed",
+    "Apache2",
+    "blog",
+    "Blog",
+    "Blogs",
+    "blogpost",
+    "Blogpost",
+    "blogposts",
+    "Blogposts",
+    "Codacy"
   ],
   "cSpell.ignoreWords": [
     "enim",

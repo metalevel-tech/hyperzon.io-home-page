@@ -13,7 +13,7 @@
         $images = scandir("public/gallery/branding/1x1/webp-thumb");
 
         foreach ($images as $index => $image) {
-            if (in_array($image, array('.', '..'))) {
+            if (in_array($image, [".", ".."])) {
                 unset($images[$index]);
             } else {
                 $images[$index] = [
@@ -43,7 +43,7 @@
         $images = scandir("public/gallery/package_design/1x1/webp-thumb");
 
         foreach ($images as $index => $image) {
-            if (in_array($image, array('.', '..'))) {
+            if (in_array($image, [".", ".."])) {
                 unset($images[$index]);
             } else {
                 $images[$index] = [
@@ -74,7 +74,7 @@
         $images = scandir("public/gallery/logo_design/1x1/webp-thumb");
 
         foreach ($images as $index => $image) {
-            if (in_array($image, array('.', '..'))) {
+            if (in_array($image, [".", ".."])) {
                 unset($images[$index]);
             } else {
                 $images[$index] = [
@@ -94,6 +94,4 @@
             </div>
         <?php endforeach; ?>
     </div>
-
-
 </div>

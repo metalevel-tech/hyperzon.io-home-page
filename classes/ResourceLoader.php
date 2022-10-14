@@ -5,46 +5,46 @@
  * The resources to be loaded should be declared in Resources.php,
  * then they will be loaded via views/* and includes/*,
  * with respect of the chosen hook.
- * 
+ *
  * $hooks
  *   The hooks are user defined. However in the project are defined the following hooks:
  *   > "head"   - the resource is loaded at the end of the <head> tag via includes/Header.php
  *   > "body"   - the resource is loaded at the begging of the <body> tag via includes/Header.php
  *   > "footer" - the resource is loaded at the end of the <body> tag via includes/Footer.php
- * 
+ *
  *   You can define your own Hooks and by placing `ResourceLoader::hook("hook-name");` somewhere in the code,
  *   Then attach resources to them by `ResourceLoader::add("hook-name");` within `Resources.php`.
- * 
+ *
  * $resource
  *   In this parameter should be defined the resource file to be loaded with its full path.
  *   Or HTTP/S address.
- * 
+ *
  * $options
  *   The HTML tag <script>/<style> loading options. See also: https://wiki.metalevel.tech/wiki/JavaScript_Course_8:_DOM_and_Browser
- * 
+ *
  * $type
  *   [text/css] - the default value for <link type=...>, see https://www.w3schools.com/tags/att_link_type.asp
  *   [text/javascript] - the default value for <script type=...>, see https://www.w3schools.com/tags/tag_script.asp
- * 
+ *
  * $embed
  *   true  - load the resource as inline style/script
  *   false - [default] load the resource as link/script
- * 
- * $active 
+ *
+ * $active
  *   true  - [default] load the resource
  *   false - don't load the resource
- * 
+ *
  * $priority
  *   [99] - you can use integer number to define the priority (order) of the resource within a hook,
  *          lower number -> higher priority
- * 
+ *
  * $kind
  *    [auto] - automatically determinate it is CSS/LESS or JavaScript, and choose the relevant HTML <tag>
  *    script,style,link - override the auto generated value,
- * 
- *    Note: 'link' and 'style' will produce the same output <link> tag, but the keyword 
+ *
+ *    Note: 'link' and 'style' will produce the same output <link> tag, but the keyword
  *          'link' is used in the logic below to distinct .scc/.less from the other resources as .ico, etc.
- * 
+ *
  * Examples of usage:
  *   Examples are provided in the file Resources.php within the root directory of the project.
  */
@@ -55,9 +55,9 @@ class ResourceLoader
     private static $available_resources = [];
 
     /**
-     * Options: 
+     * Options:
      *   'less' - when there is invoked .less resource this will be changed to 'true'
-     * 
+     *
      *    @self::addLessSupport(), @self::add()
      */
     private static $options = [
@@ -86,6 +86,8 @@ class ResourceLoader
             $ext = explode(".", $file);
             $ext = end($ext);
 
+            // fallback for resources as href="https://fonts.googleapis.com"
+            $kind = "link";
             if ($ext == "js") {
                 $kind = "script";
             } elseif ($ext == "css") {
@@ -96,8 +98,6 @@ class ResourceLoader
                     self::$options["less"] = true;
                     self::addLessSupport();
                 }
-            } else {
-                $kind = "link"; // fallback for resources as href="https://fonts.googleapis.com"
             }
         }
 
@@ -120,9 +120,9 @@ class ResourceLoader
         }
 
         // Override the 'embed' option if the resource is web address
-        if (preg_match("/^(http|\/\/)/", $resource)) {
-            $embed = false;
-        }
+        // if (preg_match("/^(http|\/\/)/", $resource)) {
+        //     $embed = false;
+        // }
 
         self::$available_resources[] = [
             "hook" => $hook,
@@ -147,7 +147,7 @@ class ResourceLoader
             }
         }
 
-        // Sort the array     
+        // Sort the array
         usort($hooked_resources, function ($a, $b) {
             return ($a["priority"] <= $b["priority"]) ? -1 : 1;
         });
@@ -159,44 +159,69 @@ class ResourceLoader
 
     /**
      * Generate the HTML tags
-     * 
+     *
      *   @self::hook()
-     * 
+     *
      *   $resource["kind"] = "style"|"script"|"link"
      *   $resource["embed"] = true|false
      */
     private static function tagGenerator($resource = [])
     {
-        // Handle styles
-        if ($resource["kind"] == "style" && $resource["embed"]) {
-            echo "<style type=\"{$resource["type"]}\">/* {$resource["resource"]} */\n" . self::readFile($resource["resource"]) . "\n\t</style>\n\t";
-        }
-        if ($resource["kind"] == "style" && !$resource["embed"]) {
-            echo "<link href=\"{$resource["resource"]}\" type=\"{$resource["type"]}\" {$resource["options"]} />\n\t";
-        }
-
-        // Handle scripts
-        if ($resource["kind"] == "script" && $resource["embed"]) {
-            echo "<script type=\"{$resource["type"]}\">/* {$resource["resource"]} */\n" . self::readFile($resource["resource"]) . "\n\t</script>\n\t";
-        }
-        if ($resource["kind"] == "script" && !$resource["embed"]) {
-            echo "<script src=\"{$resource["resource"]}\" type=\"{$resource["type"]}\" {$resource["options"]}></script>\n\t";
-        }
-
-        // Handle other resources
-        if ($resource["kind"] == "link" && !$resource["embed"]) {
-            if ($resource["type"]) {
-                echo "<link href=\"{$resource["resource"]}\" type=\"{$resource["type"]}\" {$resource["options"]} />\n\t";
+        if ($resource["kind"] == "style") {
+            if ($resource["embed"]) {
+                print_r("<style type=\"{$resource["type"]}\">/* {$resource["resource"]} */\n" . self::readFile($resource["resource"]) . "\n\t</style>\n\t");
             } else {
-                echo "<link href=\"{$resource["resource"]}\" {$resource["options"]} />\n\t";
+                print_r("<link href=\"{$resource["resource"]}\" type=\"{$resource["type"]}\" {$resource["options"]} />\n\t");
+            }
+        } elseif ($resource["kind"] == "script") {
+            if ($resource["embed"]) {
+                print_r("<script type=\"{$resource["type"]}\">/* {$resource["resource"]} */\n" . self::readFile($resource["resource"]) . "\n\t</script>\n\t");
+            } else {
+                print_r("<script src=\"{$resource["resource"]}\" type=\"{$resource["type"]}\" {$resource["options"]}></script>\n\t");
+            }
+        } elseif ($resource["kind"] == "link" && !$resource["embed"]) {
+            if ($resource["type"]) {
+                print_r("<link href=\"{$resource["resource"]}\" type=\"{$resource["type"]}\" {$resource["options"]} />\n\t");
+            } else {
+                print_r("<link href=\"{$resource["resource"]}\" {$resource["options"]} />\n\t");
             }
         }
+
+        /**
+         * Cyclonic complexity is 12, but it is not a problem, because it is a simple logic.
+         * Note the "!!!" must be replaced by empty string...
+         *
+         // Handle styles
+         if ($resource["kind"] == "style" && $resource["embed"]) {
+             echo "<style type=\"{$resource["type"]}\">/* {$resource["resource"]} *!!!/\n" . self::readFile($resource["resource"]) . "\n\t</style>\n\t";
+         }
+         if ($resource["kind"] == "style" && !$resource["embed"]) {
+             echo "<link href=\"{$resource["resource"]}\" type=\"{$resource["type"]}\" {$resource["options"]} />\n\t";
+         }
+
+         // Handle scripts
+         if ($resource["kind"] == "script" && $resource["embed"]) {
+             echo "<script type=\"{$resource["type"]}\">/* {$resource["resource"]} *!!!/\n" . self::readFile($resource["resource"]) . "\n\t</script>\n\t";
+         }
+         if ($resource["kind"] == "script" && !$resource["embed"]) {
+             echo "<script src=\"{$resource["resource"]}\" type=\"{$resource["type"]}\" {$resource["options"]}></script>\n\t";
+         }
+
+         // Handle other resources
+         if ($resource["kind"] == "link" && !$resource["embed"]) {
+             if ($resource["type"]) {
+                 echo "<link href=\"{$resource["resource"]}\" type=\"{$resource["type"]}\" {$resource["options"]} />\n\t";
+             } else {
+                 echo "<link href=\"{$resource["resource"]}\" {$resource["options"]} />\n\t";
+             }
+         }
+         */
     }
 
     /**
      * Read the content of the local resources,
      * when we want to embed them in the HTML code.
-     * 
+     *
      *   @self::tagGenerator()
      */
     private static function readFile($resource)
@@ -213,7 +238,7 @@ class ResourceLoader
 
     /**
      * Add online support for .less files
-     * 
+     *
      *   @self::add()
      */
     public static function addLessSupport()

@@ -2,10 +2,10 @@
 
 /**
  * Will be updated with lazy loading feature.
- * 
+ *
  * Here are generated placeholders, which provides data for the video to be embed.
  * The actual embedding is done via the function 'videoLoader()' from 'main.js'.
- * 
+ *
  */
 
 class VideoPlayer

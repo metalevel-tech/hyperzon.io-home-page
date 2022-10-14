@@ -13,7 +13,7 @@
         $images = scandir("public/gallery/videos/webp");
 
         foreach ($images as $index => $image) {
-            if (in_array($image, array('.', '..'))) {
+            if (in_array($image, [".", ".."])) {
                 unset($images[$index]);
             } else {
                 $images[$index] = [
@@ -44,7 +44,7 @@
         $images = scandir("public/gallery/motion_graphics/webp");
 
         foreach ($images as $index => $image) {
-            if (in_array($image, array('.', '..'))) {
+            if (in_array($image, [".", ".."])) {
                 unset($images[$index]);
             } else {
                 $images[$index] = [
@@ -70,7 +70,7 @@
         Photography
     </div>
 
-    <?php /* 
+    <?php /*
     <div class="image-gallery grid-3-2-1-1"> </div>
     */ ?>
     <div class="image-gallery grid-4-3-2-2">
@@ -78,7 +78,7 @@
         $images = scandir("public/gallery/photos/1x1/webp-thumb");
 
         foreach ($images as $index => $image) {
-            if (in_array($image, array('.', '..'))) {
+            if (in_array($image, [".", ".."])) {
                 unset($images[$index]);
             } else {
                 $images[$index] = [
@@ -93,14 +93,13 @@
             <div class="item-wrapper">
                 <a class="image-item" href="<?php echo $image[0] ?>" area-label="Photography presentation FHD">
                     <img class="zoom-rotate" width="235" height="225" loading="lazy" decoding="async" src="<?php echo $image[1] ?>" alt="Photography presentation" />
-                    <?php /* 
-                        <img width="235" height="225" /> @grid-4-3-2-2
-                        <img width="317" height="178" />
-                        <img width="330" height="186" /> @grid-3-2-1-1
-                        */ ?>
+                    <?php /*
+                    <img width="235" height="225" /> @grid-4-3-2-2
+                    <img width="317" height="178" />
+                    <img width="330" height="186" /> @grid-3-2-1-1
+                    */ ?>
                 </a>
             </div>
         <?php endforeach; ?>
     </div>
-
 </div>

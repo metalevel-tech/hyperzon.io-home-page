@@ -24,6 +24,10 @@ class Route
         return self::$valid_routes;
     }
 
+    /**
+     * Output the registered routes,
+     * this is an early build helper function and we no longer need it.
+     *
     public static function debug()
     {
         echo "<p><b><code>Routes.php</code></b></p>";
@@ -42,4 +46,6 @@ class Route
         }
         echo "</pre>";
     }
+    */
+
 }

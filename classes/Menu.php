@@ -23,10 +23,10 @@ class Menu
     public static function getItems()
     {
         global $ROUTE;
-        
+
         // Sort the array by item_id
-        usort(self::$menu_items, function ($a, $b) {
-            return ($a["item_id"] <= $b["item_id"]) ? -1 : 1;
+        usort(self::$menu_items, function ($current, $next) {
+            return ($current["item_id"] <= $next["item_id"]) ? -1 : 1;
         });
 
         // Parse the selected item
@@ -35,7 +35,7 @@ class Menu
             if ($item["item_id"] == 0) {
                 self::$menu_items[$key]["class"][] = "home-item";
             }
-            
+
             // Add classes "selected-item"
             if ($ROUTE == $item["uri"]) {
                 self::$menu_items[$key]["class"][] = "selected-item";
@@ -50,34 +50,35 @@ class Menu
     {
         array_filter(self::$menu_items, function ($item) use ($label) {
             if ($item["label"] == $label) {
-                echo $item["uri"]; return;
+                echo $item["uri"];
+                return;
             }
         });
     }
-    
+
     public static function getUriById($item_id)
     {
         array_filter(self::$menu_items, function ($item) use ($item_id) {
             if ($item["item_id"] == $item_id) {
-                echo $item["uri"]; return;
+                echo $item["uri"];
             }
         });
     }
-    
+
     public static function getLabelById($item_id)
     {
         array_filter(self::$menu_items, function ($item) use ($item_id) {
             if ($item["item_id"] == $item_id) {
-                echo $item["label"]; return;
+                echo $item["label"];
             }
         });
     }
-    
+
     public static function getLabelMobileById($item_id)
     {
         array_filter(self::$menu_items, function ($item) use ($item_id) {
             if ($item["item_id"] == $item_id) {
-                echo $item["label_mobile"]; return;
+                echo $item["label_mobile"];
             }
         });
     }

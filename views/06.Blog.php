@@ -17,16 +17,16 @@
 <?php
 echo "\n\t\t<h1>Posts!</h1>\n";
 
-$posts = BlogPosts::queryPosts(); 
+$posts = BlogPosts::queryPosts();
 
 if ($posts) {
     $div = "+-------+---------------+-------------------------------+-----------------------------------------------+\n";
-    
+
     echo "\t\t<pre style=\"color: black;\">\n";
     echo $div;
     echo "| Id\t| Title\t\t| Description\t\t\t| Content\t\t\t\t\t|\n";
     echo $div;
-    
+
     foreach ($posts as $row) {
         $post_id = $row["post_id"];
         $post_title = $row["post_title"];

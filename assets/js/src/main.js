@@ -50,11 +50,20 @@ $(window).on("resize", function () {
         menuItems: document.querySelectorAll("a.main-menu-item"),
         mobileMenuButton: document.querySelector("#mobile-menu-button .button-3x"),
 
-        galleryOverlay: document.getElementById("gallery-preview-overlay"),
-        galleryContent: document.getElementById("gallery-preview-overlay").querySelector(".gallery-preview-content"),
-        galleryButtonClose: document.getElementById("gallery-preview-overlay").querySelector(".button-3x"),
-        galleryButtonNext: document.getElementById("gallery-preview-overlay").querySelector(".gallery-preview-next"),
-        galleryButtonBack: document.getElementById("gallery-preview-overlay").querySelector(".gallery-preview-back")
+        galleryOverlay: document
+            .getElementById("gallery-preview-overlay"),
+        galleryContent: document
+            .getElementById("gallery-preview-overlay")
+            .querySelector(".gallery-preview-content"),
+        galleryButtonClose: document
+            .getElementById("gallery-preview-overlay")
+            .querySelector(".button-3x"),
+        galleryButtonNext: document
+            .getElementById("gallery-preview-overlay")
+            .querySelector(".gallery-preview-next"),
+        galleryButtonBack: document
+            .getElementById("gallery-preview-overlay")
+            .querySelector(".gallery-preview-back")
     };
 
     // Add class .white{position:sticky;} to the main menu when the page is scrolled.
@@ -96,9 +105,9 @@ $(window).on("resize", function () {
         }
     });
 
-    // These functions are defined in the code below, 
+    // These functions are defined in the code below,
     // but we need run them much times them together,
-    // especially when manipulating the menu 
+    // especially when manipulating the menu
     // and the browser's states.
     function interfaceSetUp() {
         testimonialsSlider();
@@ -193,7 +202,7 @@ $(window).on("resize", function () {
         return element.getAttribute("href").replace(/^\/|\/$/g, "");
     }
 
-    // Array of the possible body classes, that will be filed by the 
+    // Array of the possible body classes, that will be filed by the
     const bodyClasses = [];
 
     // The main trigger of the menu processing,
@@ -273,63 +282,73 @@ $(window).on("resize", function () {
      */
     function latestBlogPostsSlider() {
         setTimeout(function () {
-            $('.latest-blog-posts__grid').slick({
-                infinite: true,
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                dots: false,
-                arrows: true,
-                autoplay: true,
-                autoplaySpeed: 5000,
-                responsive: [
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            slidesToShow: 2,
-                            infinite: true,
-                            centerMode: true
+            $(".latest-blog-posts__grid").slick(
+                {
+                    infinite: true,
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    dots: false,
+                    arrows: true,
+                    autoplay: true,
+                    autoplaySpeed: 5000,
+                    responsive: [
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                slidesToShow: 2,
+                                infinite: true,
+                                centerMode: true
+                            }
+                        },
+                        {
+                            breakpoint: 600,
+                            settings: {
+                                slidesToShow: 1,
+                                centerMode: false
+                            }
                         }
-                    },
+                    ]
+                }
+            );
+
+            $(".blog__single").on("mouseenter", function (e) {
+                let clip_path_id = $(this).attr("data-clip");
+
+                $(this).addClass("active");
+
+                let morphing = anime(
                     {
-                        breakpoint: 600,
-                        settings: {
-                            slidesToShow: 1,
-                            centerMode: false
-                        }
+                        targets: "#svgPath-" + clip_path_id + " path",
+                        d: [
+                            {
+                                value: "M 1.021 0.979 c 0.204 0.012 -0.031 -0.548 0.027 -0.623 c 0.056 -0.177 0.012 -0.201 0.015 -0.291 c -0.06 -0.182 -0.097 -0.179 -0.631 -0.175 C 0.255 -0.124 -0.06 -0.186 -0.113 -0.072 C -0.153 0.012 -0.201 0.955 -0.08 0.97 s 0.437 -0.015 0.784 -0 Z"
+                            }
+                        ],
+                        duration: 2000,
+                        easing: "easeInOutSine",
+                        loop: false
                     }
-                ]
+                );
             });
 
-            $('.blog__single').on('mouseenter', function (e) {
-                let clip_path_id = $(this).attr('data-clip');
+            $(".blog__single").on("mouseleave", function (e) {
+                let clip_path_id = $(this).attr("data-clip");
 
-                $(this).addClass('active');
+                $(this).addClass("active");
 
-                let morphing = anime({
-                    targets: '#svgPath-' + clip_path_id + ' path',
-                    d: [{
-                        value: 'M 1.021 0.979 c 0.204 0.012 -0.031 -0.548 0.027 -0.623 c 0.056 -0.177 0.012 -0.201 0.015 -0.291 c -0.06 -0.182 -0.097 -0.179 -0.631 -0.175 C 0.255 -0.124 -0.06 -0.186 -0.113 -0.072 C -0.153 0.012 -0.201 0.955 -0.08 0.97 s 0.437 -0.015 0.784 -0 Z'
-                    }],
-                    duration: 2000,
-                    easing: 'easeInOutSine',
-                    loop: false
-                });
-            });
-
-            $('.blog__single').on('mouseleave', function (e) {
-                let clip_path_id = $(this).attr('data-clip');
-
-                $(this).addClass('active');
-
-                let morphing = anime({
-                    targets: '#svgPath-' + clip_path_id + ' path',
-                    d: [{
-                        value: 'M 0.784 0.987 c 0.254 -0.009 0.274 -0.441 0.266 -0.578 c 0.092 -0.073 0.05 -0.052 0.017 -0.153 c -0.06 -0.182 -0.187 -0.155 -0.336 -0.231 C 0.464 -0.048 0.274 0.091 0.198 0.217 C -0.002 0.49 0.047 0.897 0.227 0.963 s 0.288 0.003 0.416 0.014 Z'
-                    }],
-                    duration: 2000,
-                    easing: 'easeInOutSine',
-                    loop: false
-                });
+                let morphing = anime(
+                    {
+                        targets: "#svgPath-" + clip_path_id + " path",
+                        d: [
+                            {
+                                value: "M 0.784 0.987 c 0.254 -0.009 0.274 -0.441 0.266 -0.578 c 0.092 -0.073 0.05 -0.052 0.017 -0.153 c -0.06 -0.182 -0.187 -0.155 -0.336 -0.231 C 0.464 -0.048 0.274 0.091 0.198 0.217 C -0.002 0.49 0.047 0.897 0.227 0.963 s 0.288 0.003 0.416 0.014 Z"
+                            }
+                        ],
+                        duration: 2000,
+                        easing: "easeInOutSine",
+                        loop: false
+                    }
+                );
             });
         }, 50);
     }
@@ -339,7 +358,7 @@ $(window).on("resize", function () {
      * @copyright 2022 Spas Z. Spasov
      * @license   https://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
      * @home      https://wiki.metalevel.tech/wiki/Template:Media
-     * 
+     *
      * @refs      https://help.vimeo.com/hc/en-us/articles/360001494447-Using-Player-Parameters
      *            https://www.delftstack.com/howto/javascript/iframe-onload/
      *            https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
@@ -347,7 +366,7 @@ $(window).on("resize", function () {
      *            https://poselab.com/en/blog/vimeo-javascript-player-api/
      */
     function videoLoader() {
-        const videoNodes = document.querySelectorAll('.video-container.vimeo-embed');
+        const videoNodes = document.querySelectorAll(".video-container.vimeo-embed");
 
         // Define fadeout effect for the splash image
         const fadeOut = {
@@ -382,7 +401,7 @@ $(window).on("resize", function () {
         function createVideoPlayer(node, videoId, videoTitle, videoAppId, autoplay = 1) {
 
             function embedVideo() {
-                if (node.querySelector('iframe.video-embed-iframe')) {
+                if (node.querySelector("iframe.video-embed-iframe")) {
                     // While we do not save window state of the video container,
                     // we never fall in this condition but it is good to have it.
                     fadeoutSplashImage(50);
@@ -390,7 +409,7 @@ $(window).on("resize", function () {
                     const iframe = generateIframe();
                     node.appendChild(iframe);
 
-                    iframe.addEventListener('load', function () {
+                    iframe.addEventListener("load", function () {
                         fadeoutSplashImage(350);
                     });
                 }
@@ -405,7 +424,7 @@ $(window).on("resize", function () {
             function autoEmbedVideo() {
                 if (isFullyVisible(node, 100)) embedVideo();
             }
-            const splashImg = node.querySelector('img');
+            const splashImg = node.querySelector("img");
 
             function fadeoutSplashImage(timeout) {
                 setTimeout(function () {
@@ -422,13 +441,13 @@ $(window).on("resize", function () {
             function generateIframe() {
                 const iframe = document.createElement("iframe");
 
-                iframe.className = 'video-embed-iframe';
+                iframe.className = "video-embed-iframe";
                 iframe.setAttribute("badge", "0");
                 iframe.setAttribute("autopause", "0");
                 iframe.setAttribute("app_id", videoAppId);
                 iframe.setAttribute("player_id", "0");
                 iframe.setAttribute("frameborder", "0");
-                iframe.setAttribute("allow", "autoplay; fullscreen; picture-in-picture"); // iFrame.setAttribute("allowfullscreen", ""); 
+                iframe.setAttribute("allow", "autoplay; fullscreen; picture-in-picture"); // iFrame.setAttribute("allowfullscreen", "");
                 iframe.setAttribute("mozallowfullscreen", "");
                 iframe.setAttribute("webkitallowfullscreen", "");
                 iframe.setAttribute("scrolling", "no");
@@ -450,7 +469,7 @@ $(window).on("resize", function () {
     /**
      * Detect does an element is visible
      * Ref: https://stackoverflow.com/a/125106/6543935
-     * @param {*} node 
+     * @param {*} node
      * @returns boolean
      */
     function isPartVisible(node) {
@@ -579,9 +598,9 @@ $(window).on("resize", function () {
         if (!newVideo) return false;
 
         currentGallery.current = newVideo;
-        
+
         // videoPlayer.classList.add("static");
-        
+
         // videoPlayer.pause();
         videoPlayer.src = newVideo;
 
@@ -604,7 +623,7 @@ $(window).on("resize", function () {
         // imageContainer.appendChild(imagePreview);
         nodes.galleryContent.appendChild(imagePreview);
     }
-    
+
     // Function to open the gallery overlay and prepare for video preview
     function overlaySetUp_Video(video, currentGallery) {
         galleryOverlayClear();
@@ -751,7 +770,7 @@ $(window).on("resize", function () {
  * "Does not use passive listeners to improve scrolling performance" @jquery
  * Refs: https://stackoverflow.com/a/62177358/6543935
  */
- jQuery.event.special.touchstart = {
+jQuery.event.special.touchstart = {
     setup: function (_, ns, handle) {
         this.addEventListener("touchstart", handle, { passive: !ns.includes("noPreventDefault") });
     }

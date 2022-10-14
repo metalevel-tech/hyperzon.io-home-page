@@ -5,7 +5,7 @@
  *  - https://css-tricks.com/how-to-load-fonts-in-a-way-that-fights-fout-and-makes-lighthouse-happy/
  *  - https://web.dev/fast/#lazy-load-images-and-video
  *  - https://web.dev/lazy-loading-video/
- * 
+ *
  */
 # Generate random number and invalidate some resources from here
 $random = rand(1, 10000);
@@ -138,7 +138,7 @@ ResourceLoader::add( # LESS for dev tests
     // type="text/css" is auto detected
 );
 
-ResourceLoader::add( # jQuery 
+ResourceLoader::add( # jQuery
     "head",
     "assets/vendor/jquery.min.js",
     active: true,
@@ -147,7 +147,7 @@ ResourceLoader::add( # jQuery
     options: "rel=\"preconnect\""
 );
 
-ResourceLoader::add( # jQuery.Easing 
+ResourceLoader::add( # jQuery.Easing
     "head",
     "assets/vendor/jquery.easing.min.js",
     active: true,
@@ -283,4 +283,3 @@ ResourceLoader::add( # External Libraries @Calendly.js wigged (Book a Call)
     embed: false,
     options: "async"
 );
-

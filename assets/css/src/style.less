@@ -323,7 +323,7 @@ body {
         box-shadow: 0 0 0 0 rgba(18, 37, 64, 0.5);
         animation: 10s infinite pulse-blue-outside;
         font-size: 1.8em;
-        
+
         @media @phone {
           font-size: 5vw;
         }
@@ -1924,7 +1924,7 @@ body {
   background: url(/public/images/svg/logo.svg) left 100% top no-repeat;
   background-size: cover;
 
-  // clip-path:path('m 0 0 c 5 2 12 1 16 -1 l 0 -7 l -16 0 z');
+  // clip-path:path("m 0 0 c 5 2 12 1 16 -1 l 0 -7 l -16 0 z");
 
   &--white {
     background: url(/public/images/svg/logo_white_backgr.svg) top 50px center
@@ -3650,7 +3650,7 @@ body {
   @media @tablet, @phone {
     .gallery &.image-gallery .image-item {
       height: 220px;
-  
+
       img {
         height: 226px;
       }
@@ -3680,25 +3680,25 @@ body {
     grid-gap: 1.6em 1.7em;
     padding-left: 1.2em;
     padding-right: 1.2em;
-    
+
     .gallery &.image-gallery .image-item {
       // height: 270px;
       height: calc(33vw - 4em);
-      
+
       img {
         // height: 275px;
         height: calc(33vw - 3em);
       }
     }
   }
-  
+
   @media @tablet {
     grid-template-columns: 1fr 1fr;
-    
+
     .gallery &.image-gallery .image-item {
       // height: 220px;
       height: calc(50vw - 4em);
-      
+
       img {
         // height: 225px;
         height: calc(50vw - 3em);
