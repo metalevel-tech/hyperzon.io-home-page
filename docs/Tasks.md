@@ -1,4 +1,4 @@
-# To do notes
+# Tasks and To-do notes
 
 ## Text content
 
@@ -12,7 +12,7 @@
 - [x] communucation > communication
 - [x] Startegy > Strategy
 
-## Deploy the site at the stage server
+## Deploy the site at the stage server: Done
 
 - [x] [2h] Apply backward compatibility for PHP 7.4. Now the site runs equally well on PHP 7.4 and PHP 8.0+.
 - [x] [1h] Apply some changes related to LiteSpeed web server in `.htaccess` and the PHP code. Now the site runs equally well on Apache2 and LiteSpeed.

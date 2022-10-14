@@ -68,8 +68,8 @@ ResourceLoader::add( # Google Fonts
 //     "head",
 //     "https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap",
 //     active: true,
-//     priority: 12,
 //     embed: false,
+//     priority: 12,
 //     options: "rel=\"stylesheet\""
 // );
 ResourceLoader::add( # Google Fonts
@@ -93,8 +93,8 @@ ResourceLoader::add( # Google Fonts
 //     "head",
 //     "assets/vendor/fontawesome/css/all.min.css?v=$version",
 //     active: true,
-//     priority: 15,
 //     embed: false,
+//     priority: 15,
 //     options: "rel=\"stylesheet\""
 // );
 ResourceLoader::add( # FontAwesome
@@ -160,8 +160,8 @@ ResourceLoader::add( # jQuery.Easing
 //     "body-bottom",
 //     "//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css",
 //     active: true,
-//     priority: 40,
 //     embed: false,
+//     priority: 40,
 //     options: "rel=\"stylesheet\""
 // );
 ResourceLoader::add( # External Libraries @slick-carousel.css
@@ -176,8 +176,8 @@ ResourceLoader::add( # External Libraries @slick-carousel.css
     "head",
     "//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css",
     active: true,
-    priority: 41,
     embed: false,
+    priority: 41,
     options: "rel=\"stylesheet\" media=\"print\" onload=\"this.media='all'\""
 );
 
@@ -185,24 +185,24 @@ ResourceLoader::add( # External Libraries @slick-carousel.css
 //     "head",
 //     "//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css",
 //     active: true,
-//     priority: 43,
 //     embed: false,
+//     priority: 43,
 //     options: "rel=\"stylesheet\""
 // );
 ResourceLoader::add( # External Libraries @slick.css
     "head",
     "//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css?display=swap",
     active: true,
-    priority: 43,
     embed: false,
+    priority: 43,
     options: "rel=\"preload\" as=\"style\""
 );
 ResourceLoader::add( # External Libraries @slick.css
     "head",
     "//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css?display=swap",
     active: true,
-    priority: 44,
     embed: false,
+    priority: 44,
     options: "rel=\"stylesheet\" media=\"print\" onload=\"this.media='all'\""
 );
 
@@ -210,8 +210,8 @@ ResourceLoader::add( # External Libraries @slick-carousel.js
     "head",
     "//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js",
     active: true,
-    priority: 45,
     embed: false,
+    priority: 45,
     options: "defer"
 );
 
@@ -219,8 +219,8 @@ ResourceLoader::add( # External Libraries @jQuery.matchHeight.js
     "head",
     "https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js",
     active: true,
-    priority: 46,
     embed: false,
+    priority: 46,
     options: "crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\" integrity=\"sha512-/bOVV1DV1AQXcypckRwsR9ThoCj7FqTV2/0Bm79bL3YSyLkVideFLE3MIZkq1u5t28ke1c0n31WYCOrO01dsUg==\" defer"
 );
 
@@ -228,8 +228,8 @@ ResourceLoader::add( # External Libraries @anime.js (moved from Footer.php)
     "head",
     "https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js",
     active: true,
-    priority: 47,
     embed: false,
+    priority: 47,
     options: "crossorigin=\"anonymous\" defer"
 );
 
@@ -238,19 +238,18 @@ ResourceLoader::add( # JavaScript: main.js
     "assets/js/dist/main.min.js?v=$version",
     // "assets/js/dist/main.js?v=$version",
     // "assets/js/src/main.js?v=$version",
-    priority: 70,
-    embed: false,
     active: true,
+    embed: false,
+    priority: 70,
     options: "defer"
-    // type="text/css" is auto detected
 );
 
 ResourceLoader::add( # JavaScript: hero-counter.js
     "hero-after",
     "assets/js/dist/hero-counter.min.js?v=$version",
-    priority: 72,
-    embed: false,
     active: true,
+    embed: false,
+    priority: 72,
     options: "defer"
     // type="text/css" is auto detected
 );
@@ -263,23 +262,23 @@ ResourceLoader::add( # External Libraries @Calendly.css wigged (Book a Call)
     "body-bottom",
     "https://assets.calendly.com/assets/external/widget.css",
     active: true,
-    priority: 107,
     embed: false,
+    priority: 107,
     options: "rel=\"preload\" as=\"style\""
 );
 ResourceLoader::add( # External Libraries @Calendly.css wigged (Book a Call)
     "body-bottom",
     "https://assets.calendly.com/assets/external/widget.css",
     active: true,
-    priority: 108,
     embed: false,
+    priority: 108,
     options: "rel=\"stylesheet\" media=\"print\" onload=\"this.media='all'\""
 );
 ResourceLoader::add( # External Libraries @Calendly.js wigged (Book a Call)
     "body-bottom",
     "https://assets.calendly.com/assets/external/widget.js",
     active: true,
-    priority: 109,
     embed: false,
+    priority: 109,
     options: "async"
 );
