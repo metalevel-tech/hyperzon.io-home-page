@@ -169,21 +169,21 @@ class ResourceLoader
     {
         if ($resource["kind"] == "style") {
             if ($resource["embed"]) {
-                print_r("<style type=\"{$resource["type"]}\">/* {$resource["resource"]} */\n" . self::readFile($resource["resource"]) . "\n\t</style>\n\t");
+                return print_r("<style type=\"{$resource["type"]}\">/* {$resource["resource"]} */\n" . self::readFile($resource["resource"]) . "\n\t</style>\n\t");
             } else {
-                print_r("<link href=\"{$resource["resource"]}\" type=\"{$resource["type"]}\" {$resource["options"]} />\n\t");
+                return print_r("<link href=\"{$resource["resource"]}\" type=\"{$resource["type"]}\" {$resource["options"]} />\n\t");
             }
         } elseif ($resource["kind"] == "script") {
             if ($resource["embed"]) {
-                print_r("<script type=\"{$resource["type"]}\">/* {$resource["resource"]} */\n" . self::readFile($resource["resource"]) . "\n\t</script>\n\t");
+                return print_r("<script type=\"{$resource["type"]}\">/* {$resource["resource"]} */\n" . self::readFile($resource["resource"]) . "\n\t</script>\n\t");
             } else {
-                print_r("<script src=\"{$resource["resource"]}\" type=\"{$resource["type"]}\" {$resource["options"]}></script>\n\t");
+                return print_r("<script src=\"{$resource["resource"]}\" type=\"{$resource["type"]}\" {$resource["options"]}></script>\n\t");
             }
         } elseif ($resource["kind"] == "link" && !$resource["embed"]) {
             if ($resource["type"]) {
-                print_r("<link href=\"{$resource["resource"]}\" type=\"{$resource["type"]}\" {$resource["options"]} />\n\t");
+                return print_r("<link href=\"{$resource["resource"]}\" type=\"{$resource["type"]}\" {$resource["options"]} />\n\t");
             } else {
-                print_r("<link href=\"{$resource["resource"]}\" {$resource["options"]} />\n\t");
+                return print_r("<link href=\"{$resource["resource"]}\" {$resource["options"]} />\n\t");
             }
         }
 
@@ -260,7 +260,7 @@ class ResourceLoader
     /**
      * Output debug information,
      * should be pushed to the servers log instead...
-     */
+     * 
     public static function debug()
     {
         echo "<p><b><code>ResourceLoader.php</code></b><br />";
@@ -281,4 +281,5 @@ class ResourceLoader
             echo "</pre>";
         }
     }
+    */
 }

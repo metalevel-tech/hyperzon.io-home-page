@@ -17,7 +17,7 @@
 - [x] [2h] Apply backward compatibility for PHP 7.4. Now the site runs equally well on PHP 7.4 and PHP 8.0+.
 - [x] [1h] Apply some changes related to LiteSpeed web server in `.htaccess` and the PHP code. Now the site runs equally well on Apache2 and LiteSpeed.
 - [x] [1:30h] Manual testing and test with [Google PageSpeed Insights: https://website.hzstaging.com/](https://pagespeed.web.dev/report?url=https%3A%2F%2Fwebsite.hzstaging.com%2F&form_factor=mobile)
-- [x] In conclusion: enabling the Google Tag Manager script causes 3-6% performance degradation. It adds more than a second to the loading time on mobile devices.
+- [x] In conclusion: enabling the Google Tag Manager script causes 3-9% performance degradation. It adds more than a second to the loading time on mobile devices.
 
 ## Google Tag Manager
 

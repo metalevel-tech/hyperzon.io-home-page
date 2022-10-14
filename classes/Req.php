@@ -54,6 +54,7 @@ class Req
 
     /**
      * A find method that works for exact matches, but is not in use
+     * 
     private static function findExact($resource, $paths = ["views", "views-elements"])
     {
         foreach ($paths as $path) {
