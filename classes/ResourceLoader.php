@@ -227,7 +227,7 @@ class ResourceLoader
     private static function readFile($resource)
     {
         $file = explode("?", $resource);
-        $file = reset($file);
+        $file = APP_ROOT . reset($file);
 
         $fileRead = fopen($file, "r") or die("Unable to open file '$file'!");
         $fileContent = fread($fileRead, filesize($file));
@@ -246,15 +246,15 @@ class ResourceLoader
         /**
          * PHP 8.0+
          // if (self::$options["less"]) {
-         self::add("head", "assets/vendor/less.conf.js",  embed: true,  priority: 10001);
-         self::add("head", "assets/vendor/less.min.js",   embed: false, priority: 10002, options: false);
-         self::add("head", "assets/vendor/less.watch.js", embed: true,  priority: 10003);
+         self::add("head", "/assets/vendor/less.conf.js",  embed: true,  priority: 10001);
+         self::add("head", "/assets/vendor/less.min.js",   embed: false, priority: 10002, options: false);
+         self::add("head", "/assets/vendor/less.watch.js", embed: true,  priority: 10003);
          // }
          */
 
-        self::add("head", "assets/vendor/less.conf.js",   "default", "default", true, true,  10001);
-        self::add("head", "assets/vendor/less.min.js",    "default", false,     true, false, 10002);
-        self::add("head", "assets/vendor/less.watch.js",  "default", "default", true, true,  10003);
+        self::add("head", "/assets/vendor/less.conf.js",   "default", "default", true, true,  10001);
+        self::add("head", "/assets/vendor/less.min.js",    "default", false,     true, false, 10002);
+        self::add("head", "/assets/vendor/less.watch.js",  "default", "default", true, true,  10003);
     }
 
     /**

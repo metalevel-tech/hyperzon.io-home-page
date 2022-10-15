@@ -78,7 +78,7 @@
 
                 echo "<div class=\"bullets__single\">\n\t";
                 echo "<div class=\"bullets__single__image\">\n\t\t";
-                echo "<img src=\"public/images/icons/management/{$bullet["src"]}\" srcset=\"public/images/icons/management/{$bullet["srcset"]}\" width=\"100\" height=\"100\" alt=\"Icon image\" loading=\"lazy\" decoding=\"async\" />\n\t";
+                echo "<img src=\"/public/images/icons/management/{$bullet["src"]}\" srcset=\"/public/images/icons/management/{$bullet["srcset"]}\" width=\"100\" height=\"100\" alt=\"Icon image\" loading=\"lazy\" decoding=\"async\" />\n\t";
                 echo "</div>\n\t";
                 echo "<div class=\"bullets__single__text\">\n\t\t";
                 echo "<span>{$bullet["title"]}</span>";

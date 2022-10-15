@@ -1,6 +1,6 @@
 <div class="hero">
-	<video id="video-backgr" preload="none" autoplay loop muted playsinline poster="public/videos/hero/cover-video-image.webp">
-		<source src="public/videos/hero/cover-video.mp4" type="video/mp4">
+	<video id="video-backgr" preload="none" autoplay loop muted playsinline poster="/public/videos/hero/cover-video-image.webp">
+		<source src="/public/videos/hero/cover-video.mp4" type="video/mp4">
 	</video>
 
 	<div class="hero__overlay">

@@ -10,15 +10,18 @@
 
     <div class="image-gallery grid-4-3-2-2">
         <?php
-        $images = scandir("public/gallery/branding/1x1/webp-thumb");
+        $dir_thumb = APP_ROOT . "/public/gallery/branding/1x1/webp-thumb";
+        $dir_big = APP_ROOT . "/public/gallery/branding/1x1/webp-big";
+
+        $images = scandir($dir_thumb);
 
         foreach ($images as $index => $image) {
             if (in_array($image, [".", ".."])) {
                 unset($images[$index]);
             } else {
                 $images[$index] = [
-                    "public/gallery/branding/1x1/webp-big/" . $image,
-                    "public/gallery/branding/1x1/webp-thumb/" . $image
+                    "$dir_big/" . $image,
+                    "$dir_thumb/" . $image
                 ];
             }
         }
@@ -40,15 +43,18 @@
 
     <div class="image-gallery grid-4-3-2-2">
         <?php
-        $images = scandir("public/gallery/package_design/1x1/webp-thumb");
+        $dir_thumb = APP_ROOT . "/public/gallery/package_design/1x1/webp-thumb";
+        $dir_big = APP_ROOT . "/public/gallery/package_design/1x1/webp-big";
+
+        $images = scandir($dir_thumb);
 
         foreach ($images as $index => $image) {
             if (in_array($image, [".", ".."])) {
                 unset($images[$index]);
             } else {
                 $images[$index] = [
-                    "public/gallery/package_design/1x1/webp-big/" . $image,
-                    "public/gallery/package_design/1x1/webp-thumb/" . $image
+                    "$dir_big/" . $image,
+                    "$dir_thumb/" . $image
                 ];
             }
         }
@@ -71,15 +77,18 @@
 
     <div class="image-gallery grid-4-3-2-2">
         <?php
-        $images = scandir("public/gallery/logo_design/1x1/webp-thumb");
+        $dir_thumb = APP_ROOT . "/public/gallery/logo_design/1x1/webp-thumb";
+        $dir_big = APP_ROOT . "/public/gallery/logo_design/1x1/webp-big";
+
+        $images = scandir($dir_thumb);
 
         foreach ($images as $index => $image) {
             if (in_array($image, [".", ".."])) {
                 unset($images[$index]);
             } else {
                 $images[$index] = [
-                    "public/gallery/logo_design/1x1/webp-big/" . $image,
-                    "public/gallery/logo_design/1x1/webp-thumb/" . $image
+                    "$dir_big/" . $image,
+                    "$dir_thumb/" . $image
                 ];
             }
         }

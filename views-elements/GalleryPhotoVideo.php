@@ -10,15 +10,18 @@
 
     <div class="video-gallery grid-3-2-1-1">
         <?php
-        $images = scandir("public/gallery/videos/webp");
+        $dir_covers = APP_ROOT . "/public/gallery/videos/webp";
+        $dir_videos = APP_ROOT . "/public/gallery/videos/webm";
+
+        $images = scandir($dir_covers);
 
         foreach ($images as $index => $image) {
             if (in_array($image, [".", ".."])) {
                 unset($images[$index]);
             } else {
                 $images[$index] = [
-                    "public/gallery/videos/webm/" . str_replace(".webp", ".webm", $image),
-                    "public/gallery/videos/webp/" . $image,
+                    "$dir_videos/" . str_replace(".webp", ".webm", $image),
+                    "$dir_covers/" . $image,
                     //  $vimeo[str_replace(".png", "", $image)]
                 ];
             }
@@ -27,8 +30,8 @@
 
         <?php foreach ($images as $image) : ?>
             <div class="item-wrapper">
-                <video class="video-item" preload="none" loop muted playsinline poster="<?php echo $image[1] ?>" width="317" height="178">
-                    <source src="<?php echo $image[0] ?>" type="video/webm">
+                <video class="video-item" preload="none" loop muted playsinline poster="<?php echo APP_ROOT . $image[1] ?>" width="317" height="178">
+                    <source src="<?php echo APP_ROOT . $image[0] ?>" type="video/webm">
                 </video>
             </div>
         <?php endforeach; ?>
@@ -41,15 +44,18 @@
 
     <div class="video-gallery grid-3-2-1-1">
         <?php
-        $images = scandir("public/gallery/motion_graphics/webp");
+        $dir_covers = APP_ROOT . "/public/gallery/motion_graphics/webp";
+        $dir_videos = APP_ROOT . "/public/gallery/motion_graphics/webm";
+
+        $images = scandir($dir_covers);
 
         foreach ($images as $index => $image) {
             if (in_array($image, [".", ".."])) {
                 unset($images[$index]);
             } else {
                 $images[$index] = [
-                    "public/gallery/motion_graphics/webm/" . str_replace(".webp", ".webm", $image),
-                    "public/gallery/motion_graphics/webp/" . $image,
+                    "$dir_videos/" . str_replace(".webp", ".webm", $image),
+                    "$dir_covers/" . $image,
                     //  $vimeo[str_replace(".png", "", $image)]
                 ];
             }
@@ -58,8 +64,8 @@
 
         <?php foreach ($images as $image) : ?>
             <div class="item-wrapper">
-                <video class="video-item" preload="none" loop muted playsinline poster="<?php echo $image[1] ?>" width="317" height="178">
-                    <source src="<?php echo $image[0] ?>" type="video/webm">
+                <video class="video-item" preload="none" loop muted playsinline poster="<?php APP_ROOT . $image[1] ?>" width="317" height="178">
+                    <source src="<?php APP_ROOT . $image[0] ?>" type="video/webm">
                 </video>
             </div>
         <?php endforeach; ?>
@@ -75,15 +81,18 @@
     */ ?>
     <div class="image-gallery grid-4-3-2-2">
         <?php
-        $images = scandir("public/gallery/photos/1x1/webp-thumb");
+        $dir_thumb = APP_ROOT . "/public/gallery/photos/1x1/webp-thumb";
+        $dir_big = APP_ROOT . "/public/gallery/photos/1x1/webp-big";
+
+        $images = scandir($dir_thumb);
 
         foreach ($images as $index => $image) {
             if (in_array($image, [".", ".."])) {
                 unset($images[$index]);
             } else {
                 $images[$index] = [
-                    "public/gallery/photos/1x1/webp-big/" . $image,
-                    "public/gallery/photos/1x1/webp-thumb/" . $image
+                    "$dir_big/" . $image,
+                    "$dir_thumb/" . $image
                 ];
             }
         }
@@ -91,8 +100,8 @@
 
         <?php foreach ($images as $image) : ?>
             <div class="item-wrapper">
-                <a class="image-item" href="<?php echo $image[0] ?>" area-label="Photography presentation FHD">
-                    <img class="zoom-rotate" width="235" height="225" loading="lazy" decoding="async" src="<?php echo $image[1] ?>" alt="Photography presentation" />
+                <a class="image-item" href="<?php APP_ROOT . $image[0] ?>" area-label="Photography presentation FHD">
+                    <img class="zoom-rotate" width="235" height="225" loading="lazy" decoding="async" src="<?php APP_ROOT . $image[1] ?>" alt="Photography presentation" />
                     <?php /*
                     <img width="235" height="225" /> @grid-4-3-2-2
                     <img width="317" height="178" />

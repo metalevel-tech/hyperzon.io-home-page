@@ -28,13 +28,13 @@
             </div>
 
             <div class="ss__image">
-                <img src="public/images/stories/story_01.webp" width="572" height="463" alt="Media File story_01.webp" loading="lazy" decoding="async" />
+                <img src="/public/images/stories/story_01.webp" width="572" height="463" alt="Media File story_01.webp" loading="lazy" decoding="async" />
             </div>
         </div>
 
         <div class="success-stories__grid__single ss--left">
             <div class="ss__image">
-                <img src="public/images/stories/story_02.webp" width="528" height="473" alt="Media File story_02.webp" loading="lazy" decoding="async" />
+                <img src="/public/images/stories/story_02.webp" width="528" height="473" alt="Media File story_02.webp" loading="lazy" decoding="async" />
             </div>
 
             <div class="ss__text">
@@ -82,7 +82,7 @@
             </div>
 
             <div class="ss__image">
-                <img src="public/images/stories/story_03.webp" width="538" height="432" alt="Media File story_03.webp" loading="lazy" decoding="async" />
+                <img src="/public/images/stories/story_03.webp" width="538" height="432" alt="Media File story_03.webp" loading="lazy" decoding="async" />
             </div>
         </div>
     </div>

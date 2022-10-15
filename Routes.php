@@ -10,10 +10,11 @@
  * );
  */
 
-if (!isset($_GET["url"])) {
+if (!isset($_GET["uri"])) {
     $ROUTE = "home";
 } else {
-    $ROUTE = $_GET["url"];
+    $PATH = explode("/", $_GET["uri"]);
+    $ROUTE = array_shift($PATH);
 }
 
 Route::set("index.php",                   function () { Controller::CreateView("Home"); });
@@ -24,4 +25,6 @@ Route::set("branding-and-package-design", function () { Controller::CreateView("
 Route::set("photo-and-video-content",     function () { Controller::CreateView("PhotoVideo"); });
 Route::set("hyperzon-blog",               function () { BlogPosts::CreateView("Blog"); });
 
-if (isset($_GET["url"]) && !in_array($_GET["url"], Route::list())) { Controller::CreateView("HTTP404"); }
+if (!in_array($ROUTE, Route::list())) { 
+    Controller::CreateView("HTTP404"); 
+}

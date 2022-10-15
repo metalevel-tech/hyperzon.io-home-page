@@ -7,7 +7,7 @@
     <div class="what-we-do__grid">
         <div class="what-we-do__grid__single wwd--left">
             <div class="wwd__image">
-                <img src="public/images/icons/img_01.webp" width="345" height="303" alt="Media file img_01.webp" loading="lazy" decoding="async" />
+                <img src="/public/images/icons/img_01.webp" width="345" height="303" alt="Media file img_01.webp" loading="lazy" decoding="async" />
             </div>
             <div class="wwd__text">
                 <div class="wwd__title style-05">
@@ -35,13 +35,13 @@
                 </div>
             </div>
             <div class="wwd__image">
-                <img src="public/images/icons/img_02.webp" width="365" height="333" alt="Media file img_02.webp" loading="lazy" decoding="async" />
+                <img src="/public/images/icons/img_02.webp" width="365" height="333" alt="Media file img_02.webp" loading="lazy" decoding="async" />
             </div>
         </div>
 
         <div class="what-we-do__grid__single wwd--left">
             <div class="wwd__image">
-                <img src="public/images/icons/img_03.webp" width="335" height="355" alt="Media file img_03.webp" loading="lazy" decoding="async" />
+                <img src="/public/images/icons/img_03.webp" width="335" height="355" alt="Media file img_03.webp" loading="lazy" decoding="async" />
             </div>
             <div class="wwd__text">
                 <div class="wwd__title style-05">
@@ -69,13 +69,13 @@
                 </div>
             </div>
             <div class="wwd__image">
-                <img src="public/images/icons/img_04.webp" width="428" height="394" alt="Media file img_04.webp" loading="lazy" decoding="async" />
+                <img src="/public/images/icons/img_04.webp" width="428" height="394" alt="Media file img_04.webp" loading="lazy" decoding="async" />
             </div>
         </div>
 
         <div class="what-we-do__grid__single wwd--left">
             <div class="wwd__image">
-                <img src="public/images/icons/img_05.webp" width="363" height="290" alt="Media file img_05.webp" loading="lazy" decoding="async" />
+                <img src="/public/images/icons/img_05.webp" width="363" height="290" alt="Media file img_05.webp" loading="lazy" decoding="async" />
             </div>
             <div class="wwd__text">
                 <div class="wwd__title style-05">

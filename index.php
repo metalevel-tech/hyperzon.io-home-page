@@ -16,9 +16,11 @@ spl_autoload_register(function ($class_name) {
  * The page Header, Content and Footer are loaded via
  * Routes.php > class Controller::CreateView("...")
  */
-require_once("Menu.php");
-require_once("Resources.php");
-require_once("Routes.php");
+define('APP_ROOT', __DIR__);
+
+require_once "./Menu.php";
+require_once "./Resources.php";
+require_once "./Routes.php";
 
 /**
  * Debug options

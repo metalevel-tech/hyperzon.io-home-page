@@ -66,8 +66,8 @@
 
                 echo "<div class=\"bullets__single\">\n\t";
                 echo "<div class=\"bullets__single__image\">\n\t\t";
-                // echo "<img src=\"public/images/icons/design/{$bullet["src"]}\" srcset=\"public/images/icons/design/{$bullet["srcset"]}\" width=\"100\" height=\"100\" alt=\"Icon image\" loading=\"lazy\" decoding=\"async\" />\n\t";
-                echo "<img src=\"public/images/icons/design/{$bullet["src"]}\" width=\"100\" height=\"100\" alt=\"Icon image\" loading=\"lazy\" decoding=\"async\" />\n\t";
+                // echo "<img src=\"/public/images/icons/design/{$bullet["src"]}\" srcset=\"/public/images/icons/design/{$bullet["srcset"]}\" width=\"100\" height=\"100\" alt=\"Icon image\" loading=\"lazy\" decoding=\"async\" />\n\t";
+                echo "<img src=\"/public/images/icons/design/{$bullet["src"]}\" width=\"100\" height=\"100\" alt=\"Icon image\" loading=\"lazy\" decoding=\"async\" />\n\t";
                 echo "</div>\n\t";
                 echo "<div class=\"bullets__single__text\">\n\t";
                 echo "<span>{$bullet["title"]}</span>";
@@ -82,7 +82,7 @@
 
             // <div class="bullets__single">
             //     <div class="bullets__single__image">
-            //         <img src="public/images/icons/management/icon_10.webp" srcset="public/images/icons/management/icon_10@2x.webp 2x" />
+            //         <img src="/public/images/icons/management/icon_10.webp" srcset="/public/images/icons/management/icon_10@2x.webp 2x" />
             //     </div>
             //     <div class="bullets__single__text">
             //         Dedicated Account Manager

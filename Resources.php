@@ -26,7 +26,7 @@ $version = 1111;
 
 ResourceLoader::add( # Favicon.ico
     "head",
-    "favicon.ico?v=$version",
+    "/favicon.ico?v=$version",
     "image/x-icon",
     "rel=\"shortcut icon\"",
     true,
@@ -36,7 +36,7 @@ ResourceLoader::add( # Favicon.ico
 
 ResourceLoader::add( # Normalize.css
     "head",
-    "assets/css/dist/normalize.min.css?v=$version",
+    "/assets/css/dist/normalize.min.css?v=$version",
     "default",
     "rel=\"stylesheet\"",
     true,
@@ -46,7 +46,7 @@ ResourceLoader::add( # Normalize.css
 
 ResourceLoader::add( # Normalize-after.js
     "head",
-    "assets/js/dist/normalize-after.min.js?v=$version",
+    "/assets/js/dist/normalize-after.min.js?v=$version",
     "default",
     "default",
     true,
@@ -56,7 +56,7 @@ ResourceLoader::add( # Normalize-after.js
 
 ResourceLoader::add( # Normalize-after.css
     "head",
-    "assets/css/dist/normalize-after.min.css?v=$version",
+    "/assets/css/dist/normalize-after.min.css?v=$version",
     "default",
     "rel=\"stylesheet\"",
     true,
@@ -104,7 +104,7 @@ ResourceLoader::add( # Google Fonts
 
 ResourceLoader::add( # FontAwesome
     "head",
-    "assets/vendor/fontawesome/css/hyperzon.selected.min.css?display=swap",
+    "/assets/vendor/fontawesome/css/hyperzon.selected.min.css?display=swap",
     "default",
     "rel=\"preload\" as=\"style\"",
     true,
@@ -113,7 +113,7 @@ ResourceLoader::add( # FontAwesome
 );
 ResourceLoader::add( # FontAwesome
     "head",
-    "assets/vendor/fontawesome/css/hyperzon.selected.min.css?display=swap",
+    "/assets/vendor/fontawesome/css/hyperzon.selected.min.css?display=swap",
     "default",
     "rel=\"stylesheet\" media=\"print\" onload=\"this.media='all'\"",
     true,
@@ -123,7 +123,7 @@ ResourceLoader::add( # FontAwesome
 
 ResourceLoader::add( # CSS for production
     "head",
-    "assets/css/dist/style.min.css?v=$version",
+    "/assets/css/dist/style.min.css?v=$version",
     "default",
     "rel=\"stylesheet\"",
     true,
@@ -133,7 +133,7 @@ ResourceLoader::add( # CSS for production
 
 ResourceLoader::add( # LESS for dev tests
     "head",
-    "assets/css/src/style.less?v=$random#!watch",
+    "/assets/css/src/style.less?v=$random#!watch",
     "default",
     "rel=\"stylesheet/less\"",
     false,
@@ -143,7 +143,7 @@ ResourceLoader::add( # LESS for dev tests
 
 ResourceLoader::add( # jQuery
     "head",
-    "assets/vendor/jquery.min.js",
+    "/assets/vendor/jquery.min.js",
     "default",
     "rel=\"preconnect\"",
     true,
@@ -153,7 +153,7 @@ ResourceLoader::add( # jQuery
 
 ResourceLoader::add( # jQuery.Easing
     "head",
-    "assets/vendor/jquery.easing.min.js",
+    "/assets/vendor/jquery.easing.min.js",
     "default",
     "defer",
     true,
@@ -231,7 +231,7 @@ ResourceLoader::add( # External Libraries @anime.js (moved from Footer.php)
 
 ResourceLoader::add( # JavaScript: main.js
     "head",
-    "assets/js/dist/main.min.js?v=$version",
+    "/assets/js/dist/main.min.js?v=$version",
     // "assets/js/src/main.js?v=$version",
     "default",
     "defer",
@@ -242,7 +242,7 @@ ResourceLoader::add( # JavaScript: main.js
 
 ResourceLoader::add( # JavaScript: hero-counter.js
     "hero-after",
-    "assets/js/dist/hero-counter.min.js?v=$version",
+    "/assets/js/dist/hero-counter.min.js?v=$version",
     "default",
     "defer",
     true,

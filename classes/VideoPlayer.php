@@ -16,7 +16,7 @@ class VideoPlayer
         <div class=\"video-main-wrapper\">
 			<div class=\"video-main\">
 				<div class=\"video-container vimeo-embed\" data-video-id=\"$video_id\" data-video-title=\"$title\" data-video-app-id=\"$app_id\">
-                    <img src=\"public/images/interface/vimeo-splash.webp\" alt=\"Video Splash\" class=\"video-embed-splash\" width=\"976\" height=\"549\">
+                    <img src=\"/public/images/interface/vimeo-splash.webp\" alt=\"Video Splash\" class=\"video-embed-splash\" width=\"976\" height=\"549\">
                 </div>
             </div>
         </div>");

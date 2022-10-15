@@ -8,7 +8,7 @@
             <div class="blog__single" data-clip="01">
                 <div class="blog__single__image">
                     <div class="clip-01">
-                        <img src="public/images/blog-posts/MicrosoftTeams-image-38_x230.webp" width="394" height="230" alt="Media File Blog post cover image" loading="lazy" decoding="async" />
+                        <img src="/public/images/blog-posts/MicrosoftTeams-image-38_x230.webp" width="394" height="230" alt="Media File Blog post cover image" loading="lazy" decoding="async" />
                     </div>
                 </div>
                 <div class="blog__single__date">
@@ -30,7 +30,7 @@
             <div class="blog__single" data-clip="02">
                 <div class="blog__single__image">
                     <div class="clip-02">
-                        <img src="public/images/blog-posts/MicrosoftTeams-image-85_x230.webp" width="394" height="230" alt="Media File Blog post cover image" loading="lazy" decoding="async" />
+                        <img src="/public/images/blog-posts/MicrosoftTeams-image-85_x230.webp" width="394" height="230" alt="Media File Blog post cover image" loading="lazy" decoding="async" />
                     </div>
                 </div>
                 <div class="blog__single__date">
@@ -52,7 +52,7 @@
             <div class="blog__single" data-clip="03">
                 <div class="blog__single__image">
                     <div class="clip-03">
-                        <img src="public/images/blog-posts/MicrosoftTeams-image-38_x230.webp" width="394" height="230" alt="Media File Blog post cover image" loading="lazy" decoding="async" />
+                        <img src="/public/images/blog-posts/MicrosoftTeams-image-38_x230.webp" width="394" height="230" alt="Media File Blog post cover image" loading="lazy" decoding="async" />
                     </div>
                 </div>
                 <div class="blog__single__date">
