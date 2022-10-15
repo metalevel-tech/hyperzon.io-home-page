@@ -1,15 +1,8 @@
 # Redirect all requests to index.php, except fome static resources ---
 Options -MultiViews
 
-# <ifModule mod_rewrite.c>
-#     RewriteEngine On
-#     RewriteBase /
-#     RewriteCond %{REQUEST_URI} !^/.*\.(ico|css|js|js\.map|less|png|jpg|jpeg|webp|webm|mp4|mp3pdf|avi|flv|mov|wmv|wav|m4v|ogg|aac|eot|ttf|otf|woff|woff2|svg)$
-#     RewriteCond %{REQUEST_URI} !^/(robots\.txt|manifest\.json|\.well-known|hz-wp|hz-api|hz-evaluate-me).*$
-#     RewriteRule ^([^/]+)/? index.php?uri=$1 [L,QSA]
-# </ifModule>
-
 <IfModule mod_rewrite.c>
+	# https://github.com/codeigniter4/CodeIgniter4/blob/develop/public/.htaccess
 	RewriteEngine On
 
 	# Redirect Trailing Slashes...
@@ -17,13 +10,12 @@ Options -MultiViews
 	RewriteCond %{REQUEST_URI} (.+)/$
 	RewriteRule ^ %1 [L,R=301]
 
-    RewriteRule ^/ - [L]
-
 	# Checks to see if the user is attempting to access a valid file,
 	# such as an image or css document, if this isn't true it sends the
 	# request to the front controller, index.php
-	RewriteCond %{REQUEST_FILENAME} !-f
-	RewriteCond %{REQUEST_FILENAME} !-d
+    #
+	# RewriteCond %{REQUEST_FILENAME} !-f
+	# RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_URI} !^/.*\.(ico|css|js|js\.map|less|png|jpg|jpeg|webp|webm|mp4|mp3pdf|avi|flv|mov|wmv|wav|m4v|ogg|aac|eot|ttf|otf|woff|woff2|svg)$
     RewriteCond %{REQUEST_URI} !^/(robots\.txt|manifest\.json|\.well-known|hz-wp|hz-api|hz-evaluate-me).*$
     RewriteRule (.*) index.php?uri=$1 [L,QSA]
@@ -32,11 +24,21 @@ Options -MultiViews
 	RewriteCond %{HTTP:Authorization} .
 	RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 </IfModule>
+
 <IfModule !mod_rewrite.c>
 	# If we don't have mod_rewrite installed, all 404's
 	# can be sent to index.php, and everything works as normal.
 	ErrorDocument 404 index.php
 </IfModule>
+#
+# <ifModule mod_rewrite.c>
+#     RewriteEngine On
+#     RewriteBase /
+#     RewriteCond %{REQUEST_URI} !^/.*\.(ico|css|js|js\.map|less|png|jpg|jpeg|webp|webm|mp4|mp3pdf|avi|flv|mov|wmv|wav|m4v|ogg|aac|eot|ttf|otf|woff|woff2|svg)$
+#     RewriteCond %{REQUEST_URI} !^/(robots\.txt|manifest\.json|\.well-known|hz-wp|hz-api|hz-evaluate-me).*$
+#     RewriteRule ^([^/]+)/? index.php?uri=$1 [L,QSA]
+# </ifModule>
+#
 # Redirect all requests to index.php - section end ---
 
 # # Revalidation

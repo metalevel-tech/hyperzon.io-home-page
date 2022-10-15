@@ -14,7 +14,7 @@ $version = 1;
 
 ResourceLoader::add( # Favicon.ico
     "head",
-    "favicon.ico?v=$version",
+    "/favicon.ico?v=$version",
     active: true,
     priority: 1,
     type: "image/x-icon",
@@ -23,7 +23,7 @@ ResourceLoader::add( # Favicon.ico
 
 ResourceLoader::add( # Normalize.css
     "head",
-    "assets/css/dist/normalize.min.css?v=$version",
+    "/assets/css/dist/normalize.min.css?v=$version",
     active: true,
     embed: true,
     priority: 5,
@@ -32,7 +32,7 @@ ResourceLoader::add( # Normalize.css
 
 ResourceLoader::add( # Normalize-after.js
     "head",
-    "assets/js/dist/normalize-after.min.js?v=$version",
+    "/assets/js/dist/normalize-after.min.js?v=$version",
     active: true,
     embed: true,
     priority: 6,
@@ -40,7 +40,7 @@ ResourceLoader::add( # Normalize-after.js
 
 ResourceLoader::add( # Normalize-after.css
     "head",
-    "assets/css/dist/normalize-after.min.css?v=$version",
+    "/assets/css/dist/normalize-after.min.css?v=$version",
     active: true,
     embed: true,
     priority: 7,
@@ -91,7 +91,7 @@ ResourceLoader::add( # Google Fonts
 
 // ResourceLoader::add( # FontAwesome
 //     "head",
-//     "assets/vendor/fontawesome/css/all.min.css?v=$version",
+//     "/assets/vendor/fontawesome/css/all.min.css?v=$version",
 //     active: true,
 //     embed: false,
 //     priority: 15,
@@ -99,9 +99,9 @@ ResourceLoader::add( # Google Fonts
 // );
 ResourceLoader::add( # FontAwesome
     "head",
-    "assets/vendor/fontawesome/css/hyperzon.selected.min.css?display=swap",
-    // "assets/vendor/fontawesome/css/hyperzon.selected.css?display=swap",
-    // "assets/vendor/fontawesome/css/all.min.css?display=swap",
+    "/assets/vendor/fontawesome/css/hyperzon.selected.min.css?display=swap",
+    // "/assets/vendor/fontawesome/css/hyperzon.selected.css?display=swap",
+    // "/assets/vendor/fontawesome/css/all.min.css?display=swap",
     active: true,
     embed: false,
     priority: 15,
@@ -109,9 +109,9 @@ ResourceLoader::add( # FontAwesome
 );
 ResourceLoader::add( # FontAwesome
     "head",
-    "assets/vendor/fontawesome/css/hyperzon.selected.min.css?display=swap",
-    // "assets/vendor/fontawesome/css/hyperzon.selected.css?display=swap",
-    // "assets/vendor/fontawesome/css/all.min.css?display=swap",
+    "/assets/vendor/fontawesome/css/hyperzon.selected.min.css?display=swap",
+    // "/assets/vendor/fontawesome/css/hyperzon.selected.css?display=swap",
+    // "/assets/vendor/fontawesome/css/all.min.css?display=swap",
     active: true,
     embed: false,
     priority: 16,
@@ -120,7 +120,7 @@ ResourceLoader::add( # FontAwesome
 
 ResourceLoader::add( # CSS for production
     "head",
-    "assets/css/dist/style.min.css?v=$version",
+    "/assets/css/dist/style.min.css?v=$version",
     active: true,
     embed: true,
     priority: 20,
@@ -130,7 +130,7 @@ ResourceLoader::add( # CSS for production
 
 ResourceLoader::add( # LESS for dev tests
     "head",
-    "assets/css/src/style.less?v=$random#!watch",
+    "/assets/css/src/style.less?v=$random#!watch",
     active: false,
     priority: 25,
     embed: false,
@@ -140,7 +140,7 @@ ResourceLoader::add( # LESS for dev tests
 
 ResourceLoader::add( # jQuery
     "head",
-    "assets/vendor/jquery.min.js",
+    "/assets/vendor/jquery.min.js",
     active: true,
     priority: 4,
     embed: false,
@@ -149,7 +149,7 @@ ResourceLoader::add( # jQuery
 
 ResourceLoader::add( # jQuery.Easing
     "head",
-    "assets/vendor/jquery.easing.min.js",
+    "/assets/vendor/jquery.easing.min.js",
     active: true,
     embed: false,
     priority: 36,
@@ -235,9 +235,9 @@ ResourceLoader::add( # External Libraries @anime.js (moved from Footer.php)
 
 ResourceLoader::add( # JavaScript: main.js
     "head",
-    "assets/js/dist/main.min.js?v=$version",
-    // "assets/js/dist/main.js?v=$version",
-    // "assets/js/src/main.js?v=$version",
+    "/assets/js/dist/main.min.js?v=$version",
+    // "/assets/js/dist/main.js?v=$version",
+    // "/assets/js/src/main.js?v=$version",
     active: true,
     embed: false,
     priority: 70,
@@ -246,7 +246,7 @@ ResourceLoader::add( # JavaScript: main.js
 
 ResourceLoader::add( # JavaScript: hero-counter.js
     "hero-after",
-    "assets/js/dist/hero-counter.min.js?v=$version",
+    "/assets/js/dist/hero-counter.min.js?v=$version",
     active: true,
     embed: false,
     priority: 72,

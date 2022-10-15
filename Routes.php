@@ -15,6 +15,12 @@ if (!isset($_GET["uri"])) {
 } else {
     $PATH = explode("/", $_GET["uri"]);
     $ROUTE = array_shift($PATH);
+
+    // echo "<span style='color: black; height: 80px'>";
+    // print_r($_GET);
+    // print_r($PATH);
+    // print_r($ROUTE);
+    // echo "</span>";
 }
 
 Route::set("index.php",                   function () { Controller::CreateView("Home"); });
