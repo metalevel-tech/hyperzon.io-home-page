@@ -10,16 +10,21 @@
  * );
  */
 
-if (!isset($_GET["uri"])) {
-    $ROUTE = "home";
+$REQUEST = [];
+
+foreach ($_GET as $key => $value) {
+    $REQUEST[$key] = stripslashes($value);
+}
+
+if (!isset($REQUEST["uri"])) {
+    $REQUEST["route"] = "home";
 } else {
-    $PATH = explode("/", $_GET["uri"]);
-    $ROUTE = array_shift($PATH);
+    $REQUEST["path"] = explode("/", $REQUEST["uri"]);
+    $REQUEST["route"] = array_shift($REQUEST["path"]);
+    unset($REQUEST["uri"]);
 
     // echo "<span style='color: black; height: 80px'>";
-    // print_r($_GET);
-    // print_r($PATH);
-    // print_r($ROUTE);
+    // print_r($REQUEST);
     // echo "</span>";
 }
 
@@ -31,6 +36,6 @@ Route::set("branding-and-package-design", function () { Controller::CreateView("
 Route::set("photo-and-video-content",     function () { Controller::CreateView("PhotoVideo"); });
 Route::set("hyperzon-blog",               function () { BlogPosts::CreateView("Blog"); });
 
-if (!in_array($ROUTE, Route::list())) { 
+if (!in_array($REQUEST["route"], Route::list())) { 
     Controller::CreateView("HTTP404"); 
 }

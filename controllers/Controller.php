@@ -12,7 +12,9 @@ class Controller extends Database
         $header = "Header",
         $footer = "Footer"
     ) {
-        if (isset($_GET["content"])) {
+        global $REQUEST;
+
+        if (isset($REQUEST["content"])) {
             Req::view($view);
         } else {
             Req::view($header);

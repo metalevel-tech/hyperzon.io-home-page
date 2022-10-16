@@ -21,8 +21,12 @@ spl_autoload_register(function ($class_name) {
 // define('DB_USER', 'your-username');
 // define('DB_PASS', 'your-password');
 // define('DB_NAME', 'your-db-name');
-// define('URL_ROOT', '/');
-define('APP_ROOT', __DIR__);
+
+
+// define('APP_ROOT', __FILE__);
+// Define APP_ROOT as the root of the application
+define('APP_ROOT', dirname(__FILE__));
+define('URL_ROOT', '/');
 
 require_once "./Menu.php";
 require_once "./Resources.php";

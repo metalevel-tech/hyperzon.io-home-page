@@ -10,10 +10,10 @@
 
     <div class="image-gallery grid-4-3-2-2">
         <?php
-        $dir_thumb = APP_ROOT . "/public/gallery/branding/1x1/webp-thumb";
-        $dir_big = APP_ROOT . "/public/gallery/branding/1x1/webp-big";
+        $dir_thumb = "/public/gallery/branding/1x1/webp-thumb";
+        $dir_big =  "/public/gallery/branding/1x1/webp-big";
 
-        $images = scandir($dir_thumb);
+        $images = scandir(APP_ROOT . $dir_thumb);
 
         foreach ($images as $index => $image) {
             if (in_array($image, [".", ".."])) {
@@ -43,10 +43,10 @@
 
     <div class="image-gallery grid-4-3-2-2">
         <?php
-        $dir_thumb = APP_ROOT . "/public/gallery/package_design/1x1/webp-thumb";
-        $dir_big = APP_ROOT . "/public/gallery/package_design/1x1/webp-big";
+        $dir_thumb = "/public/gallery/package_design/1x1/webp-thumb";
+        $dir_big = "/public/gallery/package_design/1x1/webp-big";
 
-        $images = scandir($dir_thumb);
+        $images = scandir(APP_ROOT . $dir_thumb);
 
         foreach ($images as $index => $image) {
             if (in_array($image, [".", ".."])) {
@@ -64,7 +64,6 @@
             <div class="item-wrapper">
                 <a class="image-item" href="<?php echo $image[0] ?>" area-label="Photography presentation FHD">
                     <img class="zoom-rotate" width="235" height="225" loading="lazy" decoding="async" src="<?php echo $image[1] ?>" alt="Photography presentation" />
-
                 </a>
             </div>
         <?php endforeach; ?>
@@ -77,10 +76,10 @@
 
     <div class="image-gallery grid-4-3-2-2">
         <?php
-        $dir_thumb = APP_ROOT . "/public/gallery/logo_design/1x1/webp-thumb";
-        $dir_big = APP_ROOT . "/public/gallery/logo_design/1x1/webp-big";
+        $dir_thumb = "/public/gallery/logo_design/1x1/webp-thumb";
+        $dir_big = "/public/gallery/logo_design/1x1/webp-big";
 
-        $images = scandir($dir_thumb);
+        $images = scandir(APP_ROOT . $dir_thumb);
 
         foreach ($images as $index => $image) {
             if (in_array($image, [".", ".."])) {
@@ -98,7 +97,6 @@
             <div class="item-wrapper">
                 <a class="image-item" href="<?php echo $image[0] ?>" area-label="Photography presentation FHD">
                     <img class="zoom-only" width="235" height="225" loading="lazy" decoding="async" src="<?php echo $image[1] ?>" alt="Photography presentation" />
-
                 </a>
             </div>
         <?php endforeach; ?>
