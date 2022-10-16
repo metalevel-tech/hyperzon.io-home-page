@@ -38,7 +38,7 @@
 
 </head>
 
-<body class="<?php global $REQUEST;  echo $REQUEST["route"] ?>">
+<body class="<?php global $REQUEST;  printf("%s", $REQUEST["route"]) /* we should check whether it is a valid route */?>">
     <div id="app">
         <?php
         // Req::resource("GoogleTagManager-body");

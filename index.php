@@ -1,14 +1,17 @@
 <?php
 /**
  * Auto load classes from "classes/" and "controllers/"
+ * 
+ * Refs:
+ * - https://blog.magepsycho.com/is_file-vs-file_exists/
  */
 spl_autoload_register(function ($class_name) {
-    if (file_exists("classes/$class_name.php")) {
-        require_once("classes/$class_name.php");
-    } elseif (file_exists("controllers/$class_name.php")) {
-        require_once("controllers/$class_name.php");
-    } elseif (file_exists("helpers/$class_name.php")) {
-        require_once("helpers/$class_name.php");
+    if (is_file("classes/$class_name.php")) {
+        require_once "./classes/$class_name.php";
+    } elseif (is_file("controllers/$class_name.php")) {
+        require_once "./controllers/$class_name.php";
+    } elseif (is_file("helpers/$class_name.php")) {
+        require_once "./helpers/$class_name.php";
     }
 });
 
@@ -21,7 +24,6 @@ spl_autoload_register(function ($class_name) {
 // define('DB_USER', 'your-username');
 // define('DB_PASS', 'your-password');
 // define('DB_NAME', 'your-db-name');
-
 
 // define('APP_ROOT', __FILE__);
 // Define APP_ROOT as the root of the application

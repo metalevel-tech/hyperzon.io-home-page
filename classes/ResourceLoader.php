@@ -120,9 +120,9 @@ class ResourceLoader
         }
 
         // Override the 'embed' option if the resource is web address
-        // if (preg_match("/^(http|\/\/)/", $resource)) {
-        //     $embed = false;
-        // }
+        if (preg_match("/^(http|\/\/)/", $resource)) {
+            $embed = false;
+        }
 
         self::$available_resources[] = [
             "hook" => $hook,
@@ -169,53 +169,23 @@ class ResourceLoader
     {
         if ($resource["kind"] == "style") {
             if ($resource["embed"]) {
-                return print_r("<style type=\"{$resource["type"]}\">/* {$resource["resource"]} */\n" . self::readFile($resource["resource"]) . "\n\t</style>\n\t");
+                return printf("<style type=\"%s\">/* Src: %s */\n %s \n\t</style>\n\t", $resource["type"], $resource["resource"], self::readFile($resource["resource"]));
             } else {
-                return print_r("<link href=\"{$resource["resource"]}\" type=\"{$resource["type"]}\" {$resource["options"]} />\n\t");
+                return printf("<link href=\"%s\" type=\"%s\" %s />\n\t", $resource["resource"], $resource["type"], $resource["options"]);
             }
         } elseif ($resource["kind"] == "script") {
             if ($resource["embed"]) {
-                return print_r("<script type=\"{$resource["type"]}\">/* {$resource["resource"]} */\n" . self::readFile($resource["resource"]) . "\n\t</script>\n\t");
+                return printf("<script type=\"%s\">/* Src: %s */\n %s \n\t</script>\n\t", $resource["type"], $resource["resource"], self::readFile($resource["resource"]));
             } else {
-                return print_r("<script src=\"{$resource["resource"]}\" type=\"{$resource["type"]}\" {$resource["options"]}></script>\n\t");
+                return printf("<script src=\"%s\" type=\"%s\" %s></script>\n\t", $resource["resource"], $resource["type"], $resource["options"]);
             }
         } elseif ($resource["kind"] == "link" && !$resource["embed"]) {
             if ($resource["type"]) {
-                return print_r("<link href=\"{$resource["resource"]}\" type=\"{$resource["type"]}\" {$resource["options"]} />\n\t");
+                return printf("<link href=\"%s\" type=\"%s\" %s />\n\t", $resource["resource"], $resource["type"], $resource["options"]);
             } else {
-                return print_r("<link href=\"{$resource["resource"]}\" {$resource["options"]} />\n\t");
+                return printf("<link href=\"%s\" %s />\n\t", $resource["resource"], $resource["options"]);
             }
         }
-
-        /**
-         * Cyclonic complexity is 12, but it is not a problem, because it is a simple logic.
-         * Note the "!!!" must be replaced by empty string...
-         *
-         // Handle styles
-         if ($resource["kind"] == "style" && $resource["embed"]) {
-             echo "<style type=\"{$resource["type"]}\">/* {$resource["resource"]} *!!!/\n" . self::readFile($resource["resource"]) . "\n\t</style>\n\t";
-         }
-         if ($resource["kind"] == "style" && !$resource["embed"]) {
-             echo "<link href=\"{$resource["resource"]}\" type=\"{$resource["type"]}\" {$resource["options"]} />\n\t";
-         }
-
-         // Handle scripts
-         if ($resource["kind"] == "script" && $resource["embed"]) {
-             echo "<script type=\"{$resource["type"]}\">/* {$resource["resource"]} *!!!/\n" . self::readFile($resource["resource"]) . "\n\t</script>\n\t";
-         }
-         if ($resource["kind"] == "script" && !$resource["embed"]) {
-             echo "<script src=\"{$resource["resource"]}\" type=\"{$resource["type"]}\" {$resource["options"]}></script>\n\t";
-         }
-
-         // Handle other resources
-         if ($resource["kind"] == "link" && !$resource["embed"]) {
-             if ($resource["type"]) {
-                 echo "<link href=\"{$resource["resource"]}\" type=\"{$resource["type"]}\" {$resource["options"]} />\n\t";
-             } else {
-                 echo "<link href=\"{$resource["resource"]}\" {$resource["options"]} />\n\t";
-             }
-         }
-         */
     }
 
     /**
@@ -229,11 +199,15 @@ class ResourceLoader
         $file = explode("?", $resource);
         $file = APP_ROOT . reset($file);
 
-        $fileRead = fopen($file, "r") or die("Unable to open file '$file'!");
-        $fileContent = fread($fileRead, filesize($file));
-        fclose($fileRead);
-
-        return $fileContent;
+        if (is_file($file)) {
+            // $fileRead = fopen($file, "r");
+            // $fileContent = fread($fileRead, filesize($file));
+            // fclose($fileRead);
+            // return $fileContent;
+            return file_get_contents($file);
+        } else {
+            return printf("Unable to open file '%s'!", $file);
+        }
     }
 
     /**
@@ -256,30 +230,4 @@ class ResourceLoader
         self::add("head", "/assets/vendor/less.min.js",    "default", false,     true, false, 10002);
         self::add("head", "/assets/vendor/less.watch.js",  "default", "default", true, true,  10003);
     }
-
-    /**
-     * Output debug information,
-     * should be pushed to the servers log instead...
-     * 
-    public static function debug()
-    {
-        echo "<p><b><code>ResourceLoader.php</code></b><br />";
-        echo "<code>Note the not \$active resources are not managed.</code></p>";
-        foreach (self::$available_resources as $resource) {
-            echo "<pre style='border: 1px solid lightgray; padding: 1em;'>";
-            foreach ($resource as $key => $value) {
-                echo "$key     \t: ";
-                if (is_array($value)) {
-                    foreach ($value as $element) {
-                        echo "$element; ";
-                    }
-                    echo "\n";
-                } else {
-                    echo "$value\n";
-                }
-            }
-            echo "</pre>";
-        }
-    }
-    */
 }

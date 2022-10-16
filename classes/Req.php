@@ -30,11 +30,11 @@ class Req
     // Require file if exists
     private static function requireFile($file)
     {
-        if (file_exists($file)) {
+        if (is_file($file)) {
             require "./$file";
-            print_r("\n");
+            return printf("\n");
         } else {
-            print_r("Error: Req::File() not found!");
+            return printf("Error: Req::File() not found!");
         }
     }
 
@@ -60,7 +60,7 @@ class Req
         foreach ($paths as $path) {
             $file = "$path/$resource";
 
-            if (file_exists($file)) {
+            if (is_file($file)) {
                 return $file; // break; the foreach loop and exit the function
             }
         }

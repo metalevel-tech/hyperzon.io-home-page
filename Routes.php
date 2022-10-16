@@ -12,11 +12,13 @@
 
 $REQUEST = [];
 
-foreach ($_GET as $key => $value) {
-    $REQUEST[$key] = stripslashes($value);
+if (isset($_GET)) {
+    foreach ($_GET as $key => $value) {
+        $REQUEST[stripslashes($key)] = stripslashes($value);
+    }
 }
 
-if (!isset($REQUEST["uri"])) {
+if (!isset($REQUEST["uri"]) || !$REQUEST["uri"]) {
     $REQUEST["route"] = "home";
 } else {
     $REQUEST["path"] = explode("/", $REQUEST["uri"]);

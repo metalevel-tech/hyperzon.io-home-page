@@ -82,7 +82,7 @@
     <div class="image-gallery grid-4-3-2-2">
         <?php
         $dir_thumb = "/public/gallery/photos/1x1/webp-thumb";
-        $dir_big = "/public/gallery/photos/1x1/webp-big";
+        $dir_big =   "/public/gallery/photos/1x1/webp-big";
 
         $images = scandir(APP_ROOT . $dir_thumb);
 

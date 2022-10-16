@@ -45,11 +45,9 @@ $(window).on("resize", function () {
 (function () {
     const nodes = {
         content: document.getElementById("body-content"),
-
         mainMenu: document.getElementById("main-menu"),
         menuItems: document.querySelectorAll("a.main-menu-item"),
         mobileMenuButton: document.querySelector("#mobile-menu-button .button-3x"),
-
         galleryOverlay: document
             .getElementById("gallery-preview-overlay"),
         galleryContent: document
