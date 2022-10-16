@@ -148,8 +148,8 @@ class ResourceLoader
         }
 
         // Sort the array
-        usort($hooked_resources, function ($a, $b) {
-            return ($a["priority"] <= $b["priority"]) ? -1 : 1;
+        usort($hooked_resources, function ($current, $next) {
+            return ($current["priority"] <= $next["priority"]) ? -1 : 1;
         });
 
         foreach ($hooked_resources as $resource) {
