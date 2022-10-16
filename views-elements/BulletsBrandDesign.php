@@ -59,24 +59,24 @@
             foreach ($bullets as $index => $bullet) {
                 // We need CSS Grid not columns like these
                 if ($index == 0) {
-                    echo "<div class=\"bullets__list__grid__col\">";
+                   print_r("<div class=\"bullets__list__grid__col\">");
                 } else if ($index == count($bullets) / 2) {
-                    echo "</div><div class=\"bullets__list__grid__col\">";
+                   print_r("</div><div class=\"bullets__list__grid__col\">");
                 }
 
-                echo "<div class=\"bullets__single\">\n\t";
-                echo "<div class=\"bullets__single__image\">\n\t\t";
-                // echo "<img src=\"/public/images/icons/design/{$bullet["src"]}\" srcset=\"/public/images/icons/design/{$bullet["srcset"]}\" width=\"100\" height=\"100\" alt=\"Icon image\" loading=\"lazy\" decoding=\"async\" />\n\t";
-                echo "<img src=\"/public/images/icons/design/{$bullet["src"]}\" width=\"100\" height=\"100\" alt=\"Icon image\" loading=\"lazy\" decoding=\"async\" />\n\t";
-                echo "</div>\n\t";
-                echo "<div class=\"bullets__single__text\">\n\t";
-                echo "<span>{$bullet["title"]}</span>";
-                // echo "<div>{$bullet["text"]}</div>\n\t";
-                echo "</div>\n";
-                echo "</div>";
+               print_r("<div class=\"bullets__single\">");
+               print_r("<div class=\"bullets__single__image\">");
+                //print_r("<img src=\"/public/images/icons/design/{$bullet["src"]}\" srcset=\"/public/images/icons/design/{$bullet["srcset"]}\" width=\"100\" height=\"100\" alt=\"Icon image\" loading=\"lazy\" decoding=\"async\" />");
+               print_r("<img src=\"/public/images/icons/design/{$bullet["src"]}\" width=\"100\" height=\"100\" alt=\"Icon image\" loading=\"lazy\" decoding=\"async\" />");
+               print_r("</div>");
+               print_r("<div class=\"bullets__single__text\">");
+               print_r("<span>{$bullet["title"]}</span>");
+                //print_r("<div>{$bullet["text"]}</div>");
+               print_r("</div>");
+               print_r("</div>");
 
                 if ($index == count($bullets) - 1) {
-                    echo "</div>";
+                   print_r("</div>");
                 }
             }
 

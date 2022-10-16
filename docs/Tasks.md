@@ -9,6 +9,7 @@
 - [ ] converstion ??
 - [ ] optimised ??
 - [ ] utilise ??
+- [ ] Visualisations ??
 - [x] communucation > communication
 - [x] Startegy > Strategy
 

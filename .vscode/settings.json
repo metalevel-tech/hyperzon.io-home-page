@@ -100,7 +100,8 @@
     "dbname",
     "dbuser",
     "dbpass",
-    "siteurl"
+    "siteurl",
+    "Visualisations"
   ],
   "cSpell.words": [
     "async",
@@ -230,7 +231,8 @@
     "optimisation",
     "Optimisation",
     "ecom",
-    "utilise"
+    "utilise",
+    "Visualisations"
   ],
   "spellright.language": ["en-US-10-1.", "en-US-9-0."],
   "spellright.documentTypes": ["markdown", "latex", "plaintext"],

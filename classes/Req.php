@@ -31,10 +31,10 @@ class Req
     private static function requireFile($file)
     {
         if (file_exists($file)) {
-            require($file);
-            echo "\n";
+            require "./$file";
+            print_r("\n");
         } else {
-            echo "Error: Req::File not found!";
+            print_r("Error: Req::File() not found!");
         }
     }
 

@@ -16,11 +16,11 @@
              * ];
              */
             if ($item["item_id"] == 0) {
-                echo "<div class=\"main-menu__logo\">\n\t\t\t";
-                echo "<a href=\"{$item["uri"]}\" class=\"" . implode(" ", $item["class"]) . "\" aria-label=\"Back to home button\">\n\t\t\t\t";
-                echo "<img width=\"304\" height=\"56\" alt=\"Hyperzon logo\" src=\"/public/images/svg/logo_full.svg\" />\n\t\t\t";
-                echo "</a>\n\t\t";
-                echo "</div>\n";
+                print_r("<div class=\"main-menu__logo\">\n\t\t\t");
+                print_r("<a href=\"{$item["uri"]}\" class=\"" . implode(" ", $item["class"]) . "\" aria-label=\"Back to home button\">\n\t\t\t\t");
+                print_r("<img width=\"304\" height=\"56\" alt=\"Hyperzon logo\" src=\"/public/images/svg/logo_full.svg\" />\n\t\t\t");
+                print_r("</a>\n\t\t");
+                print_r("</div>\n");
             }
         }
         ?>
@@ -32,14 +32,14 @@
             <?php
             foreach ($menu_items as $item) {
                 if ($item["item_id"] != 0) {
-                    echo "<div class=\"main-menu__item\">";
-                    echo "<a href=\"{$item["uri"]}\" class=\"" . implode(" ", $item["class"]) . "\" aria-label=\"{$item["label_mobile"]}\">";
-                    echo "<span class=\"label-desktop\">{$item["label"]}</span><span class=\"label-mobile\">{$item["label_mobile"]}</span>";
-                    echo "</a>";
-                    echo "</div>";
+                    print_r("<div class=\"main-menu__item\">");
+                    print_r("<a href=\"{$item["uri"]}\" class=\"" . implode(" ", $item["class"]) . "\" aria-label=\"{$item["label_mobile"]}\">");
+                    print_r("<span class=\"label-desktop\">{$item["label"]}</span><span class=\"label-mobile\">{$item["label_mobile"]}</span>");
+                    print_r("</a>");
+                    print_r("</div>");
                 }
             }
-            echo "\n";
+            print_r("\n");
             ?>
 
             <a role="button" class="main-menu__call js-book-a-call desktop" area-label="Open the calendar widget and book a call">
