@@ -47,36 +47,33 @@
             foreach ($bullets as $index => $bullet) {
                 // We need CSS Grid not columns like these
                 if ($index == 0) {
-                    echo "<div class=\"bullets__list__grid__col\">";
+                    printf('<div class="bullets__list__grid__col">');
                 } else if ($index == count($bullets) / 2) {
-                    echo "</div><div class=\"bullets__list__grid__col\">";
+                    printf('</div><div class="bullets__list__grid__col">');
                 }
 
-                echo "<div class=\"bullets__single\">\n\t";
-                echo "<div class=\"bullets__single__image\">\n\t\t";
-                // echo "<img src=\"/public/images/icons/video/{$bullet["src"]}\" srcset=\"/public/images/icons/video/{$bullet["srcset"]}\" width=\"100\" height=\"100\" alt=\"Icon image\" loading=\"lazy\" decoding=\"async\" />\n\t";
-                echo "<img src=\"/public/images/icons/video/{$bullet["src"]}\" width=\"100\" height=\"100\" alt=\"Icon image\" loading=\"lazy\" decoding=\"async\" />\n\t";
-                echo "</div>\n\t";
-                echo "<div class=\"bullets__single__text\">\n\t";
-                echo "<span>{$bullet["title"]}</span>";
-                // echo "<div>{$bullet["text"]}</div>\n\t";
-                echo "</div>\n";
-                echo "</div>";
+                printf(
+                    '<div class="bullets__single">
+                        <div class="bullets__single__image">
+                            <img src="%s/%s" width="%u" height="%u" alt="Icon image" loading="lazy" decoding="async" />
+                        </div>
+                        <div class="bullets__single__text">
+                            <span>%s</span>
+                            <div>%s</div>
+                        </div>
+                    </div>',
+                    "/public/images/icons/video",
+                    $bullet["src"],
+                    100,
+                    100,
+                    $bullet["title"],
+                    $bullet["text"]
+                );
 
                 if ($index == count($bullets) - 1) {
-                    echo "</div>";
+                    printf('</div>');
                 }
             }
-
-            // <div class="bullets__single">
-            //     <div class="bullets__single__image">
-            //         <img src="/public/images/icons/management/icon_10.webp" srcset="/public/images/icons/management/icon_10@2x.webp 2x" />
-            //     </div>
-            //     <div class="bullets__single__text">
-            //         Dedicated Account Manager
-            //         <div>With active daily communication</div>
-            //     </div>
-            // </div>
             ?>
 
         </div>

@@ -12,29 +12,29 @@
         <?php
         $dir_covers =  "/public/gallery/videos/webp";
         $dir_videos =  "/public/gallery/videos/webm";
-
         $images = scandir(APP_ROOT . $dir_covers);
 
-        foreach ($images as $index => $image) {
-            if (in_array($image, [".", ".."])) {
-                unset($images[$index]);
-            } else {
-                $images[$index] = [
-                    "$dir_videos/" . str_replace(".webp", ".webm", $image),
-                    "$dir_covers/" . $image,
-                    //  $vimeo[str_replace(".png", "", $image)]
-                ];
+        foreach ($images as $image) {
+            if (in_array($image, [".", ".."])) continue;
+
+            $cover = "$dir_covers/$image";
+            $video = "$dir_videos/" . str_replace(".webp", ".webm", $image);
+
+            if (is_file(APP_ROOT . $cover) && is_file(APP_ROOT . $video)) {
+                printf(
+                    '<div class="item-wrapper">
+                        <video class="video-item" preload="none" loop muted playsinline poster="%s" width="%u" height="%u">
+                            <source src="%s" type="video/webm">
+                        </video>
+                    </div>',
+                    $cover,
+                    317,
+                    178,
+                    $video
+                );
             }
         }
         ?>
-
-        <?php foreach ($images as $image) : ?>
-            <div class="item-wrapper">
-                <video class="video-item" preload="none" loop muted playsinline poster="<?php echo $image[1] ?>" width="317" height="178">
-                    <source src="<?php echo $image[0] ?>" type="video/webm">
-                </video>
-            </div>
-        <?php endforeach; ?>
     </div>
 
     <?php /* Galleri section */ ?>
@@ -46,29 +46,29 @@
         <?php
         $dir_covers = "/public/gallery/motion_graphics/webp";
         $dir_videos = "/public/gallery/motion_graphics/webm";
-
         $images = scandir(APP_ROOT . $dir_covers);
 
-        foreach ($images as $index => $image) {
-            if (in_array($image, [".", ".."])) {
-                unset($images[$index]);
-            } else {
-                $images[$index] = [
-                    "$dir_videos/" . str_replace(".webp", ".webm", $image),
-                    "$dir_covers/" . $image,
-                    //  $vimeo[str_replace(".png", "", $image)]
-                ];
+        foreach ($images as $image) {
+            if (in_array($image, [".", ".."])) continue;
+
+            $cover = "$dir_covers/$image";
+            $video = "$dir_videos/" . str_replace(".webp", ".webm", $image);
+
+            if (is_file(APP_ROOT . $cover) && is_file(APP_ROOT . $video)) {
+                printf(
+                    '<div class="item-wrapper">
+                        <video class="video-item" preload="none" loop muted playsinline poster="%s" width="%u" height="%u">
+                            <source src="%s" type="video/webm">
+                        </video>
+                    </div>',
+                    $cover,
+                    317,
+                    178,
+                    $video
+                );
             }
         }
         ?>
-
-        <?php foreach ($images as $image) : ?>
-            <div class="item-wrapper">
-                <video class="video-item" preload="none" loop muted playsinline poster="<?php echo $image[1] ?>" width="317" height="178">
-                    <source src="<?php echo $image[0] ?>" type="video/webm">
-                </video>
-            </div>
-        <?php endforeach; ?>
     </div>
 
     <?php /* Galleri section */ ?>
@@ -76,39 +76,44 @@
         Photography
     </div>
 
-    <?php /*
-    <div class="image-gallery grid-3-2-1-1"> </div>
-    */ ?>
     <div class="image-gallery grid-4-3-2-2">
         <?php
         $dir_thumb = "/public/gallery/photos/1x1/webp-thumb";
         $dir_big =   "/public/gallery/photos/1x1/webp-big";
-
         $images = scandir(APP_ROOT . $dir_thumb);
 
-        foreach ($images as $index => $image) {
-            if (in_array($image, [".", ".."])) {
-                unset($images[$index]);
-            } else {
-                $images[$index] = [
-                    "$dir_big/" . $image,
-                    "$dir_thumb/" . $image
-                ];
+        foreach ($images as $image) {
+            if (in_array($image, [".", ".."])) continue;
+
+            $thumb = "$dir_thumb/$image";
+            $big = "$dir_big/$image";
+
+            if (is_file(APP_ROOT . $thumb) && is_file(APP_ROOT . $big)) {
+                printf(
+                    '<div class="item-wrapper">
+                        <a class="image-item" href="%s" area-label="%s">
+                            <img class="%s" width="%u" height="%u" loading="lazy" decoding="async" src="%s" alt="%s" />
+                        </a>
+                    </div>',
+                    $big,
+                    "Photography presentation HQ",
+                    "zoom-rotate",
+                    235,
+                    225,
+                    $thumb,
+                    "Photography presentation"
+                );
             }
         }
         ?>
-
-        <?php foreach ($images as $image) : ?>
-            <div class="item-wrapper">
-                <a class="image-item" href="<?php echo $image[0] ?>" area-label="Photography presentation FHD">
-                    <img class="zoom-rotate" width="235" height="225" loading="lazy" decoding="async" src="<?php echo $image[1] ?>" alt="Photography presentation" />
-                    <?php /*
-                    <img width="235" height="225" /> @grid-4-3-2-2
-                    <img width="317" height="178" />
-                    <img width="330" height="186" /> @grid-3-2-1-1
-                    */ ?>
-                </a>
-            </div>
-        <?php endforeach; ?>
     </div>
+    <?php /* 
+    // Tested Image galleries styles
+    <div class="image-gallery grid-3-2-1-1">
+        // ...
+        <img width="235" height="225" /> @grid-4-3-2-2
+        <img width="317" height="178" />
+        <img width="330" height="186" /> @grid-3-2-1-1
+    </div>
+    */ ?>
 </div>

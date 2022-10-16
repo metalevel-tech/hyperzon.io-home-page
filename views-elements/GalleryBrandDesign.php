@@ -12,28 +12,32 @@
         <?php
         $dir_thumb = "/public/gallery/branding/1x1/webp-thumb";
         $dir_big =  "/public/gallery/branding/1x1/webp-big";
-
         $images = scandir(APP_ROOT . $dir_thumb);
 
-        foreach ($images as $index => $image) {
-            if (in_array($image, [".", ".."])) {
-                unset($images[$index]);
-            } else {
-                $images[$index] = [
-                    "$dir_big/" . $image,
-                    "$dir_thumb/" . $image
-                ];
+        foreach ($images as $image) {
+            if (in_array($image, [".", ".."])) continue;
+
+            $thumb = "$dir_thumb/$image";
+            $big = "$dir_big/$image";
+
+            if (is_file(APP_ROOT . $thumb) && is_file(APP_ROOT . $big)) {
+                printf(
+                    '<div class="item-wrapper">
+                        <a class="image-item" href="%s" area-label="%s">
+                            <img class="%s" width="%u" height="%u" loading="lazy" decoding="async" src="%s" alt="%s" />
+                        </a>
+                    </div>',
+                    $big,
+                    "Photography presentation HQ",
+                    "zoom-only",
+                    235,
+                    225,
+                    $thumb,
+                    "Photography presentation"
+                );
             }
         }
         ?>
-
-        <?php foreach ($images as $image) : ?>
-            <div class="item-wrapper">
-                <a class="image-item" href="<?php echo $image[0] ?>" area-label="Photography presentation FHD">
-                    <img class="zoom-only" width="235" height="225" loading="lazy" decoding="async" src="<?php echo $image[1] ?>" alt="Photography presentation" />
-                </a>
-            </div>
-        <?php endforeach; ?>
     </div>
 
     <?php /* Galleri section */ ?>
@@ -45,28 +49,32 @@
         <?php
         $dir_thumb = "/public/gallery/package_design/1x1/webp-thumb";
         $dir_big = "/public/gallery/package_design/1x1/webp-big";
-
         $images = scandir(APP_ROOT . $dir_thumb);
 
-        foreach ($images as $index => $image) {
-            if (in_array($image, [".", ".."])) {
-                unset($images[$index]);
-            } else {
-                $images[$index] = [
-                    "$dir_big/" . $image,
-                    "$dir_thumb/" . $image
-                ];
+        foreach ($images as $image) {
+            if (in_array($image, [".", ".."])) continue;
+
+            $thumb = "$dir_thumb/$image";
+            $big = "$dir_big/$image";
+
+            if (is_file(APP_ROOT . $thumb) && is_file(APP_ROOT . $big)) {
+                printf(
+                    '<div class="item-wrapper">
+                        <a class="image-item" href="%s" area-label="%s">
+                            <img class="%s" width="%u" height="%u" loading="lazy" decoding="async" src="%s" alt="%s" />
+                        </a>
+                    </div>',
+                    $big,
+                    "Photography presentation HQ",
+                    "zoom-rotate",
+                    235,
+                    225,
+                    $thumb,
+                    "Photography presentation"
+                );
             }
         }
         ?>
-
-        <?php foreach ($images as $image) : ?>
-            <div class="item-wrapper">
-                <a class="image-item" href="<?php echo $image[0] ?>" area-label="Photography presentation FHD">
-                    <img class="zoom-rotate" width="235" height="225" loading="lazy" decoding="async" src="<?php echo $image[1] ?>" alt="Photography presentation" />
-                </a>
-            </div>
-        <?php endforeach; ?>
     </div>
 
     <?php /* Galleri section */ ?>
@@ -78,27 +86,31 @@
         <?php
         $dir_thumb = "/public/gallery/logo_design/1x1/webp-thumb";
         $dir_big = "/public/gallery/logo_design/1x1/webp-big";
-
         $images = scandir(APP_ROOT . $dir_thumb);
 
-        foreach ($images as $index => $image) {
-            if (in_array($image, [".", ".."])) {
-                unset($images[$index]);
-            } else {
-                $images[$index] = [
-                    "$dir_big/" . $image,
-                    "$dir_thumb/" . $image
-                ];
+        foreach ($images as $image) {
+            if (in_array($image, [".", ".."])) continue;
+
+            $thumb = "$dir_thumb/$image";
+            $big = "$dir_big/$image";
+
+            if (is_file(APP_ROOT . $thumb) && is_file(APP_ROOT . $big)) {
+                printf(
+                    '<div class="item-wrapper">
+                        <a class="image-item" href="%s" area-label="%s">
+                            <img class="%s" width="%u" height="%u" loading="lazy" decoding="async" src="%s" alt="%s" />
+                        </a>
+                    </div>',
+                    $big,
+                    "Photography presentation HQ",
+                    "zoom-only",
+                    235,
+                    225,
+                    $thumb,
+                    "Photography presentation"
+                );
             }
         }
         ?>
-
-        <?php foreach ($images as $image) : ?>
-            <div class="item-wrapper">
-                <a class="image-item" href="<?php echo $image[0] ?>" area-label="Photography presentation FHD">
-                    <img class="zoom-only" width="235" height="225" loading="lazy" decoding="async" src="<?php echo $image[1] ?>" alt="Photography presentation" />
-                </a>
-            </div>
-        <?php endforeach; ?>
     </div>
 </div>

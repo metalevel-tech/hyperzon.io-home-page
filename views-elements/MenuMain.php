@@ -16,15 +16,25 @@
              * ];
              */
             if ($item["item_id"] == 0) {
-                print_r("<div class=\"main-menu__logo\">\n\t\t\t");
-                print_r("<a href=\"{$item["uri"]}\" class=\"" . implode(" ", $item["class"]) . "\" aria-label=\"Back to home button\">\n\t\t\t\t");
-                print_r("<img width=\"304\" height=\"56\" alt=\"Hyperzon logo\" src=\"/public/images/svg/logo_full.svg\" />\n\t\t\t");
-                print_r("</a>\n\t\t");
-                print_r("</div>\n");
+                printf(
+                    '<div class="main-menu__logo">
+                        <a href="%s" class="%s" aria-label="Back to home button">
+                            <img width="%u" height="%u" alt="%s" src="%s" />
+                        </a>
+                    </div>',
+                    $item["uri"],
+                    implode(" ", $item["class"]),
+                    304,
+                    56,
+                    "Hyperzon logo",
+                    "/public/images/svg/logo_full.svg"
+                );
             }
         }
         ?>
+        <!-- Main menu / Mobile menu - Menu items -->
         <div class="main-menu__menu">
+            <!-- Book a call button Mobile -->
             <a role="button" class="main-menu__call js-book-a-call mobile" area-label="Open the calendar widget and book a call">
                 Book a call
             </a>
@@ -32,16 +42,24 @@
             <?php
             foreach ($menu_items as $item) {
                 if ($item["item_id"] != 0) {
-                    print_r("<div class=\"main-menu__item\">");
-                    print_r("<a href=\"{$item["uri"]}\" class=\"" . implode(" ", $item["class"]) . "\" aria-label=\"{$item["label_mobile"]}\">");
-                    print_r("<span class=\"label-desktop\">{$item["label"]}</span><span class=\"label-mobile\">{$item["label_mobile"]}</span>");
-                    print_r("</a>");
-                    print_r("</div>");
+                    printf(
+                        '<div class="main-menu__item">
+                            <a href="%s" class="%s" aria-label="%s">
+                            <span class="label-desktop">%s</span><span class="label-mobile">%s</span>
+                            </a>
+                        </div>',
+                        $item["uri"],
+                        implode(" ", $item["class"]),
+                        $item["label_mobile"],
+                        $item["label"],
+                        $item["label_mobile"]
+                    );
                 }
             }
-            print_r("\n");
+            printf('\n');
             ?>
 
+            <!-- Book a call button Desktop -->
             <a role="button" class="main-menu__call js-book-a-call desktop" area-label="Open the calendar widget and book a call">
                 Book a call
             </a>

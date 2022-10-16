@@ -5,6 +5,7 @@
   "main": "index.php",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "tail-log": "sudo bash -c '>/var/log/apache2/hyperzon.szs.space.error.log' && tail -f /var/log/apache2/hyperzon.szs.space.error.log",
     "babel": "babel --plugins @babel/plugin-transform-regenerator assets/js/src/ --out-dir assets/js/dist",
     "uglifyjs": "bash -c 'for f in assets/js/dist/*.js; do fn=${f##*/}; fn=${fn%.*}; uglifyjs $f --compress --mangle -o assets/js/dist/${fn}.min.js; done #--toplevel --source-map'",
     "lessc": "bash -c 'for f in assets/css/src/*.*ss; do fn=${f##*/}; fn=${fn%.*}; lessc --strict-imports $f --clean-css=\"--s1 --advanced --compatibility=ie8\" assets/css/dist/${fn}.min.css; done'",
