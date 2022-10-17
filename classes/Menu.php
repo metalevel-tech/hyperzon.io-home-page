@@ -50,7 +50,9 @@ class Menu
     {
         array_filter(self::$menu_items, function ($item) use ($label) {
             if ($item["label"] == $label) {
-                return printf("%s", $item["uri"]);
+                return escape_html_output(
+                    printf("%s", $item["uri"])
+                );
             }
         });
     }
@@ -59,7 +61,9 @@ class Menu
     {
         array_filter(self::$menu_items, function ($item) use ($item_id) {
             if ($item["item_id"] == $item_id) {
-                return printf("%s", $item["uri"]);
+                return escape_html_output(
+                    printf("%s", $item["uri"])
+                );
             }
         });
     }
@@ -68,7 +72,9 @@ class Menu
     {
         array_filter(self::$menu_items, function ($item) use ($item_id) {
             if ($item["item_id"] == $item_id) {
-                return printf("%s", $item["label"]);
+                return escape_html_output(
+                    printf("%s", $item["label"])
+                );
             }
         });
     }
@@ -77,7 +83,9 @@ class Menu
     {
         array_filter(self::$menu_items, function ($item) use ($item_id) {
             if ($item["item_id"] == $item_id) {
-                return printf("%s", $item["label_mobile"]);
+                return escape_html_output(
+                    printf("%s", $item["label_mobile"])
+                );
             }
         });
     }

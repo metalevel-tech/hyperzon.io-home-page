@@ -167,25 +167,29 @@ class ResourceLoader
      */
     private static function tagGenerator($resource = [])
     {
+        $output = '';
+
         if ($resource["kind"] == "style") {
             if ($resource["embed"]) {
-                return printf("<style type=\"%s\">/* Src: %s */\n %s \n\t</style>\n\t", $resource["type"], $resource["resource"], self::readFile($resource["resource"]));
+                $output = printf("<style type=\"%s\">/* Src: %s */\n %s \n\t</style>\n\t", $resource["type"], $resource["resource"], self::readFile($resource["resource"]));
             } else {
-                return printf("<link href=\"%s\" type=\"%s\" %s />\n\t", $resource["resource"], $resource["type"], $resource["options"]);
+                $output = printf("<link href=\"%s\" type=\"%s\" %s />\n\t", $resource["resource"], $resource["type"], $resource["options"]);
             }
         } elseif ($resource["kind"] == "script") {
             if ($resource["embed"]) {
-                return printf("<script type=\"%s\">/* Src: %s */\n %s \n\t</script>\n\t", $resource["type"], $resource["resource"], self::readFile($resource["resource"]));
+                $output = printf("<script type=\"%s\">/* Src: %s */\n %s \n\t</script>\n\t", $resource["type"], $resource["resource"], self::readFile($resource["resource"]));
             } else {
-                return printf("<script src=\"%s\" type=\"%s\" %s></script>\n\t", $resource["resource"], $resource["type"], $resource["options"]);
+                $output = printf("<script src=\"%s\" type=\"%s\" %s></script>\n\t", $resource["resource"], $resource["type"], $resource["options"]);
             }
         } elseif ($resource["kind"] == "link" && !$resource["embed"]) {
             if ($resource["type"]) {
-                return printf("<link href=\"%s\" type=\"%s\" %s />\n\t", $resource["resource"], $resource["type"], $resource["options"]);
+                $output = printf("<link href=\"%s\" type=\"%s\" %s />\n\t", $resource["resource"], $resource["type"], $resource["options"]);
             } else {
-                return printf("<link href=\"%s\" %s />\n\t", $resource["resource"], $resource["options"]);
+                $output = printf("<link href=\"%s\" %s />\n\t", $resource["resource"], $resource["options"]);
             }
         }
+
+        escape_html_output($output);
     }
 
     /**
@@ -206,7 +210,7 @@ class ResourceLoader
             // return $fileContent;
             return file_get_contents($file);
         } else {
-            return printf("Unable to open file '%s'!", $file);
+            error_log("Unable to open file '$file'!", 0);
         }
     }
 
@@ -220,9 +224,9 @@ class ResourceLoader
         /**
          * PHP 8.0+
          // if (self::$options["less"]) {
-         self::add("head", "/assets/vendor/less.conf.js",  embed: true,  priority: 10001);
-         self::add("head", "/assets/vendor/less.min.js",   embed: false, priority: 10002, options: false);
-         self::add("head", "/assets/vendor/less.watch.js", embed: true,  priority: 10003);
+         self::add("head", "/assets/vendor/less.conf.js",  active:true, embed: true,  priority: 10001);
+         self::add("head", "/assets/vendor/less.min.js",   active:true, embed: false, priority: 10002, options: false);
+         self::add("head", "/assets/vendor/less.watch.js", active:true, embed: true,  priority: 10003);
          // }
          */
 

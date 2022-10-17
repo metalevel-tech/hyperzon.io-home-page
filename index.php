@@ -10,10 +10,9 @@ spl_autoload_register(function ($class_name) {
         require_once "./classes/$class_name.php";
     } elseif (is_file("controllers/$class_name.php")) {
         require_once "./controllers/$class_name.php";
-    } elseif (is_file("helpers/$class_name.php")) {
-        require_once "./helpers/$class_name.php";
     }
 });
+require_once "./helpers/EscapeFunctions.php";
 
 /**
  * The page Header, Content and Footer are loaded via

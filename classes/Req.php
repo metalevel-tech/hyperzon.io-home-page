@@ -34,7 +34,7 @@ class Req
             require "./$file";
             return printf("\n");
         } else {
-            return printf("Error: Req::File() not found!");
+            error_log("Error: Req::File() not found!", 0);
         }
     }
 
