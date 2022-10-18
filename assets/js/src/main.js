@@ -652,7 +652,7 @@ $(window).on("resize", function () {
         window.addEventListener("resize", setHeight_16_9.bind(this, videoPlayer));
     }
 
-    // Function to automatically set video height, based on width * 9/16
+    // Function to automatically set video height, based on width * 9/16 @Scale/Transform
     function setHeight_16_9(node) {
         if (!node) return false;
         node.style.height = `${Math.floor((node.offsetWidth * 9 / 16) + 2)}px`;

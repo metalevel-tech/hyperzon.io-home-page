@@ -18,7 +18,8 @@
         counter.text(Math.floor(this.countNum));
       },
       complete: function () {
-        counter.text(this.countNum); //alert("finished");
+        counter.text(this.countNum);
+        //alert("finished");
       }
     });
   });

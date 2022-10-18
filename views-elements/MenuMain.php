@@ -56,7 +56,7 @@
                     );
                 }
             }
-            printf('\n');
+            printf("\n");
             ?>
 
             <!-- Book a call button Desktop -->

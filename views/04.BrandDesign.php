@@ -1,7 +1,3 @@
-<?php /*
-<link href="//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css" type="text/css" rel="stylesheet" />
-<link href="//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.gallery.min.css" type="text/css" rel="stylesheet" />
-*/ ?>
 <div class="backgr-blue-svg backgr-blue-svg--01 section-home-01">
     <div class="backgr-blue-svg__content">
         <?php
@@ -37,7 +33,3 @@
         <br /><br /><br /><br /><br />
     </div>
 </div>
-<?php /*
-<script src="//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.gallery.min.js" type="text/javascript" charset="utf-8"></script>
-*/ ?>

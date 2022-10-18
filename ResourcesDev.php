@@ -126,7 +126,7 @@ ResourceLoader::add( # CSS for production
     "/assets/css/dist/style.min.css?v=$version",
     "default",
     "rel=\"stylesheet\"",
-    true,
+    false,
     true,
     20
 );
@@ -136,7 +136,7 @@ ResourceLoader::add( # LESS for dev tests
     "/assets/css/src/style.less?v=$random#!watch",
     "default",
     "rel=\"stylesheet/less\"",
-    false,
+    true,
     false,
     25
 );
@@ -231,8 +231,8 @@ ResourceLoader::add( # External Libraries @anime.js (moved from Footer.php)
 
 ResourceLoader::add( # JavaScript: main.js
     "head",
-    "/assets/js/dist/main.min.js?v=$version",
-    // "assets/js/src/main.js?v=$version",
+    // "/assets/js/dist/main.min.js?v=$version",
+    "assets/js/src/main.js?v=$version",
     "default",
     "defer",
     true,
@@ -242,8 +242,8 @@ ResourceLoader::add( # JavaScript: main.js
 
 ResourceLoader::add( # JavaScript: blog.js
     "head",
-    "/assets/js/dist/blog.min.js?v=$version",
-    // "assets/js/src/blog.js?v=$version",
+    // "/assets/js/dist/blog.min.js?v=$version",
+    "assets/js/src/blog.js?v=$version",
     "default",
     "defer",
     true,
