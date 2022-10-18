@@ -11,8 +11,10 @@
 
 (function () {
   function calculateHWUnits() {
-    const vh = window.innerHeight * 0.01;
-    const vw = window.innerWidth * 0.01;
+    let vh = window.innerHeight * 0.01;
+    let vw = window.innerWidth * 0.01;
+    vh = parseFloat(vh).toFixed(2);
+    vw = parseFloat(vw).toFixed(2);
     document.documentElement.style.setProperty("--mlt-vh", `${vh}px`);
     document.documentElement.style.setProperty("--mlt-vw", `${vw}px`);
     document.documentElement.style.setProperty("--mlt-vmin", `${vh > vw ? vw : vh}px`);

@@ -232,7 +232,7 @@ ResourceLoader::add( # External Libraries @anime.js (moved from Footer.php)
 ResourceLoader::add( # JavaScript: main.js
     "head",
     "/assets/js/dist/main.min.js?v=$version",
-    // "assets/js/src/main.js?v=$version",
+    // "/assets/js/src/main.js?v=$version",
     "default",
     "defer",
     true,
@@ -243,7 +243,7 @@ ResourceLoader::add( # JavaScript: main.js
 ResourceLoader::add( # JavaScript: blog.js
     "head",
     "/assets/js/dist/blog.min.js?v=$version",
-    // "assets/js/src/blog.js?v=$version",
+    // "/assets/js/src/blog.js?v=$version",
     "default",
     "defer",
     true,

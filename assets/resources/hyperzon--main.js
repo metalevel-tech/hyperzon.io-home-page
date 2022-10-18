@@ -1,4 +1,22 @@
 /**
+* Hyperzon.io main.js, miscellaneous functions
+*/
+// function closeInfoModal() {
+//     $.featherlight.close();
+// }
+// function openCookiesModal() {
+//     $.featherlight(base_url + "info/cookies");
+// }
+// function resizeWindow() {
+//     $(".measure").css("height", window.innerHeight);
+// }
+// resizeWindow();
+// $(window).on("resize", function () {
+//     resizeWindow();
+// });
+// ---
+
+/**
  * Hyperzon.io original content, functions.js
  */
 

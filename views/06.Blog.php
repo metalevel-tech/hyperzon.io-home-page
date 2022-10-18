@@ -1,16 +1,16 @@
 <div class="backgr-white-svg text-dark">
-    <div class="backgr-white-svg__content section-home-02 section-home-02--white">
-        <div class="wrapper-1366 blog-page">
+    <div class="backgr-white-svg__content blog-page">
+        <div class="wrapper-1366">
             <?php
             Req::element("SloganHyperzonBlog");
             ?>
 
-            <div id="blog-section" class="blog-grid grid-3-2-2-1" style="min-height: 600px;">
+            <div id="blog-section" class="blog-grid" data-post-default-width="324" data-post-default-height="378">
 
-                <div class="blog-post-scale-wrapper">
-                    <div class="blog-post" data-width="324" data-height="378">
+                <div class="blog-post-wrapper">
+                    <div class="blog-post-scalable">
                         <div class="blog-post-canvas"></div>
-                        
+
                         <div class="blog-post-info">
                             <p class="blog-post-date">18 oct <br /> 2022</p>
                             <p class="blog-post-category">Amazon PPC Version 1.0</p>
@@ -21,7 +21,7 @@
                             <p class="blog-post-description">Amazon’s Sponsored Products CPC is getting more and more expensive. This year alone, it has jumped over 50% across different niches. </p>
                             <a role="button" class="button-green">Read more</a>
                         </div>
-
+                            
                         <div class="blog-post-cover">
                             <div class="blog-post-cover-clip">
                                 <img src="/public/blog/blog-post-demo-cover.webp" width="280" height="224" alt="Media File Blog post cover image" loading="lazy" decoding="async" />
@@ -29,11 +29,11 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="blog-post-scale-wrapper">
-                    <div class="blog-post" data-width="324" data-height="378">
+
+                <div class="blog-post-wrapper">
+                    <div class="blog-post-scalable" data-width="324" data-height="378">
                         <div class="blog-post-canvas"></div>
-                        
+
                         <div class="blog-post-info">
                             <p class="blog-post-date">18 oct <br /> 2022</p>
                             <p class="blog-post-category">Amazon PPC Version 2.0</p>
@@ -52,11 +52,11 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="blog-post-scale-wrapper">
-                    <div class="blog-post" data-width="324" data-height="378">
+
+                <div class="blog-post-wrapper">
+                    <div class="blog-post-scalable" data-width="324" data-height="378">
                         <div class="blog-post-canvas"></div>
-                        
+
                         <div class="blog-post-cover">
                             <div class="blog-post-cover-clip">
                                 <img src="/public/blog/blog-post-demo-cover.webp" width="280" height="224" alt="Media File Blog post cover image" loading="lazy" decoding="async" />
@@ -76,10 +76,10 @@
                     </div>
                 </div>
 
-                <div class="blog-post-scale-wrapper">
-                    <div class="blog-post" data-width="324" data-height="378">
+                <div class="blog-post-wrapper">
+                    <div class="blog-post-scalable" data-width="324" data-height="378">
                         <div class="blog-post-canvas"></div>
-                        
+
                         <div class="blog-post-info">
                             <p class="blog-post-date">18 oct <br /> 2022</p>
                             <p class="blog-post-category">Amazon PPC Version 1.0</p>
@@ -98,11 +98,11 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="blog-post-scale-wrapper">
-                    <div class="blog-post" data-width="324" data-height="378">
+
+                <div class="blog-post-wrapper">
+                    <div class="blog-post-scalable" data-width="324" data-height="378">
                         <div class="blog-post-canvas"></div>
-                        
+
                         <div class="blog-post-info">
                             <p class="blog-post-date">18 oct <br /> 2022</p>
                             <p class="blog-post-category">Amazon PPC Version 2.0</p>
@@ -121,11 +121,11 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="blog-post-scale-wrapper">
-                    <div class="blog-post" data-width="324" data-height="378">
+
+                <div class="blog-post-wrapper">
+                    <div class="blog-post-scalable" data-width="324" data-height="378">
                         <div class="blog-post-canvas"></div>
-                        
+
                         <div class="blog-post-cover">
                             <div class="blog-post-cover-clip">
                                 <img src="/public/blog/blog-post-demo-cover.webp" width="280" height="224" alt="Media File Blog post cover image" loading="lazy" decoding="async" />
@@ -144,12 +144,13 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
-            <?php
-            Req::element("BrandsWeBoosted");
-            ?>
+            <!-- The wrapper intentionally is not inside the module -->
+            <div class="wrapper-1366 brands-on-right-gray">
+                <?php
+                Req::element("BrandsWeBoosted");
+                ?>
+            </div>
         </div>
     </div>
 </div>

@@ -30,7 +30,7 @@ define('APP_ROOT', dirname(__FILE__));
 define('URL_ROOT', '/');
 
 require_once "./Menu.php";
-require_once "./Resources.php";
+require_once "./ResourcesDev.php";
 require_once "./Routes.php";
 
 /**
