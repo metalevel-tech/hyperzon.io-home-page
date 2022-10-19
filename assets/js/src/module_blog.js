@@ -49,7 +49,7 @@ class Blog {
         this.grid = document.querySelector(this.selectors.blogGrid);
         return (this.grid) ? true : false;
     }
-    
+
     selectPosts() {
         this.posts = Array.from(this.grid.querySelectorAll(this.selectors.blogPosts));
         return (this.grid) ? true : false;
@@ -59,9 +59,9 @@ class Blog {
         if (!this.shouldRun()) return;
 
         // Add some properties to the grid node, which will be used later for calculations
-        this.grid.defaultPostHeight = parseInt(this.grid.dataset.defaultPostHeight);
-        this.grid.defaultPostWidth = parseInt(this.grid.dataset.defaultPostWidth);
-        this.grid.defaultGridVMargin = parseInt(window.getComputedStyle(this.grid).marginTop);
+        this.grid.defaultPostHeight = parseInt(this.grid.dataset.defaultPostHeight, 10);
+        this.grid.defaultPostWidth = parseInt(this.grid.dataset.defaultPostWidth, 10);
+        this.grid.defaultGridVMargin = parseInt(window.getComputedStyle(this.grid).marginTop, 10);
     }
 
     initEventHandlers() {
@@ -84,9 +84,9 @@ class Blog {
         if (!this.shouldRun()) return;
 
         // Get default post width and height from the grid's data set
-        const defaultPostWidth = parseInt(this.grid.defaultPostWidth);
-        const defaultPostHeight = parseInt(this.grid.defaultPostHeight);
-        const defaultGridVMargin = parseInt(this.grid.defaultGridVMargin);
+        const defaultPostWidth = parseInt(this.grid.defaultPostWidth, 10);
+        const defaultPostHeight = parseInt(this.grid.defaultPostHeight, 10);
+        const defaultGridVMargin = parseInt(this.grid.defaultGridVMargin, 10);
         const grid = this.grid;
 
         this.posts.forEach((post, index, postsArr) => {
@@ -104,7 +104,7 @@ class Blog {
             }
 
             // Calculate and apply a vertical compensation of the post wrapper
-            const postHeight = parseInt(defaultPostHeight  * scaleFactor); // parseFloat().toFixed(2);
+            const postHeight = parseInt((defaultPostHeight * scaleFactor), 10);
             post.style.height = `${postHeight}px`;
 
             // Apply scale to the blog-post-scalable content container
@@ -113,11 +113,11 @@ class Blog {
 
             // Calculate and apply vertical compensation to the blog grid
             if (index === postsArr.length - 1) {
-                const gridVerticalCompensation = parseInt((postHeight - defaultPostHeight) / 2);
-                
+                const gridVerticalCompensation = parseInt(((postHeight - defaultPostHeight) / 2), 10);
+
                 if (gridVerticalCompensation < 0) {
                     const calculatedMarginTop = defaultGridVMargin + gridVerticalCompensation;
-                    
+
                     if (calculatedMarginTop >= 0) {
                         grid.style.marginTop = `${calculatedMarginTop}px`;
                     } else {

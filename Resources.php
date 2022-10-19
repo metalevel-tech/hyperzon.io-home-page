@@ -147,7 +147,7 @@ ResourceLoader::add( # jQuery
     "default",
     "rel=\"preconnect\"",
     true,
-    false,
+    true,   // I'm not sure which is better here embed:true or rel:preconnect
     2
 );
 
