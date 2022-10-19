@@ -1,5 +1,9 @@
 # Tasks and To-do notes
 
+## Change style
+
+- [x] Text content `line-height: 1.15` > `line-height: 1.45`
+
 ## Text content
 
 - [ ] **The numbers in Hero.php are not the same in the production and stag stage releases!**

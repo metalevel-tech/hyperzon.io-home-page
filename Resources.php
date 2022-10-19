@@ -233,32 +233,11 @@ ResourceLoader::add( # JavaScript: main.js
     "head",
     "/assets/js/dist/main.min.js?v=$version",
     // "/assets/js/src/main.js?v=$version",
-    "default",
+    "module",
     "defer",
     true,
     false,
     70,
-);
-
-ResourceLoader::add( # JavaScript: blog.js
-    "head",
-    "/assets/js/dist/blog.min.js?v=$version",
-    // "/assets/js/src/blog.js?v=$version",
-    "default",
-    "defer",
-    true,
-    false,
-    3071,
-);
-
-ResourceLoader::add( # JavaScript: hero-counter.js
-    "hero-after",
-    "/assets/js/dist/hero-counter.min.js?v=$version",
-    "default",
-    "defer",
-    true,
-    false,
-    75,
 );
 
 ResourceLoader::add( # External Libraries @Calendly.css wigged (Book a Call)

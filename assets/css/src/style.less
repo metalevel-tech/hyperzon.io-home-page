@@ -869,6 +869,18 @@ body {
   padding-right: 20px;
 }
 
+.wrapper-1100 {
+  max-width: 1100px;
+  margin: 0 auto;
+
+  padding-left: 20px;
+  padding-right: 20px;
+
+  + .wrapper-1366 {
+    margin-top: 70px;
+  }
+}
+
 .backgr-blue-svg {
   position: relative;
 
@@ -1772,7 +1784,7 @@ body {
   }
 
   &__list {
-    line-height: 1.15;
+    line-height: 1.45;
 
     &__grid {
       display: flex;
@@ -1946,7 +1958,7 @@ body {
     }
 
     &__descr {
-      line-height: 1.15;
+      line-height: 1.45;
 
       br {
         @media @tablet {
@@ -2122,7 +2134,8 @@ body {
     rgba(255, 255, 255, 0) 100%
   );
 
-  @media @tablet {
+  // @media @tablet {
+  @media @desktop {
     background: none;
   }
 }
@@ -2134,7 +2147,8 @@ body {
     rgba(255, 255, 255, 0) 100%
   );
 
-  @media @tablet {
+  // @media @tablet {
+  @media @desktop {
     background: none;
   }
 }
@@ -2167,7 +2181,8 @@ body {
     }
   }
 
-  @media @tablet {
+  // @media @tablet {
+  @media @desktop {
     margin-left: -20px;
     margin-right: -20px;
   }
@@ -2396,7 +2411,7 @@ body {
     .font-size-min-desktop(18px);
     text-align: center;
     font-weight: 400;
-    line-height: 1.15;
+    line-height: 1.45;
 
     b {
       font-weight: 700;
@@ -2590,7 +2605,7 @@ body {
   }
 
   &__descr {
-    line-height: 1.15;
+    line-height: 1.45;
   }
 
   max-width: 1140px;
@@ -3784,52 +3799,113 @@ body .calendly-overlay .calendly-popup {
 /**
  * Blog Page
  */
+@column-gap: 1.4em;
+@row-gap: 2.1em;
+
 .blog-page {
-  padding-top: 85px;
   text-align: center;
+  background: url(/public/images/svg/logo_white_backgr.svg);
+  background-size: auto 4400px;
+  background-position: 35% 50px;
+  background-repeat: no-repeat;
+  padding: 85px 0;
+  color: #0e2a55;
 
-  background: url(/public/images/svg/logo.svg) left 100% top no-repeat;
-  background-size: cover;
+  .page-title-section {
+    max-width: 850px;
+    margin: 0 auto;
 
-  background: url(/public/images/svg/logo_white_backgr.svg) top 50px center
-    no-repeat;
-  background-size: cover;
-  background-position: 45.8% 2vw; // SZS
-  padding-bottom: 100px;
+    .page-title {
+      margin-top: 0;
+      text-align: center;
+    }
+
+    .page-subtitle {
+      text-align: center;
+      margin: 0.5em 0;
+    }
+  }
+
+  .blog-tags-container {
+    margin: 3em 0 1em;
+    text-align: left;
+
+    padding: 0 @column-gap;
+
+    .blog-tag {
+      font-size: .96em;
+      color: #4a7cc7;
+      display: inline-block;
+      padding: 0.3em .6em;
+      border: 1px solid #4a7cc7;
+      margin: .2em 0;
+      font-weight: 500;
+      border-radius: 1em;
+
+      transition: color 0.5s ease-in-out, background-color 0.5s ease-in-out, border-color 0.5s ease-in-out;
+
+      // + .blog-tag {
+      //   margin-left: 0.4em;
+      // }
+
+      &:hover {
+        background: #4a7cc7;
+        color: #fff;
+      }
+    }
+  }
+
+  h1 {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: 0.015em;
+    text-transform: uppercase;
+    text-align: justify;
+  }
+
+  p {
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 1.45;
+    text-align: justify;
+
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
 }
 
 .blog-grid {
   display: grid;
-  grid-template-columns: minmax(30%, 1fr) minmax(30%, 1fr) minmax(30%, 1fr);
+  grid-template-columns: minmax(25%, 1fr) minmax(25%, 1fr) minmax(25%, 1fr);
 
-  margin: calc(140px - 2 * 2.75em) auto;
   justify-content: center;
   align-items: center;
   align-content: center;
   justify-items: center;
 
-  @column-gap: 2.2em;
-  @row-gap: (2.2em * 280 / 224);
-
   row-gap: @row-gap;
   column-gap: @column-gap;
 
-  padding: @row-gap @column-gap;
+  padding: (@row-gap / 2) @column-gap;
+  margin: calc(80px - 2 * @row-gap) auto;
 
-  margin: calc(140px - 2 * @row-gap) auto;
+  @media @desktop {
+    grid-template-columns: 1fr 1fr;
+  }
 
-  // Will be removed via JavaScript,
-  // just intent to minify the layout shift,
-  // caused by the blogInit() function.
-  // min-height: 952px;
+  @media @tablet {
+    grid-template-columns: 1fr;
+  }
+
+  @media @phone {
+    grid-template-columns: 1fr;
+    padding: @row-gap 0;
+  }
 }
 
 .blog-post-wrapper {
   // border: 1px solid red;
-  // width: 100%;
-  // height: fit-content;
-  width: 100%;
-  height: 378px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3837,21 +3913,18 @@ body .calendly-overlay .calendly-popup {
   flex-wrap: wrap;
   position: relative;
 
+  width: 100%;
+  height: 378px;
+
   .blog-post-scalable {
     // border: 1px solid green;
-
     position: absolute;
-    // top: 0;
-    // left: 0;
-    // transform-origin: top left;
-    transform: scale(1.1);
 
     width: 324px;
     height: 378px;
 
     .blog-post-body {
       // border: 1px solid yellow;
-
       position: absolute;
       bottom: 2px;
       left: 2px;
@@ -3906,7 +3979,6 @@ body .calendly-overlay .calendly-popup {
 
     .blog-post-info {
       // border: 1px solid yellow;
-
       position: absolute;
       top: 12px;
       left: 2px;
@@ -4012,11 +4084,6 @@ body .calendly-overlay .calendly-popup {
       width: 300px;
       height: 364px;
     }
-
-    // &:hover .blog-post-canvas {
-    //   z-index: 1;
-    //   // background-color: #c0fd45 !important;
-    // }
   }
 }
 

@@ -68,7 +68,7 @@ nodes.mobileMenuButton.addEventListener("click", function (e) {
 // These functions are executed at 
 // each interaction with the main menu,
 // and at the page load.
-function interfaceSetUp() {
+function interfaceSetUp(callFrom = 0) {
     testimonialsSlider();
     latestBlogPostsSlider();
     vimeoLoader();
@@ -77,6 +77,8 @@ function interfaceSetUp() {
     mobileMenuClose();
     blogInit();
     bookACallHandler();
+
+    // console.log(callFrom);
 }
 
 // Process single menu element
@@ -132,7 +134,7 @@ const changeMenuElementFunctionality = async (e) => {
 
         // Run the sliders scripts,
         // see the function definitions below
-        interfaceSetUp();
+        interfaceSetUp(1);
 
         // Change the URI
         window.history.pushState({
@@ -149,7 +151,7 @@ const changeMenuElementFunctionality = async (e) => {
                 nodes.mainMenu.innerHTML = e.state.mainMenu;
                 document.title = e.state.pageTitle;
                 document.body.className = e.state.bodyClassList;
-                interfaceSetUp();
+                interfaceSetUp(2);
             }
         };
     }
@@ -191,7 +193,7 @@ window.addEventListener("load", function () {
         }
     }, 100);
 
-    interfaceSetUp();
+    interfaceSetUp(3);
     addStickyClass();
     heroCounter();
     
