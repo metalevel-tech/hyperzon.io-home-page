@@ -147,7 +147,7 @@ ResourceLoader::add( # jQuery
     "default",
     "rel=\"preconnect\"",
     true,
-    false,
+    true,
     2
 );
 
