@@ -1,15 +1,13 @@
 <div class="backgr-white-svg">
     <div class="blog-page">
         <div class="wrapper-1100">
-            <div class="page-title-section">
+
+            <div class="post-page-title-section">
                 <h1 class="page-title">
-                    Welcome to the Hyperzon Blog!
+                    The Ultimate Guide To Using Amazon Ads Console’s Bulk Operations
                 </h1>
                 <p class="page-subtitle">
-                    The Hyperzon Blog is your one-stop destination in-depth analysis on topics that matter, featuring the latest industry news and trends, as well as deep dives from members of our team.
-                </p>
-                <p class="page-subtitle">
-                    Browse through the new articles below!
+                    What exactly are the Amazon PPC Bulk Operations? And how will this tool help you manage your campaigns faster and more efficiently?
                 </p>
             </div>
 
