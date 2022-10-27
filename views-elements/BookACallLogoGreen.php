@@ -27,10 +27,8 @@
             */ ?>
 
             <div class="book-a-call__button">
-                <?php /* <a href="#" class="js-book-a-call"><span><span>BOOK A FREE</span> STRATEGY SESSION</span></a> */ ?>
-
-                <a role="button" class="js-book-a-call">
-                    <span><span>BOOK A FREE</span> STRATEGY SESSION</span>
+                <a class="button-blue button-font-l js-book-a-call" role="button" area-label="Book a free 30 minutes session">
+                    <span><span>BOOK A FREE</span> <span>STRATEGY SESSION</span></span>
                 </a>
             </div>
         </form>

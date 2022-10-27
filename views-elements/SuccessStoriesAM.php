@@ -22,7 +22,7 @@
 
                 <?php /*
                 <div class="ss__button">
-                    <a href="#">Read full story</a>
+                    <a class="button-green button-font-s"  href="#">Read full story</a>
                 </div>
                 */ ?>
             </div>
@@ -54,7 +54,7 @@
 
                 <?php /*
                 <div class="ss__button">
-                    <a href="#">Read full story</a>
+                    <a class="button-green button-font-s"  href="#">Read full story</a>
                 </div>
                 */ ?>
             </div>
@@ -76,7 +76,7 @@
                 </div>
                 <?php /*
                 <div class="ss__button">
-                    <a href="#">Read full story</a>
+                    <a class="button-green button-font-s"  href="#">Read full story</a>
                 </div>
                 */ ?>
             </div>

@@ -1,14 +1,19 @@
+<?php
+/**
+ * In this file are presented 3 variants of blog post's cards.
+ */
+?>
 <div class="backgr-white-svg">
     <div class="blog-page">
         <div class="wrapper-1100">
             <div class="blog-page-title-section">
-                <h1 class="blog-page-title">
+                <h1 class="page-title">
                     Welcome to the Hyperzon Blog!
                 </h1>
-                <p class="blog-page-subtitle">
+                <p class="page-subtitle">
                     The Hyperzon Blog is your one-stop destination in-depth analysis on topics that matter, featuring the latest industry news and trends, as well as deep dives from members of our team.
                 </p>
-                <p class="blog-page-subtitle">
+                <p class="page-subtitle">
                     Browse through the new articles below!
                 </p>
             </div>
@@ -33,12 +38,58 @@
 
                 <div class="blog-grid" data-default-post-width="324" data-default-post-height="378">
                     <div class="blog-post-wrapper">
+                        <div class="blog-post-scalable">
+                            <div class="blog-post-canvas"></div>
+
+                            <div class="blog-post-info">
+                                <p class="blog-post-date">18 oct <br /> 2022</p>
+                                <p class="blog-post-category">Amazon PPC Version 1.0</p>
+                            </div>
+
+                            <div class="blog-post-body">
+                                <h4 class="blog-post-title">Discover How Amazon’s New "Top-of-Search IS" Can Help You Generate More Sales</h4>
+                                <p class="blog-post-description">Amazon’s Sponsored Products CPC is getting more and more expensive. This year alone, it has jumped over 50% across different niches. </p>
+                                <a role="button" class="button-green button-font-xs">Read more</a>
+                            </div>
+
+                            <div class="blog-post-cover">
+                                <div class="blog-post-cover-clip">
+                                    <img src="/public/blog/blog-post-demo-cover.webp" width="280" height="224" alt="Media File Blog post cover image" /> <!-- loading="lazy" decoding="async" /> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="blog-post-wrapper">
+                        <div class="blog-post-scalable" data-width="324" data-height="378">
+                            <div class="blog-post-canvas"></div>
+
+                            <div class="blog-post-info">
+                                <p class="blog-post-date">18 oct <br /> 2022</p>
+                                <p class="blog-post-category">Amazon PPC Version 2.0</p>
+                            </div>
+
+                            <div class="blog-post-cover">
+                                <div class="blog-post-cover-clip">
+                                    <img src="/public/blog/blog-post-demo-cover.webp" width="280" height="224" alt="Media File Blog post cover image" /> <!-- loading="lazy" decoding="async" /> -->
+                                </div>
+                            </div>
+
+                            <div class="blog-post-body">
+                                <h4 class="blog-post-title">Discover How Amazon’s New "Top-of-Search IS" Can Help You Generate More Sales</h4>
+                                <p class="blog-post-description">Amazon’s Sponsored Products CPC is getting more and more expensive. This year alone, it has jumped over 50% across different niches. </p>
+                                <a role="button" class="button-green button-font-xs">Read more</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="blog-post-wrapper">
                         <div class="blog-post-scalable" data-width="324" data-height="378">
                             <div class="blog-post-canvas"></div>
 
                             <div class="blog-post-cover">
                                 <div class="blog-post-cover-clip">
-                                    <img src="/public/blog/interface/blog-posts-demo-cover.webp" width="280" height="224" alt="Media File Blog post cover image" /> <!-- loading="lazy" decoding="async" /> -->
+                                    <img src="/public/blog/blog-post-demo-cover.webp" width="280" height="224" alt="Media File Blog post cover image" /> <!-- loading="lazy" decoding="async" /> -->
                                 </div>
                             </div>
 
@@ -59,9 +110,55 @@
                         <div class="blog-post-scalable" data-width="324" data-height="378">
                             <div class="blog-post-canvas"></div>
 
+                            <div class="blog-post-info">
+                                <p class="blog-post-date">18 oct <br /> 2022</p>
+                                <p class="blog-post-category">Amazon PPC Version 1.0</p>
+                            </div>
+
+                            <div class="blog-post-body">
+                                <h4 class="blog-post-title">Discover How Amazon’s New "Top-of-Search IS" Can Help You Generate More Sales</h4>
+                                <p class="blog-post-description">Amazon’s Sponsored Products CPC is getting more and more expensive. This year alone, it has jumped over 50% across different niches. </p>
+                                <a role="button" class="button-green button-font-xs">Read more</a>
+                            </div>
+
                             <div class="blog-post-cover">
                                 <div class="blog-post-cover-clip">
-                                    <img src="/public/blog/interface/blog-posts-demo-cover.webp" width="280" height="224" alt="Media File Blog post cover image" /> <!-- loading="lazy" decoding="async" /> -->
+                                    <img src="/public/blog/blog-post-demo-cover.webp" width="280" height="224" alt="Media File Blog post cover image" /> <!-- loading="lazy" decoding="async" /> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="blog-post-wrapper">
+                        <div class="blog-post-scalable" data-width="324" data-height="378">
+                            <div class="blog-post-canvas"></div>
+
+                            <div class="blog-post-info">
+                                <p class="blog-post-date">18 oct <br /> 2022</p>
+                                <p class="blog-post-category">Amazon PPC Version 2.0</p>
+                            </div>
+
+                            <div class="blog-post-cover">
+                                <div class="blog-post-cover-clip">
+                                    <img src="/public/blog/blog-post-demo-cover.webp" width="280" height="224" alt="Media File Blog post cover image" /> <!-- loading="lazy" decoding="async" /> -->
+                                </div>
+                            </div>
+
+                            <div class="blog-post-body">
+                                <h4 class="blog-post-title">Discover How Amazon’s New "Top-of-Search IS" Can Help You Generate More Sales</h4>
+                                <p class="blog-post-description">Amazon’s Sponsored Products CPC is getting more and more expensive. This year alone, it has jumped over 50% across different niches. </p>
+                                <a role="button" class="button-green button-font-xs">Read more</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="blog-post-wrapper">
+                        <div class="blog-post-scalable" data-width="324" data-height="378">
+                            <div class="blog-post-canvas"></div>
+
+                            <div class="blog-post-cover">
+                                <div class="blog-post-cover-clip">
+                                    <img src="/public/blog/blog-post-demo-cover.webp" width="280" height="224" alt="Media File Blog post cover image" /> <!-- loading="lazy" decoding="async" /> -->
                                 </div>
                             </div>
 
@@ -82,15 +179,38 @@
                         <div class="blog-post-scalable" data-width="324" data-height="378">
                             <div class="blog-post-canvas"></div>
 
+                            <div class="blog-post-info">
+                                <p class="blog-post-date">18 oct <br /> 2022</p>
+                                <p class="blog-post-category">Amazon PPC Version 1.0</p>
+                            </div>
+
+                            <div class="blog-post-body">
+                                <h4 class="blog-post-title">Discover How Amazon’s New "Top-of-Search IS" Can Help You Generate More Sales</h4>
+                                <p class="blog-post-description">Amazon’s Sponsored Products CPC is getting more and more expensive. This year alone, it has jumped over 50% across different niches. </p>
+                                <a role="button" class="button-green button-font-xs">Read more</a>
+                            </div>
+
                             <div class="blog-post-cover">
                                 <div class="blog-post-cover-clip">
-                                    <img src="/public/blog/interface/blog-posts-demo-cover.webp" width="280" height="224" alt="Media File Blog post cover image" /> <!-- loading="lazy" decoding="async" /> -->
+                                    <img src="/public/blog/blog-post-demo-cover.webp" width="280" height="224" alt="Media File Blog post cover image" /> <!-- loading="lazy" decoding="async" /> -->
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="blog-post-wrapper">
+                        <div class="blog-post-scalable" data-width="324" data-height="378">
+                            <div class="blog-post-canvas"></div>
 
                             <div class="blog-post-info">
                                 <p class="blog-post-date">18 oct <br /> 2022</p>
-                                <p class="blog-post-category">Amazon PPC Version 3.0</p>
+                                <p class="blog-post-category">Amazon PPC Version 2.0</p>
+                            </div>
+
+                            <div class="blog-post-cover">
+                                <div class="blog-post-cover-clip">
+                                    <img src="/public/blog/blog-post-demo-cover.webp" width="280" height="224" alt="Media File Blog post cover image" /> <!-- loading="lazy" decoding="async" /> -->
+                                </div>
                             </div>
 
                             <div class="blog-post-body">
@@ -107,122 +227,7 @@
 
                             <div class="blog-post-cover">
                                 <div class="blog-post-cover-clip">
-                                    <img src="/public/blog/interface/blog-posts-demo-cover.webp" width="280" height="224" alt="Media File Blog post cover image" /> <!-- loading="lazy" decoding="async" /> -->
-                                </div>
-                            </div>
-
-                            <div class="blog-post-info">
-                                <p class="blog-post-date">18 oct <br /> 2022</p>
-                                <p class="blog-post-category">Amazon PPC Version 3.0</p>
-                            </div>
-
-                            <div class="blog-post-body">
-                                <h4 class="blog-post-title">Discover How Amazon’s New "Top-of-Search IS" Can Help You Generate More Sales</h4>
-                                <p class="blog-post-description">Amazon’s Sponsored Products CPC is getting more and more expensive. This year alone, it has jumped over 50% across different niches. </p>
-                                <a role="button" class="button-green button-font-xs">Read more</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="blog-post-wrapper">
-                        <div class="blog-post-scalable" data-width="324" data-height="378">
-                            <div class="blog-post-canvas"></div>
-
-                            <div class="blog-post-cover">
-                                <div class="blog-post-cover-clip">
-                                    <img src="/public/blog/interface/blog-posts-demo-cover.webp" width="280" height="224" alt="Media File Blog post cover image" /> <!-- loading="lazy" decoding="async" /> -->
-                                </div>
-                            </div>
-
-                            <div class="blog-post-info">
-                                <p class="blog-post-date">18 oct <br /> 2022</p>
-                                <p class="blog-post-category">Amazon PPC Version 3.0</p>
-                            </div>
-
-                            <div class="blog-post-body">
-                                <h4 class="blog-post-title">Discover How Amazon’s New "Top-of-Search IS" Can Help You Generate More Sales</h4>
-                                <p class="blog-post-description">Amazon’s Sponsored Products CPC is getting more and more expensive. This year alone, it has jumped over 50% across different niches. </p>
-                                <a role="button" class="button-green button-font-xs">Read more</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="blog-post-wrapper">
-                        <div class="blog-post-scalable" data-width="324" data-height="378">
-                            <div class="blog-post-canvas"></div>
-
-                            <div class="blog-post-cover">
-                                <div class="blog-post-cover-clip">
-                                    <img src="/public/blog/interface/blog-posts-demo-cover.webp" width="280" height="224" alt="Media File Blog post cover image" /> <!-- loading="lazy" decoding="async" /> -->
-                                </div>
-                            </div>
-
-                            <div class="blog-post-info">
-                                <p class="blog-post-date">18 oct <br /> 2022</p>
-                                <p class="blog-post-category">Amazon PPC Version 3.0</p>
-                            </div>
-
-                            <div class="blog-post-body">
-                                <h4 class="blog-post-title">Discover How Amazon’s New "Top-of-Search IS" Can Help You Generate More Sales</h4>
-                                <p class="blog-post-description">Amazon’s Sponsored Products CPC is getting more and more expensive. This year alone, it has jumped over 50% across different niches. </p>
-                                <a role="button" class="button-green button-font-xs">Read more</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="blog-post-wrapper">
-                        <div class="blog-post-scalable" data-width="324" data-height="378">
-                            <div class="blog-post-canvas"></div>
-
-                            <div class="blog-post-cover">
-                                <div class="blog-post-cover-clip">
-                                    <img src="/public/blog/interface/blog-posts-demo-cover.webp" width="280" height="224" alt="Media File Blog post cover image" /> <!-- loading="lazy" decoding="async" /> -->
-                                </div>
-                            </div>
-
-                            <div class="blog-post-info">
-                                <p class="blog-post-date">18 oct <br /> 2022</p>
-                                <p class="blog-post-category">Amazon PPC Version 3.0</p>
-                            </div>
-
-                            <div class="blog-post-body">
-                                <h4 class="blog-post-title">Discover How Amazon’s New "Top-of-Search IS" Can Help You Generate More Sales</h4>
-                                <p class="blog-post-description">Amazon’s Sponsored Products CPC is getting more and more expensive. This year alone, it has jumped over 50% across different niches. </p>
-                                <a role="button" class="button-green button-font-xs">Read more</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="blog-post-wrapper">
-                        <div class="blog-post-scalable" data-width="324" data-height="378">
-                            <div class="blog-post-canvas"></div>
-
-                            <div class="blog-post-cover">
-                                <div class="blog-post-cover-clip">
-                                    <img src="/public/blog/interface/blog-posts-demo-cover.webp" width="280" height="224" alt="Media File Blog post cover image" /> <!-- loading="lazy" decoding="async" /> -->
-                                </div>
-                            </div>
-
-                            <div class="blog-post-info">
-                                <p class="blog-post-date">18 oct <br /> 2022</p>
-                                <p class="blog-post-category">Amazon PPC Version 3.0</p>
-                            </div>
-
-                            <div class="blog-post-body">
-                                <h4 class="blog-post-title">Discover How Amazon’s New "Top-of-Search IS" Can Help You Generate More Sales</h4>
-                                <p class="blog-post-description">Amazon’s Sponsored Products CPC is getting more and more expensive. This year alone, it has jumped over 50% across different niches. </p>
-                                <a role="button" class="button-green button-font-xs">Read more</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="blog-post-wrapper">
-                        <div class="blog-post-scalable" data-width="324" data-height="378">
-                            <div class="blog-post-canvas"></div>
-
-                            <div class="blog-post-cover">
-                                <div class="blog-post-cover-clip">
-                                    <img src="/public/blog/interface/blog-posts-demo-cover.webp" width="280" height="224" alt="Media File Blog post cover image" /> <!-- loading="lazy" decoding="async" /> -->
+                                    <img src="/public/blog/blog-post-demo-cover.webp" width="280" height="224" alt="Media File Blog post cover image" /> <!-- loading="lazy" decoding="async" /> -->
                                 </div>
                             </div>
 

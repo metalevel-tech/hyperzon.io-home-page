@@ -27,3 +27,4 @@ Menu::addItem(2, "amazon-ppc-management",       "Advertising",        "Amazon PP
 Menu::addItem(3, "branding-and-package-design", "Design",             "Branding & Package Design");
 Menu::addItem(4, "photo-and-video-content",     "Photo & Video",      "Photo & Video Content");
 Menu::addItem(5, "hyperzon-blog",               "Blog",               "Hyperzon Blog");
+Menu::addItem(5, "blog-post",                   "Post",               "Blog post demo");

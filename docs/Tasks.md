@@ -26,7 +26,7 @@
 
 ## Google Tag Manager
 
-- [ ] Create at least one tag! Otherwise it will continue to throw errors in the browser's console.
+- [x] Create at least one tag! Otherwise it will continue to throw errors in the browser's console.
 - [x] Enable the scripts via `00.Header.php`. These are the only scripts on the site that are not managed via our ResourceLoader feature.
 
 ## Common issues
@@ -71,7 +71,8 @@ Create JavaScript code for the galleries avoid using external galleries:
 ## MenuFooter.php
 
 - [x] [30m] `<a href="#" onclick="return false;">` -> `<a role="button">`
-- [ ] [2h] Integrate the footer menu with the AJAX JavaScript.
+- [ ] [2h*] Integrate the footer menu with the AJAX JavaScript.
+- [ ] [2h*] Integrate the "Learn More" Buttons at the home page with the AJAX JavaScript.
 
 ## PHP MVC
 

@@ -20,7 +20,7 @@
                     <div class="blog__single__title">Discover How Amazon’s New "Top-of-Search IS" Can Help You Generate More Sales</div>
                     <div class="blog__single__descr">Amazon’s Sponsored Products CPC is getting more and more expensive. This year alone, it has jumped over 50% across different niches. </div>
                     <div class="blog__single__button">
-                        <a target="_blank" href="https://wildppcbunch.com/discover-how-amazons-new-top-of-search-is-can-help-you-generate-more-sales" area-label="Read the full blog post">Read more</a>
+                        <a class="button-green button-font-s"  target="_blank" href="https://wildppcbunch.com/discover-how-amazons-new-top-of-search-is-can-help-you-generate-more-sales" area-label="Read the full blog post">Read more</a>
                     </div>
                 </div>
             </div>
@@ -42,7 +42,7 @@
                     <div class="blog__single__title">The Ultimate Guide To Using Amazon Ads Console’s Bulk Operations</div>
                     <div class="blog__single__descr">What exactly are the Amazon PPC Bulk Operations? And how will this tool help you manage your campaigns faster and more efficiently? </div>
                     <div class="blog__single__button">
-                        <a target="_blank" href="https://wildppcbunch.com/the-ultimate-guide-to-using-amazon-ads-consoles-bulk-operations" area-label="Read the full blog post">Read more</a>
+                        <a class="button-green button-font-s"  target="_blank" href="https://wildppcbunch.com/the-ultimate-guide-to-using-amazon-ads-consoles-bulk-operations" area-label="Read the full blog post">Read more</a>
                     </div>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                     <div class="blog__single__title">Discover How Amazon’s New "Top-of-Search IS" Can Help You Generate More Sales</div>
                     <div class="blog__single__descr">Amazon’s Sponsored Products CPC is getting more and more expensive. This year alone, it has jumped over 50% across different niches. </div>
                     <div class="blog__single__button">
-                        <a target="_blank" href="https://wildppcbunch.com/discover-how-amazons-new-top-of-search-is-can-help-you-generate-more-sales" area-label="Read the full blog post">Read more</a>
+                        <a class="button-green button-font-s"  target="_blank" href="https://wildppcbunch.com/discover-how-amazons-new-top-of-search-is-can-help-you-generate-more-sales" area-label="Read the full blog post">Read more</a>
                     </div>
                 </div>
             </div>

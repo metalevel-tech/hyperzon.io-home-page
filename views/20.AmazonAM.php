@@ -38,7 +38,7 @@
             ?>
         </div>
         <?php
-        Req::element("BookACallGreen");
+        Req::element("BookACallLogoGreen");
         ?>
     </div>
 </div>

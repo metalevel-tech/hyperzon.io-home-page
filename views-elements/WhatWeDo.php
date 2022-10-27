@@ -19,7 +19,7 @@
                     Our team will deploy time-tested review building, listing rank and optimization strategies, so you can focus on developing the brand and growing your product portfolio.
                 </div>
                 <div class="wwd__button">
-                    <a href="<?php Menu::getUriById(1) ?>" area-label="<?php Menu::getLabelMobileById(1) ?>">Learn more</a>
+                    <a class="button-green button-font-s" href="<?php Menu::getUriById(1) ?>" area-label="<?php Menu::getLabelMobileById(1) ?>">Learn more</a>
                 </div>
             </div>
         </div>
@@ -31,7 +31,7 @@
                     No matter how many clicks and traffic you get, at the end of the day your bottom line matters the most. We are an ROI- and performance-driven agency that excels at increasing profits while streamlining your company’s growth.
                 </div>
                 <div class="wwd__button">
-                    <a href="<?php Menu::getUriById(2) ?>" area-label="<?php Menu::getLabelMobileById(2) ?>">Learn more</a>
+                <a class="button-green button-font-s" href="<?php Menu::getUriById(2) ?>" area-label="<?php Menu::getLabelMobileById(2) ?>">Learn more</a>
                 </div>
             </div>
             <div class="wwd__image">
@@ -51,7 +51,7 @@
                     In order to communicate your values and make sure your brand instantly connects with ideal buyers, we create an entire visual system that resonates with your brand identity and speaks to followers and potential customers alike.
                 </div>
                 <div class="wwd__button">
-                    <a href="<?php Menu::getUriById(3) ?>" area-label="<?php Menu::getLabelMobileById(3) ?>">Learn more</a>
+                <a class="button-green button-font-s" href="<?php Menu::getUriById(3) ?>" area-label="<?php Menu::getLabelMobileById(3) ?>">Learn more</a>
                 </div>
             </div>
         </div>
@@ -65,7 +65,7 @@
                     In the age of information overload, businesses must rely on emotional engagement to bring them that competitive edge. With Hyperzon you get an in-house content creation team that will effortlessly transform your ideas into visually captivating, high conversion content that is sure to bring profits.
                 </div>
                 <div class="wwd__button">
-                    <a href="<?php Menu::getUriById(4) ?>" area-label="<?php Menu::getLabelMobileById(4) ?>">Learn more</a>
+                <a class="button-green button-font-s" href="<?php Menu::getUriById(4) ?>" area-label="<?php Menu::getLabelMobileById(4) ?>">Learn more</a>
                 </div>
             </div>
             <div class="wwd__image">
