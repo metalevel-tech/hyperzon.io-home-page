@@ -8,7 +8,6 @@
  *
  * Check "assets/css/src/normalize-after.css" for the CSS part of this snippet
  */
-
 (function () {
   function calculateHWUnits() {
     let vh = window.innerHeight * 0.01;
@@ -19,6 +18,7 @@
     document.documentElement.style.setProperty("--mlt-vw", `${vw}px`);
     document.documentElement.style.setProperty("--mlt-vmin", `${vh > vw ? vw : vh}px`);
   }
+
   calculateHWUnits();
   window.addEventListener("resize", calculateHWUnits);
 })();

@@ -2,10 +2,10 @@
 
 Here are the steps how to prepare the site for production:
 
-- [ ] Execute `npm run build` to build the Scripts and the Styles.
-- [ ] Edit [`index.php`](../index.php) and switch from `ResourcesDev.php` to `Resources.php`.
+- [x] Execute `npm run build` to build the Scripts and the Styles.
+- [x] Edit [`index.php`](../index.php) and switch from `ResourcesDev.php` to `Resources.php`.
 - [ ] Edit [views/00.Header.php](../views/00.Header.php) and enable Google Tag Manager.
-- [ ] Edit [`.htaccess`](../.htaccess) and enable the compression and file caching.
+- [x] Edit [`.htaccess`](../.htaccess) and enable the compression and file caching.
 
 Test the site with:
 

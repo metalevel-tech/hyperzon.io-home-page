@@ -4,43 +4,50 @@
 function hrefToClass(anchor) {
   return anchor.getAttribute("href").replace(/^\/|\/$/g, "");
 }
-
 /**
  * Detect does an element is visible
  * Ref: https://stackoverflow.com/a/125106/6543935
  * @param {*} node
  * @returns boolean
  */
+
+
 function isPartVisible(node) {
   let top = node.offsetTop;
   let left = node.offsetLeft;
   let width = node.offsetWidth;
   let height = node.offsetHeight;
+
   while (node.offsetParent) {
     node = node.offsetParent;
     top += node.offsetTop;
     left += node.offsetLeft;
   }
+
   return top < window.pageYOffset + window.innerHeight && left < window.pageXOffset + window.innerWidth && top + height > window.pageYOffset && left + width > window.pageXOffset;
 }
+
 function isFullyVisible(node, verticalAdjustment = 0) {
   let top = node.offsetTop;
   let left = node.offsetLeft;
   let width = node.offsetWidth;
   let height = node.offsetHeight;
+
   while (node.offsetParent) {
     node = node.offsetParent;
     top += node.offsetTop;
     left += node.offsetLeft;
   }
+
   return top >= window.pageYOffset && left >= window.pageXOffset && top + height <= window.pageYOffset + window.innerHeight + verticalAdjustment && left + width <= window.pageXOffset + window.innerWidth;
 }
-
 /**
  * Site header - Hero Counter - Hook "hero"
  *  @ Resources.php
  *  @ includes/Hero.php
  */
+
+
 function heroCounter() {
   $(".counter").each(function () {
     const counter = $(this);
@@ -56,16 +63,16 @@ function heroCounter() {
         counter.text(Math.floor(this.countNum));
       },
       complete: function () {
-        counter.text(this.countNum);
-        //alert("finished");
+        counter.text(this.countNum); //alert("finished");
       }
     });
   });
 }
-
 /**
  * Book a call button handler
  */
+
+
 function bookACallHandler() {
   document.querySelectorAll(".js-book-a-call").forEach(function (button) {
     // If has class "book-a-call--activated" then it's already activated
@@ -79,12 +86,12 @@ function bookACallHandler() {
     button.classList.add("book-a-call--activated");
   });
 }
-
 /**
  * Fix it and removes the PageSpeed Insight warning,
  * "Does not use passive listeners to improve scrolling performance" @jquery
  * Refs: https://stackoverflow.com/a/62177358/6543935
  */
+
 
 function jQueryRemovePassiveListeners() {
   jQuery.event.special.touchstart = {
@@ -116,10 +123,11 @@ function jQueryRemovePassiveListeners() {
     }
   };
 }
-
 /**
  * @ includes/Testimonials.php
  */
+
+
 function testimonialsSlider() {
   setTimeout(function () {
     try {
@@ -149,10 +157,11 @@ function testimonialsSlider() {
     } catch (error) {}
   }, 50);
 }
-
 /**
  * @ includes/BlogPostsLatest.php
  */
+
+
 function latestBlogPostsSlider() {
   setTimeout(function () {
     $(".latest-blog-posts__grid").slick({
@@ -206,4 +215,5 @@ function latestBlogPostsSlider() {
     });
   }, 50);
 }
+
 export { bookACallHandler, testimonialsSlider, latestBlogPostsSlider, hrefToClass, isPartVisible, isFullyVisible, jQueryRemovePassiveListeners, heroCounter };
