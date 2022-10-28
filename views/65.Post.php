@@ -4,7 +4,7 @@
 
             <div class="single-post-title-section">
                 <div class="single-post-cover-image">
-                    <img src="/public/blog/test-post/test_post_img_0_cover.webp" alt="Post cover image">
+                    <img src="/public/blog/test-post/test_post_img_0_cover.webp" alt="Post cover image" loading="eager" decoding="async" width="1015" height="571">
                 </div>
 
                 <h1 class="single-post-title">
@@ -22,14 +22,14 @@
                 </h2>
 
                 <p>
-                    If we need to summarize Bulk Operations with just a few words—it’s a way to manage and optimize your existing campaigns and create new ones at scale using spreadsheets. By using <a href="#">bulksheets</a>, you can make all kinds of changes to your campaigns, placements, keywords, and bids without the need to go through each campaign separately from the dashboard. As Amazon puts it, "Use spreadsheets to make large-scale updates to your Sponsored Products, Sponsored Brands, and Sponsored Display campaigns."
+                    If we need to summarize Bulk Operations with just a few words – it’s a way to manage and optimize your existing campaigns and create new ones at scale using spreadsheets. By using <a href="#">bulksheets</a>, you can make all kinds of changes to your campaigns, placements, keywords, and bids without the need to go through each campaign separately from the dashboard. As Amazon puts it, "Use spreadsheets to make large-scale updates to your Sponsored Products, Sponsored Brands, and Sponsored Display campaigns."
                 </p>
                 <p>
                     To access the <b>Amazon PPC Bulk Operations</b> options, you need to go to your Amazon Advertising Console (The updated name for the Campaign Manager), go to Sponsored ads in the sidebar, and click on Bulk operations.
                 </p>
-                <img src="/public/blog/test-post/test_post_img_1.webp" alt="Post image">
+                <img src="/public/blog/test-post/test_post_img_1.webp" alt="Post image" loading="lazy" decoding="async" width="328" height="303">
                 <p>
-                    <em><b>NOTE:</b> <b>"Bulksheet"</b> is Amazon’s terminology for a spreadsheet that contains your campaign’s data and gives you the possibility to make changes in bulk.</em>
+                    <em><b>NOTE:</b> <b>Bulksheet</b> is Amazon’s terminology for a spreadsheet that contains your campaign’s data and gives you the possibility to make changes in bulk.</em>
                 </p>
                 <h2>
                     How To Get Started With Bulk Operations And Download Your Bulksheet File?
@@ -37,7 +37,7 @@
                 <p>
                     To get started with Bulk Operations, you must create and download your custom spreadsheet. You need to select the date range for the performance metrics and click which ones you don’t need to be included. Once downloaded, the spreadsheet will contain three tabs – one tab for each different type of campaign – <b>Sponsored Products</b>, <b>Sponsored Brands</b>, and <b>Sponsored Display</b>, as each type has different columns.
                 </p>
-                <img src="/public/blog/test-post/test_post_img_2.webp" alt="Post image">
+                <img src="/public/blog/test-post/test_post_img_2.webp" alt="Post image" loading="lazy" decoding="async" width="664" height="265">
                 <p>
                     We recommend you keep the default metric options. But let’s break them down in case you want to exclude some of them:
                 </p>
@@ -98,7 +98,7 @@
                 <p>
                     For example, if you want to adjust only the campaign daily budgets, you can filter it by "Record Type" and select only "Campaign." That way, you will see only the rows with the top-level campaign data.
                 </p>
-                <img src="/public/blog/test-post/test_post_img_3.webp" alt="Post image">
+                <img src="/public/blog/test-post/test_post_img_3.webp" alt="Post image" loading="lazy" decoding="async" width="664" height="174">
                 <p>
                     Or, if you want to adjust the different placements, you can filter it by "Record Type" and select both Campaign and Campaign By Placement.
                 </p>
@@ -152,7 +152,7 @@
                 <p>
                     You can see the <b>Sponsored Products</b> required fields in the hierarchy tree below.
                 </p>
-                <img src="/public/blog/test-post/test_post_img_4.webp" alt="Post image">
+                <img src="/public/blog/test-post/test_post_img_4.webp" alt="Post image" loading="lazy" decoding="async" width="860" height="400">
                 <p>
                     Or, if you want to adjust the different placements, you can filter it by "Record Type" and select both "Campaign" and "Campaign By Placement".
                 </p>
@@ -164,13 +164,31 @@
                 </a>
             </div>
 
+            <div class="single-post-author-section">
+                <div class="author-section-grid">
+                    <div class="about-photo">
+                        <img src="/public/blog/authors/author_radoslav-mazganov.webp" alt="Author photo decorated" loading="lazy" decoding="async" width="320" height="320">
+                    </div>
+                    <div class="about-title">
+                        <h3>
+                            About the author
+                        </h3>
+                    </div>
+                    <div class="about-text">
+                        <p>
+                            <b>Radoslav Mazganov</b> is the CIO at <a href="#">Hyperzon</a> and a PPC & Analytics Specialist with over ten years of experience in Amazon marketing. He has high expertise in PPC, Analytics data analysis, and implementation of new business strategies for Amazon sellers. Being extremely collaborative, he always does his best to contribute to the client’s goals fully!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
             <div class="single-post-footer-section">
                 <h1 class="latest-blog-posts-title">
                     Latest blog posts
                 </h1>
 
                 <div id="blog-section">
-                    <div class="blog-grid" data-default-post-width="324" data-default-post-height="378">
+                    <div class="blog-grid blog-grid-3-3-2-1" data-default-post-width="324" data-default-post-height="378">
                         <div class="blog-post-wrapper">
                             <div class="blog-post-scalable" data-width="324" data-height="378">
                                 <div class="blog-post-canvas"></div>

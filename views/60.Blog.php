@@ -31,7 +31,7 @@
                     </div>
                 </div>
 
-                <div class="blog-grid" data-default-post-width="324" data-default-post-height="378">
+                <div class="blog-grid blog-grid-3-2-1-1" data-default-post-width="324" data-default-post-height="378">
                     <div class="blog-post-wrapper">
                         <div class="blog-post-scalable" data-width="324" data-height="378">
                             <div class="blog-post-canvas"></div>
