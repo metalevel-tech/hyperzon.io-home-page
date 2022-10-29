@@ -10,6 +10,8 @@ const nodes = {
     galleryButtonBack: document.getElementById("gallery-preview-overlay").querySelector(".gallery-preview-back")
 };
 
+const isSafari = window.safari !== undefined;
+
 // Gallery accumulator class, used by the gallery handlers below
 // The following functions could be methods of this class
 class galleryUrlArray {
@@ -42,7 +44,9 @@ function galleryOverlayClear() {
     });
     nodes.galleryButtonBack.removeEventListener("click", changeVideo);
     nodes.galleryButtonNext.removeEventListener("click", changeVideo);
-    window.removeEventListener("resize", setHeight_16_9);
+    window.removeEventListener("resize", calcHeightOnDeviceTilt);
+    window.removeEventListener("orientationChange", calcHeightOnDeviceTilt);
+    // document.removeEventListener("scroll", calcHeightOnDeviceTilt);
 
     // Clear images
     nodes.galleryOverlay.querySelectorAll("img").forEach(function (image) {
@@ -108,7 +112,12 @@ function overlaySetUp_Image(image, currentGallery) {
     imagePreview.setAttribute("class", "image-preview");
     imagePreview.setAttribute("src", currentGallery.current);
 
-    // imageContainer.appendChild(imagePreview);
+    if (isSafari) {
+        imagePreview.classList.add("browser-safari");
+    } else {
+        imagePreview.classList.add("browser-not-safari");
+    }
+
     nodes.galleryContent.appendChild(imagePreview);
 }
 
@@ -130,23 +139,50 @@ function overlaySetUp_Video(video, currentGallery) {
     videoPlayer.setAttribute("src", currentGallery.current);
 
     videoPlayer.onended = (e) => {
-        // playNext(currentGallery)
         changeVideo(currentGallery, true);
     };
-
+    
+    if (isSafari) {
+        videoPlayer.classList.add("browser-safari");
+    } else {
+        videoPlayer.classList.add("browser-not-safari");
+    }
+    
     nodes.galleryContent.appendChild(videoPlayer);
-
+    
     setTimeout(function () {
-        setHeight_16_9(videoPlayer);
+        calcHeightOnDeviceTilt(videoPlayer);
     }, 100);
-    window.addEventListener("resize", setHeight_16_9.bind(this, videoPlayer));
+    window.addEventListener("resize", calcHeightOnDeviceTilt.bind(this, videoPlayer));
+    window.addEventListener("orientationChange", calcHeightOnDeviceTilt.bind(this, videoPlayer));
+    // document.addEventListener("scroll", calcHeightOnDeviceTilt.bind(this, videoPlayer));
 }
 
 // Function to automatically set video height, based on width * 9/16 @Scale/Transform
+// This function is not longer used, because the ratio is set in CSS...
+// It was triggered in the same way as the function calcHeightOnDeviceTilt() below.
 function setHeight_16_9(node) {
-    if (!node) return false;
+    if (!node) return false; // `+ n` px to compensate the border width
     node.style.height = `${Math.floor((node.offsetWidth * 9 / 16) + 2)}px`;
-    // `+ n` px to compensate the border width
+}
+
+function calcHeightOnDeviceTilt(node) {
+    if (!node) return false;
+   
+    // Wait a while for styles to be applied
+    setTimeout(function () {
+        const minHeight = window.innerHeight - 90;
+    
+        if (minHeight <= node.offsetHeight) {
+            node.style.height = `${Math.floor(minHeight + 2)}px`;
+            node.style.width = `${Math.floor(minHeight * 16 / 9)}px`;
+        } else {
+            setTimeout(() => {
+                node.style.height = "";
+                node.style.width = "";
+            }, 200);
+        }
+    }, 100);
 }
 
 /**
@@ -217,16 +253,25 @@ function videoGalleryHandler() {
 
         // Process each video in the gallery
         videoItemsList.forEach((video) => {
-            video.addEventListener("mouseenter", function () {
-                try {
-                    video.play();
-                } catch (error) { console.log(error) }
+            video.addEventListener("loadeddata", () => {
+                if (video.loaded) return;
+                video.loaded = true;
+                if (video.loaded && video.paused) video.play();
             });
 
-            video.addEventListener("mouseleave", function () {
-                try {
-                    video.pause();
-                } catch (error) { console.log(error) }
+            video.addEventListener("mouseenter", () => {
+                // try {
+                    if (video.loaded && video.paused) video.play();
+                    else video.load();
+                // } catch (error) { console.log(error) }
+            });
+
+            video.addEventListener("mouseleave", () => {
+                // try {
+                    setTimeout(() => {
+                        if (video.loaded && ! video.paused) video.pause();
+                    }, 500);
+                // } catch (error) { console.log(error) }
             });
 
             video.addEventListener("click", (e) => {

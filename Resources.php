@@ -20,9 +20,9 @@
 // );
 
 # Generate random number and invalidate some resources from here
-$random = rand(1, 10000);
-$version = $random;
-// $version = 1111;
+// $random = rand(1, 10000);
+// $version = $random;
+$version = 220;
 
 ResourceLoader::add( # Favicon.ico
     "head",

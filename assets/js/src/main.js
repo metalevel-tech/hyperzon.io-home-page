@@ -21,14 +21,14 @@ import {
 } from "./module_helpers.js";
 
 /**
- * This is the AJAX script for the main menu.
+ * This is the Single page application (SPA) script for the main menu.
  * It replaces the content of <div id="body-content">,
  * without page reload.
  */
 const nodes = {
     content: document.getElementById("body-content"),
     mainMenu: document.getElementById("main-menu"),
-    menuItems: document.querySelectorAll("a.main-menu-item"),
+    menuItems: document.querySelectorAll("a.main-menu-item:not(.spa-handled)"),
     mobileMenuButton: document.querySelector("#mobile-menu-button .button-3x")
 };
 
@@ -132,8 +132,7 @@ const changeMenuElementFunctionality = async (e) => {
             }
         });
 
-        // Run the sliders scripts,
-        // see the function definitions below
+        // Evaluate the new page content
         interfaceSetUp(1);
 
         // Change the URI
@@ -165,7 +164,6 @@ const bodyClasses = [];
 
 // Set the main menu functionality
 nodes.menuItems.forEach(item => {
-    // console.log(item);
     bodyClasses.push(hrefToClass(item));
     item.addEventListener("click", changeMenuElementFunctionality);
 });

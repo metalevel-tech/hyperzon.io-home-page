@@ -708,77 +708,66 @@ body {
     width: 100%;
     max-width: 100%;
     height: calc(100vh - 72px);
+    max-height: calc(100vh - 72px);
+
+    overflow-y: auto;
 
     display: flex;
     align-items: center;
     justify-content: center;
     align-content: center;
 
-    // > video.video-preview:not(:fullscreen) {
     video.video-preview {
-      max-width: 980px;
-      // max-height: 100%;
-      // width: 85vw;
-      width: 85%;
-      height: auto !important;
-      aspect-ratio: (16 / 9);
+      background-color: white;
+      box-sizing: content-box;
+      object-fit: cover;
       border-radius: 1.4em;
-      border: 2px solid white;
-      transform: scale(1.03);
-      -webkit-transform: scale(1.03);
-      -moz-transform: scale(1.03);
-      -ms-transform: scale(1.03);
-      -o-transform: scale(1.03);
 
-      @media @desktop {
-        width: 90%;
-        height: auto !important;
-      }
-
-      @media @phone {
-        width: 95% !important;
-        height: auto;
-      }
-
-      // -webkit-transition: all .1s ease-in-out;
-      // -moz-transition: all .1s ease-in-out;
-      // transition: all .1s ease-in-out;
-
-      // &.static {
-      //   border-color: transparent;
-
-      //   -webkit-transition: all .1s ease-in-out;
-      //   -moz-transition: all .1s ease-in-out;
-      //   transition: all .1s ease-in-out;
-      // }
+      aspect-ratio: (1920 / 1080);
+      max-width: 980px;
+      max-height: calc(984px * 1080 / 1920);
+      width: 95vw;
+      height: calc(95vw * 1080 / 1920);
     }
 
-    // > img.image-preview {
-    img.image-preview {
-      max-width: 95vw;
-      max-height: 96%;
-      margin-top: 3%;
+    video.video-preview.browser-safari:not(:-webkit-full-screen) {
+      border: 3px solid white;
+    }
 
-      border-radius: 1.4em;
+    video.video-preview.browser-not-safari:not(:fullscreen) {
       border: 2px solid white;
+      
+      border-width: 2px;
+      outline-offset: -3px;
+      outline: 3px solid white;
+    }
+
+    img.image-preview {
+      border-radius: 1.4em;
+      border: 3px solid white;
+      background-color: white;
+
+      max-width: 95vw;
+      max-height: 95%;
+      margin-top: 2%;
 
       -webkit-transition: all 0.2s ease-in-out;
       -moz-transition: all 0.2s ease-in-out;
       transition: all 0.2s ease-in-out;
 
-      transform: scale(1.015);
-      -webkit-transform: scale(1.015);
-      -moz-transform: scale(1.015);
-      -ms-transform: scale(1.015);
-      -o-transform: scale(1.015);
+      transform: scale(0.99);
+      -webkit-transform: scale(0.99);
+      -moz-transform: scale(0.99);
+      -ms-transform: scale(0.99);
+      -o-transform: scale(0.99);
       opacity: 1;
 
       &.static {
-        transform: scale(1);
-        -webkit-transform: scale(1);
-        -moz-transform: scale(1);
-        -ms-transform: scale(1);
-        -o-transform: scale(1);
+        transform: scale(0.95);
+        -webkit-transform: scale(0.95);
+        -moz-transform: scale(0.95);
+        -ms-transform: scale(0.95);
+        -o-transform: scale(0.95);
         border-color: transparent;
         // filter: blur(.4em);
 
@@ -1229,7 +1218,8 @@ body {
 
     background: rgba(14, 42, 85, 0.8);
 
-    body.hyperzon-blog & {
+    body.hyperzon-blog &,
+    body.blog-post & {
       background: rgba(50, 37, 96, 0.8);
     }
 

@@ -44,7 +44,7 @@ function galleryOverlayClear() {
   });
   nodes.galleryButtonBack.removeEventListener("click", changeVideo);
   nodes.galleryButtonNext.removeEventListener("click", changeVideo);
-  window.removeEventListener("resize", setHeight_16_9);
+  // window.removeEventListener("resize", setHeight_16_9);
 
   // Clear images
   nodes.galleryOverlay.querySelectorAll("img").forEach(function (image) {
@@ -128,10 +128,11 @@ function overlaySetUp_Video(video, currentGallery) {
     changeVideo(currentGallery, true);
   };
   nodes.galleryContent.appendChild(videoPlayer);
-  setTimeout(function () {
-    setHeight_16_9(videoPlayer);
-  }, 100);
-  window.addEventListener("resize", setHeight_16_9.bind(this, videoPlayer));
+
+  // setTimeout(function () {
+  //     setHeight_16_9(videoPlayer);
+  // }, 100);
+  // window.addEventListener("resize", setHeight_16_9.bind(this, videoPlayer));
 }
 
 // Function to automatically set video height, based on width * 9/16 @Scale/Transform
@@ -198,20 +199,25 @@ function videoGalleryHandler() {
 
     // Process each video in the gallery
     videoItemsList.forEach(video => {
-      video.addEventListener("mouseenter", function () {
-        try {
-          video.play();
-        } catch (error) {
-          console.log(error);
-        }
+      video.addEventListener("loadeddata", () => {
+        if (video.loaded) return;
+        video.loaded = true;
+        if (video.loaded && video.paused) video.play();
       });
-      video.addEventListener("mouseleave", function () {
-        try {
-          video.pause();
-        } catch (error) {
-          console.log(error);
-        }
+      video.addEventListener("mouseenter", () => {
+        // try {
+        if (video.loaded && video.paused) video.play();else video.load();
+        // } catch (error) { console.log(error) }
       });
+
+      video.addEventListener("mouseleave", () => {
+        // try {
+        setTimeout(() => {
+          if (video.loaded && !video.paused) video.pause();
+        }, 500);
+        // } catch (error) { console.log(error) }
+      });
+
       video.addEventListener("click", e => {
         e.preventDefault();
         galleryOverlayClear();

@@ -36,7 +36,7 @@ ResourceLoader::add( # Favicon.ico
 
 ResourceLoader::add( # Normalize.css
     "head",
-    "/assets/css/dist/normalize.min.css?v=$version",
+    "/assets/css/src/normalize.css?v=$version",
     "default",
     "rel=\"stylesheet\"",
     true,
@@ -46,7 +46,7 @@ ResourceLoader::add( # Normalize.css
 
 ResourceLoader::add( # Normalize-after.js
     "head",
-    "/assets/js/dist/normalize-after.min.js?v=$version",
+    "/assets/js/src/normalize-after.js?v=$version",
     "default",
     "default",
     true,
@@ -56,7 +56,7 @@ ResourceLoader::add( # Normalize-after.js
 
 ResourceLoader::add( # Normalize-after.css
     "head",
-    "/assets/css/dist/normalize-after.min.css?v=$version",
+    "/assets/css/src/normalize-after.css?v=$version",
     "default",
     "rel=\"stylesheet\"",
     true,

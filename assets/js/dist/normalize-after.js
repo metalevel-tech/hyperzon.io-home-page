@@ -13,11 +13,13 @@
   function calculateHWUnits() {
     let vh = window.innerHeight * 0.01;
     let vw = window.innerWidth * 0.01;
+    let vmin = Math.min(vh, vw);
     vh = parseFloat(vh).toFixed(2);
     vw = parseFloat(vw).toFixed(2);
+    vmin = parseFloat(vmin).toFixed(2);
     document.documentElement.style.setProperty("--mlt-vh", `${vh}px`);
     document.documentElement.style.setProperty("--mlt-vw", `${vw}px`);
-    document.documentElement.style.setProperty("--mlt-vmin", `${vh > vw ? vw : vh}px`);
+    document.documentElement.style.setProperty("--mlt-vmin", `${vmin}px`);
   }
   calculateHWUnits();
   window.addEventListener("resize", calculateHWUnits);
