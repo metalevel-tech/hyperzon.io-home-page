@@ -42,8 +42,8 @@ function galleryOverlayClear() {
             video.remove();
         } catch (error) { console.log(error) }
     });
-    nodes.galleryButtonBack.removeEventListener("click", changeVideo);
-    nodes.galleryButtonNext.removeEventListener("click", changeVideo);
+    nodes.galleryButtonBack.removeEventListener("click", galleryChange_Video);
+    nodes.galleryButtonNext.removeEventListener("click", galleryChange_Video);
     window.removeEventListener("resize", calcHeightOnDeviceTilt);
     window.removeEventListener("orientationChange", calcHeightOnDeviceTilt);
     // document.removeEventListener("scroll", calcHeightOnDeviceTilt);
@@ -55,8 +55,8 @@ function galleryOverlayClear() {
             image.remove();
         } catch (error) { console.log(error) }
     });
-    nodes.galleryButtonBack.removeEventListener("click", changeImage);
-    nodes.galleryButtonNext.removeEventListener("click", changeImage);
+    nodes.galleryButtonBack.removeEventListener("click", galleryChange_Image);
+    nodes.galleryButtonNext.removeEventListener("click", galleryChange_Image);
 
     // Clear additional classes from DOM
     document.body.classList.remove("no-scroll");
@@ -67,7 +67,7 @@ function galleryOverlayClear() {
 }
 
 // Function to change the image within the gallery overlay
-function changeImage(currentGallery, forward = true) {
+function galleryChange_Image(currentGallery, forward = true) {
     const imagePreview = nodes.galleryContent.querySelector("img.image-preview");
     if (!imagePreview) return false;
 
@@ -88,7 +88,7 @@ function changeImage(currentGallery, forward = true) {
 }
 
 // Function to change the video within the gallery overlay
-function changeVideo(currentGallery, forward = true) {
+function galleryChange_Video(currentGallery, forward = true) {
     const videoPlayer = nodes.galleryContent.querySelector("video.video-preview");
     if (!videoPlayer) return false;
 
@@ -101,12 +101,33 @@ function changeVideo(currentGallery, forward = true) {
     videoPlayer.src = newVideo;
 }
 
+// Function to activate the overlay
+function overlayActivate() {
+    document.body.classList.add("no-scroll");
+    nodes.galleryOverlay.classList.add("active");
+
+    setTimeout(function () {
+        nodes.galleryButtonClose.classList.add("active");
+        nodes.galleryButtonNext.classList.add("active");
+        nodes.galleryButtonBack.classList.add("active");
+    }, 100);
+}
+
 // Function to open the gallery overlay and prepare for image preview
-function overlaySetUp_Image(image, currentGallery) {
+function galleryOverlayCreate_Image(image, currentGallery) {
     galleryOverlayClear();
 
-    // actually this is the anchor <a> that holds link to the HQ image
-    currentGallery.current = image.href;
+    if (image.nodeName === "IMG") {
+        // The case when the HQ image is already loaded on the page,
+        // as it is the case with the blog post pages
+        currentGallery.current = image.src;
+    } else if (image.nodeName === "A") {
+        // The case when the image is wrapped by anchor
+        // <a> that holds link to the HQ image
+        currentGallery.current = image.href;
+    } else {
+        return false;
+    }
 
     const imagePreview = document.createElement("img");
     imagePreview.setAttribute("class", "image-preview");
@@ -119,10 +140,15 @@ function overlaySetUp_Image(image, currentGallery) {
     }
 
     nodes.galleryContent.appendChild(imagePreview);
+
+    overlayActivate();
+
+    nodes.galleryButtonNext.addEventListener("click", galleryChange_Image.bind(this, currentGallery, true));
+    nodes.galleryButtonBack.addEventListener("click", galleryChange_Image.bind(this, currentGallery, false));
 }
 
 // Function to open the gallery overlay and prepare for video preview
-function overlaySetUp_Video(video, currentGallery) {
+function galleryOverlayCreate_Video(video, currentGallery) {
     galleryOverlayClear();
 
     currentGallery.current = video.querySelector("source").src;
@@ -139,23 +165,27 @@ function overlaySetUp_Video(video, currentGallery) {
     videoPlayer.setAttribute("src", currentGallery.current);
 
     videoPlayer.onended = (e) => {
-        changeVideo(currentGallery, true);
+        galleryChange_Video(currentGallery, true);
     };
-    
+
     if (isSafari) {
         videoPlayer.classList.add("browser-safari");
     } else {
         videoPlayer.classList.add("browser-not-safari");
     }
-    
+
     nodes.galleryContent.appendChild(videoPlayer);
-    
+
     setTimeout(function () {
         calcHeightOnDeviceTilt(videoPlayer);
     }, 100);
     window.addEventListener("resize", calcHeightOnDeviceTilt.bind(this, videoPlayer));
     window.addEventListener("orientationChange", calcHeightOnDeviceTilt.bind(this, videoPlayer));
-    // document.addEventListener("scroll", calcHeightOnDeviceTilt.bind(this, videoPlayer));
+
+    overlayActivate();
+
+    nodes.galleryButtonNext.addEventListener("click", galleryChange_Video.bind(this, currentGallery, true));
+    nodes.galleryButtonBack.addEventListener("click", galleryChange_Video.bind(this, currentGallery, false));
 }
 
 // Function to automatically set video height, based on width * 9/16 @Scale/Transform
@@ -168,11 +198,11 @@ function setHeight_16_9(node) {
 
 function calcHeightOnDeviceTilt(node) {
     if (!node) return false;
-   
+
     // Wait a while for styles to be applied
     setTimeout(function () {
         const minHeight = window.innerHeight - 90;
-    
+
         if (minHeight <= node.offsetHeight) {
             node.style.height = `${Math.floor(minHeight + 2)}px`;
             node.style.width = `${Math.floor(minHeight * 16 / 9)}px`;
@@ -189,7 +219,7 @@ function calcHeightOnDeviceTilt(node) {
  * Image (Photo) Gallery handler
  * Little bit ugly solution but it works for now.
  */
-function imageGalleryHandler() {
+function galleryHandler_Images() {
     const imageGalleriesOnAPage = document.querySelectorAll(".image-gallery");
     if (!imageGalleriesOnAPage.length) return;
 
@@ -200,10 +230,8 @@ function imageGalleryHandler() {
             imageItemsList.map(item => item.href)
         );
 
-        // Close the gallery Button functionality
-        nodes.galleryButtonClose.addEventListener("click", function (e) {
-            galleryOverlayClear();
-        });
+        // Close gallery Button functionality
+        nodes.galleryButtonClose.addEventListener("click", galleryOverlayClear);
 
         // Process each image in the gallery
         imageItemsList.forEach((image) => {
@@ -212,20 +240,38 @@ function imageGalleryHandler() {
                 galleryOverlayClear();
 
                 const image = e.target;
-                overlaySetUp_Image(image.closest(".image-item"), currentGallery);
-
-                document.body.classList.add("no-scroll");
-                nodes.galleryOverlay.classList.add("active");
-
-                setTimeout(function () {
-                    nodes.galleryButtonClose.classList.add("active");
-                    nodes.galleryButtonNext.classList.add("active");
-                    nodes.galleryButtonBack.classList.add("active");
-                }, 100);
-
-                nodes.galleryButtonNext.addEventListener("click", changeImage.bind(this, currentGallery, true));
-                nodes.galleryButtonBack.addEventListener("click", changeImage.bind(this, currentGallery, false));
+                galleryOverlayCreate_Image(image.closest(".image-item"), currentGallery);
             });
+        });
+    });
+}
+
+/**
+ * Image (Photo) Blog Post page as Gallery handler
+ * Little bit ugly solution but it works for now.
+ */
+function galleryHandler_PostPageImgs() {
+    const postPageAsImageGallery = [...document.querySelectorAll(".single-post-content-section img")];
+    if (!postPageAsImageGallery.length) return;
+
+    const currentGallery = new galleryUrlArray(
+        false,
+        postPageAsImageGallery.map(item => item.src)
+    );
+
+    // Close gallery Button functionality
+    nodes.galleryButtonClose.addEventListener("click", galleryOverlayClear);
+
+    // Process each image in the gallery
+    postPageAsImageGallery.forEach((image) => {
+        image.style.cursor = "pointer";
+
+        image.addEventListener("click", (e) => {
+            e.preventDefault();
+            galleryOverlayClear();
+
+            const image = e.target;
+            galleryOverlayCreate_Image(image, currentGallery);
         });
     });
 }
@@ -234,7 +280,7 @@ function imageGalleryHandler() {
  * Video Gallery handler
  * Little bit ugly solution but it works for now.
  */
-function videoGalleryHandler() {
+function galleryHandler_Videos() {
     const videoGalleriesOnAPage = document.querySelectorAll(".video-gallery");
     if (!videoGalleriesOnAPage.length) return;
 
@@ -246,10 +292,8 @@ function videoGalleryHandler() {
             videoItemsList.map(item => item.querySelector("source").src)
         );
 
-        // Close the gallery Button functionality
-        nodes.galleryButtonClose.addEventListener("click", function (e) {
-            galleryOverlayClear();
-        });
+        // Close gallery Button functionality
+        nodes.galleryButtonClose.addEventListener("click", galleryOverlayClear);
 
         // Process each video in the gallery
         videoItemsList.forEach((video) => {
@@ -260,18 +304,14 @@ function videoGalleryHandler() {
             });
 
             video.addEventListener("mouseenter", () => {
-                // try {
-                    if (video.loaded && video.paused) video.play();
-                    else video.load();
-                // } catch (error) { console.log(error) }
+                if (video.loaded && video.paused) video.play();
+                else video.load();
             });
 
             video.addEventListener("mouseleave", () => {
-                // try {
-                    setTimeout(() => {
-                        if (video.loaded && ! video.paused) video.pause();
-                    }, 500);
-                // } catch (error) { console.log(error) }
+                setTimeout(() => {
+                    if (video.loaded && !video.paused) video.pause();
+                }, 500);
             });
 
             video.addEventListener("click", (e) => {
@@ -279,22 +319,14 @@ function videoGalleryHandler() {
                 galleryOverlayClear();
 
                 const video = e.target;
-                overlaySetUp_Video(video, currentGallery);
-
-                document.body.classList.add("no-scroll");
-                nodes.galleryOverlay.classList.add("active");
-
-                setTimeout(function () {
-                    nodes.galleryButtonClose.classList.add("active");
-                    nodes.galleryButtonNext.classList.add("active");
-                    nodes.galleryButtonBack.classList.add("active");
-                }, 100);
-
-                nodes.galleryButtonNext.addEventListener("click", changeVideo.bind(this, currentGallery, true));
-                nodes.galleryButtonBack.addEventListener("click", changeVideo.bind(this, currentGallery, false));
+                galleryOverlayCreate_Video(video, currentGallery);
             });
         });
     });
 }
 
-export { imageGalleryHandler, videoGalleryHandler };
+export {
+    galleryHandler_Images,
+    galleryHandler_PostPageImgs,
+    galleryHandler_Videos
+};

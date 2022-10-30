@@ -7,8 +7,9 @@ import {
 } from "./module_videoEmbed.js";
 
 import {
-    imageGalleryHandler,
-    videoGalleryHandler
+    galleryHandler_Images,
+    galleryHandler_PostPageImgs,
+    galleryHandler_Videos
 } from "./module_gallery.js";
 
 import {
@@ -95,8 +96,9 @@ function interfaceSetUp(callFrom = 0) {
     testimonialsSlider();
     latestBlogPostsSlider();
     vimeoLoader();
-    videoGalleryHandler();
-    imageGalleryHandler();
+    galleryHandler_Videos();
+    galleryHandler_Images();
+    galleryHandler_PostPageImgs();
     mobileMenuClose();
     blogInit();
     bookACallHandler();
@@ -125,7 +127,11 @@ const addSpaFuncToNavNode = async (e) => {
     if (scrollFromTop > 480) {
         nodes.content.scrollIntoView(true, { behavior: "auto" });
         // Ugly compensation of the main menu height
-        window.scrollBy(0, -66);
+        if (window.innerWidth <= 480) {
+            window.scrollBy(0, -54);
+        } else {
+            window.scrollBy(0, -64);
+        }
     } else {
         window.scrollTo({ top: 0 });
     }
@@ -161,7 +167,7 @@ const addSpaFuncToNavNode = async (e) => {
         });
 
         // Evaluate the new page content
-        interfaceSetUp(1);
+        setTimeout(() => { interfaceSetUp(1); }, 100);
 
         // Change the URI
         window.history.pushState({
@@ -178,7 +184,9 @@ const addSpaFuncToNavNode = async (e) => {
                 nodes.mainMenu.innerHTML = e.state.mainMenu;
                 document.title = e.state.pageTitle;
                 document.body.className = e.state.bodyClassList;
-                interfaceSetUp(2);
+                
+                // Evaluate the page content restored from the history
+                setTimeout(() => { interfaceSetUp(1); }, 100);
             }
         };
     }
