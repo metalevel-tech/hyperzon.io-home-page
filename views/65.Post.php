@@ -176,7 +176,7 @@
                     </div>
                     <div class="about-text">
                         <p>
-                            <b>Radoslav Mazganov</b> is the CIO at <a href="#">Hyperzon</a> and a PPC & Analytics Specialist with over ten years of experience in Amazon marketing. He has high expertise in PPC, Analytics data analysis, and implementation of new business strategies for Amazon sellers. Being extremely collaborative, he always does his best to contribute to the client’s goals fully!
+                            <b>Radoslav Mazganov</b> is the CIO at <a class="<?php Menu::getClassesById(0) ?>" href="<?php Menu::getUriById(0) ?>" area-label="<?php Menu::getLabelMobileById(0) ?>">Hyperzon</a> and a PPC & Analytics Specialist with over ten years of experience in Amazon marketing. He has high expertise in PPC, Analytics data analysis, and implementation of new business strategies for Amazon sellers. Being extremely collaborative, he always does his best to contribute to the client’s goals fully!
                         </p>
                     </div>
                 </div>

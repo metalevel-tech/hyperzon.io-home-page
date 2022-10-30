@@ -12,8 +12,8 @@ import {
 } from "./module_gallery.js";
 
 import {
-    bookACallHandler, 
-    testimonialsSlider, 
+    bookACallHandler,
+    testimonialsSlider,
     latestBlogPostsSlider,
     hrefToClass,
     jQueryRemovePassiveListeners,
@@ -28,11 +28,14 @@ import {
 const nodes = {
     content: document.getElementById("body-content"),
     mainMenu: document.getElementById("main-menu"),
-    menuItems: document.querySelectorAll("a.main-menu-item:not(.spa-handled)"),
+    menuItems: document.querySelectorAll("a.spa-menu-item:not(.spa-handled)"),
     mobileMenuButton: document.querySelector("#mobile-menu-button .button-3x")
 };
 
-// Add class .white{position:sticky;} to the main menu when the page is scrolled.
+// Array of the possible body classes, that will be filed by the
+const bodyClasses = [];
+
+// Add class .sticky {position:fixed} to the main menu when the page is scrolled.
 // Within this condition we should create back to top button to pop up.
 function addStickyClass() {
     if (window.pageYOffset >= 56 && !nodes.mainMenu.classList.contains("sticky")) {
@@ -65,6 +68,26 @@ nodes.mobileMenuButton.addEventListener("click", function (e) {
     }
 });
 
+// Set the main menu functionality
+function addSpaFuncToTheMenus() {
+    nodes.menuItems.forEach(item => {
+        bodyClasses.push(hrefToClass(item));
+
+        item.classList.add("spa-handled");
+        item.addEventListener("click", addSpaFuncToNavNode);
+    });
+}
+
+// Scan the current page <div id="body-content"> for items like <a class="spa-menu-item">
+// !!! Probably it is better to query all internal links, and add the SPA functionality to them.
+function addSpaFuncToPageContent() {
+    const spaMenuItems = nodes.content.querySelectorAll("#body-content a.spa-menu-item:not(.spa-handled)");
+    spaMenuItems.forEach(item => {
+        item.classList.add("spa-handled");
+        item.addEventListener("click", addSpaFuncToNavNode);
+    });
+}
+
 // These functions are executed at 
 // each interaction with the main menu,
 // and at the page load.
@@ -77,12 +100,13 @@ function interfaceSetUp(callFrom = 0) {
     mobileMenuClose();
     blogInit();
     bookACallHandler();
+    addSpaFuncToPageContent();
 
     // console.log(callFrom);
 }
 
-// Process single menu element
-const changeMenuElementFunctionality = async (e) => {
+// Process single menu element (this is the main function)
+const addSpaFuncToNavNode = async (e) => {
     e.preventDefault();
 
     // const item = e.currentTarget.parentNode.querySelector("a");
@@ -95,9 +119,13 @@ const changeMenuElementFunctionality = async (e) => {
 
     // Scroll to the beginning of the view or to the top of the page
     // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
+    // Ugly compensation of the main menu height
+    // https://stackoverflow.com/questions/24665602/scrollintoview-scrolls-just-too-far
     const scrollFromTop = document.body.scrollTop || document.documentElement.scrollTop;
     if (scrollFromTop > 480) {
-        nodes.content.scrollIntoView({ behavior: "auto" });
+        nodes.content.scrollIntoView(true, { behavior: "auto" });
+        // Ugly compensation of the main menu height
+        window.scrollBy(0, -66);
     } else {
         window.scrollTo({ top: 0 });
     }
@@ -159,17 +187,11 @@ const changeMenuElementFunctionality = async (e) => {
     }
 }
 
-// Array of the possible body classes, that will be filed by the
-const bodyClasses = [];
-
-// Set the main menu functionality
-nodes.menuItems.forEach(item => {
-    bodyClasses.push(hrefToClass(item));
-    item.addEventListener("click", changeMenuElementFunctionality);
-});
-
 // Trigger the initial page state
 window.addEventListener("load", function () {
+    // Set the main menu functionality
+    addSpaFuncToTheMenus();
+
     // Handle the case when URI is "/" or "index.php"
     setTimeout(function () {
         const bodyClasses = [...document.body.classList];
@@ -178,7 +200,7 @@ window.addEventListener("load", function () {
             // Set the "home" class to the body
             document.body.classList.replace("index.php", "home");
             // Set the "home" menu item to the active state
-            document.querySelector(".main-menu__logo a.main-menu-item").classList.add("selected-item");
+            document.querySelector(".main-menu__logo a.spa-menu-item").classList.add("selected-item");
             // Change the URI
             window.history.pushState("", "", "home");
             // detect the back/forward button navigation
@@ -194,7 +216,7 @@ window.addEventListener("load", function () {
     interfaceSetUp(3);
     addStickyClass();
     heroCounter();
-    
+
     window.addEventListener("scroll", function () {
         addStickyClass();
     });

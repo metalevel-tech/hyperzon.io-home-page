@@ -371,7 +371,7 @@ body {
     /**
       * Logo hover and select underline: currently disabled
       *
-    a.main-menu-item::before {
+    a.spa-menu-item::before {
       content: "";
       position: absolute;
       height: 2px;
@@ -394,13 +394,13 @@ body {
       }
     }
 
-    a.main-menu-item:hover:before {
+    a.spa-menu-item:hover:before {
       transform-origin: left;
       transform: scaleX(1);
     }
 
     For the mobile view see the workaround after this block
-    a.main-menu-item.selected-item:after {
+    a.spa-menu-item.selected-item:after {
       content: "";
       position: absolute;
       height: 2px;
@@ -470,7 +470,7 @@ body {
         padding: 0;
         min-width: 80%;
 
-        > a.main-menu-item {
+        > a.spa-menu-item {
           .color-blue;
 
           display: inline-block;
@@ -885,8 +885,8 @@ body {
   align-items: center;
   justify-content: center;
 
-  .main-menu__logo a.main-menu-item:before,
-  .main-menu__logo a.main-menu-item.selected-item:after {
+  .main-menu__logo a.spa-menu-item:before,
+  .main-menu__logo a.spa-menu-item.selected-item:after {
     height: 3px;
     border-radius: 4px;
     background-color: #122540;

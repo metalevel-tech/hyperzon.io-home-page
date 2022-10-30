@@ -6,20 +6,28 @@
             </div>
 
             <div class="footer__content">
-                <div>
-                    <a href="<?php Menu::getUriById(1) ?>" area-label="<?php Menu::getLabelMobileById(1) ?>"><?php Menu::getLabelMobileById(1) ?></a>
-                </div>
-                <div>
-                    <a href="<?php Menu::getUriById(2) ?>" area-label="<?php Menu::getLabelMobileById(2) ?>"><?php Menu::getLabelMobileById(2) ?></a>
-                </div>
-                <div>
-                    <a href="<?php Menu::getUriById(3) ?>" area-label="<?php Menu::getLabelMobileById(3) ?>"><?php Menu::getLabelMobileById(3) ?></a>
-                </div>
-                <div>
-                    <a href="<?php Menu::getUriById(4) ?>" area-label="<?php Menu::getLabelMobileById(4) ?>"><?php Menu::getLabelMobileById(4) ?></a>
-                </div>
+                <?php
+                $menu_items = Menu::getItems();
 
-                <div><a href="#" onclick="return false;">Walmart Marketing</a></div>
+                foreach ($menu_items as $item) {
+                    if ($item["item_id"] != 0 && in_array("service-item", $item["class_list"])) {
+                        printf(
+                            '<div class="footer__content-menu__item">
+                                <a href="%s" class="%s" aria-label="%s">
+                                    <span class="label-footer">%s</span>
+                                </a>
+                            </div>',
+                            $item["uri"],
+                            implode(" ", $item["class_list"]),
+                            $item["label_mobile"],
+                            $item["label_mobile"]
+                        );
+                    }
+                }
+                printf("\n");
+                ?>
+
+                <div><a role="button" onclick="return false;">Walmart Marketing</a></div>
             </div>
         </div>
 

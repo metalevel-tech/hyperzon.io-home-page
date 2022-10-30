@@ -12,7 +12,7 @@
              *      "label" => $label,
              *      "uri" => $uri,
              *      "label_mobile" => $label_mobile ?? $label,
-             *      "class" => ["menu-item", "selected-item", "home-item"]
+             *      "class_list" => ["menu-item", "selected-item", "home-item", ...]
              * ];
              */
             if ($item["item_id"] == 0) {
@@ -23,7 +23,7 @@
                         </a>
                     </div>',
                     $item["uri"],
-                    implode(" ", $item["class"]),
+                    implode(" ", $item["class_list"]),
                     304,
                     56,
                     "Hyperzon logo",
@@ -49,7 +49,7 @@
                             </a>
                         </div>',
                         $item["uri"],
-                        implode(" ", $item["class"]),
+                        implode(" ", $item["class_list"]),
                         $item["label_mobile"],
                         $item["label"],
                         $item["label_mobile"]
