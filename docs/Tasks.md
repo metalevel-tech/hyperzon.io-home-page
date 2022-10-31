@@ -71,15 +71,10 @@ Create JavaScript code for the galleries avoid using external galleries:
 ## MenuFooter.php
 
 - [x] [30m] `<a href="#" onclick="return false;">` -> `<a role="button">`
-- [ ] [2h*] Integrate the footer menu with the AJAX JavaScript.
-- [ ] [2h*] Integrate the "Learn More" Buttons at the home page with the AJAX JavaScript.
+- [x] [2h*] Integrate the footer menu with the AJAX JavaScript.
+- [x] [2h*] Integrate the "Learn More" Buttons at the home page with the AJAX JavaScript.
 
-## PHP MVC
-
-- [ ] [1d*] **Create documentation** for the PHP MVC framework, fix all issues discovered by [Codacy](https://app.codacy.com/).
-- [ ] [4h*] Create PHP filter to output pretty HTML code.
-
-## PHP MVC and AJAX Java Script menu: Done
+## PHP MVC and SPA Java Script menu: Done
 
 - [x] [16h] Create a new PHP framework for the site. The framework is based on the MVC pattern. The framework is not a full-fledged framework, but it is enough for the site. It is also absolute necessary for dynamic content as blog posts fetched from a database, etc.
 - [x] [16h] Split the existing site code into the MVC framework.
