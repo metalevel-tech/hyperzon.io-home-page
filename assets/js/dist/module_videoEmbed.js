@@ -11,10 +11,10 @@
  *            https://poselab.com/en/blog/vimeo-javascript-player-api/
  */
 import { isPartVisible, isFullyVisible } from "./module_helpers.js";
-function vimeoLoader() {
-  const videoNodes = document.querySelectorAll(".video-container.vimeo-embed");
 
-  // Define fadeout effect for the splash image
+function vimeoLoader() {
+  const videoNodes = document.querySelectorAll(".video-container.vimeo-embed"); // Define fadeout effect for the splash image
+
   const fadeOut = {
     "effect": [{
       opacity: "1",
@@ -30,15 +30,15 @@ function vimeoLoader() {
       iterations: 1,
       fill: "forwards"
     }
-  };
+  }; // Process each video container on the page
 
-  // Process each video container on the page
   videoNodes.forEach(function (node) {
     const videoId = node.dataset.videoId;
     const videoTitle = node.dataset.videoTitle;
     const videoAppId = node.dataset.videoAppId;
     createVideoPlayer(node, videoId, videoTitle, videoAppId, 0);
   });
+
   function createVideoPlayer(node, videoId, videoTitle, videoAppId, autoplay = 1) {
     function embedVideo() {
       if (node.querySelector("iframe.video-embed-iframe")) {
@@ -51,18 +51,21 @@ function vimeoLoader() {
         iframe.addEventListener("load", function () {
           fadeoutSplashImage(350);
         });
-      }
+      } // Remove the event listeners!
 
-      // Remove the event listeners!
+
       document.removeEventListener("scroll", autoEmbedVideo);
       window.removeEventListener("resize", autoEmbedVideo);
       window.removeEventListener("orientationChange", autoEmbedVideo);
       node.removeEventListener("click", embedVideo);
     }
+
     function autoEmbedVideo() {
       if (isFullyVisible(node, 100)) embedVideo();
     }
+
     const splashImg = node.querySelector("img");
+
     function fadeoutSplashImage(timeout) {
       setTimeout(function () {
         // Apply fade out effect to the splash image
@@ -73,6 +76,7 @@ function vimeoLoader() {
         });
       }, timeout);
     }
+
     function generateIframe() {
       const iframe = document.createElement("iframe");
       iframe.className = "video-embed-iframe";
@@ -82,6 +86,7 @@ function vimeoLoader() {
       iframe.setAttribute("player_id", "0");
       iframe.setAttribute("frameborder", "0");
       iframe.setAttribute("allow", "autoplay; fullscreen; picture-in-picture"); // iFrame.setAttribute("allowfullscreen", "");
+
       iframe.setAttribute("mozallowfullscreen", "");
       iframe.setAttribute("webkitallowfullscreen", "");
       iframe.setAttribute("scrolling", "no");
@@ -90,11 +95,14 @@ function vimeoLoader() {
       iframe.setAttribute("title", videoTitle);
       return iframe;
     }
+
     document.addEventListener("scroll", autoEmbedVideo);
     window.addEventListener("resize", autoEmbedVideo);
     window.addEventListener("orientationChange", autoEmbedVideo);
     autoEmbedVideo(); // in cast it is already on the viewport
+
     node.addEventListener("click", embedVideo);
   }
 }
+
 export { vimeoLoader };
