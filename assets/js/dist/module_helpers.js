@@ -57,7 +57,6 @@ function heroCounter() {
       },
       complete: function () {
         counter.text(this.countNum);
-        //alert("finished");
       }
     });
   });
@@ -85,7 +84,6 @@ function bookACallHandler() {
  * "Does not use passive listeners to improve scrolling performance" @jquery
  * Refs: https://stackoverflow.com/a/62177358/6543935
  */
-
 function jQueryRemovePassiveListeners() {
   jQuery.event.special.touchstart = {
     setup: function (_, ns, handle) {

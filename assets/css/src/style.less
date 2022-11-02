@@ -515,6 +515,7 @@ div#app {
   }
 
   &.mobile-menu,
+  .blog-post &,
   &.sticky {
     &__logo {
       a {
@@ -566,6 +567,7 @@ div#app {
     }
   }
 
+  .blog-post &:not(.mobile-menu),
   &.sticky:not(.mobile-menu) {
     background: #fff;
     position: fixed;
@@ -1210,6 +1212,10 @@ div#app {
 }
 
 .hero {
+  .blog-post & {
+    display: none;
+  }
+
   background: url(/public/images/backgr_blue.webp) center center no-repeat;
   height: inherit;
   height: 740px;
@@ -3955,6 +3961,14 @@ body .calendly-overlay .calendly-popup {
   }
 
   .single-post-title-section {
+    .blog-post & {
+      padding-top: 66px;
+      
+      @media @phone {
+        padding-top: 56px;
+      }
+    }
+    
     max-width: 100%;
     margin: 0 auto;
 
