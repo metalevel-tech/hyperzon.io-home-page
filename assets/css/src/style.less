@@ -514,8 +514,8 @@ div#app {
     }
   }
 
-  &.mobile-menu,
   .blog-post &,
+  &.mobile-menu,
   &.sticky {
     &__logo {
       a {
@@ -616,6 +616,11 @@ div#app {
 
   @media @mobile-menu {
     display: block;
+  }
+  
+  .blog-post & span {
+    display: block;
+    background: #122540;
   }
 
   .sticky & span {
@@ -924,16 +929,16 @@ div#app {
 
 .wrapper-1100 {
   max-width: 1100px;
-  
+
   padding-left: 20px;
   padding-right: 20px;
-  
-  // Force inner element wrapping, otherwise 
+
+  // Force inner element wrapping, otherwise
   // the top-margin of the first inner element
   // will act as a margin-top of the whole container.
   padding-top: 0.1px;
   margin: -0.1px auto 0;
-  
+
   + .wrapper-1366 {
     margin-top: @sectionOffset;
 
@@ -2068,7 +2073,7 @@ div#app {
 
 .section-home-02 {
   text-align: center;
-  
+
   padding-top: @sectionOffset;
 
   @media @tablet {
@@ -3491,7 +3496,7 @@ div#app {
 .gallery {
   max-width: 980px;
   margin: 0 auto;
-    
+
   margin-top: @sectionOffset;
 
   @media @tablet {
@@ -3567,7 +3572,7 @@ div#app {
     // -moz-transform: scale(0.995);
     // -ms-transform: scale(0.995);
     // -o-transform: scale(0.995);
-    
+
     @media @at-least-desktop {
       &:hover {
         transform: scale(1.1);
@@ -3810,6 +3815,77 @@ body .calendly-overlay .calendly-popup {
 }
 
 /**
+ * Scroll-to-top button
+ */
+#scroll-to-top-button {
+  user-select: none;
+  cursor: pointer;
+
+  bottom: -6em;
+  
+  width: 3em;
+  height: 3em;
+
+  border-radius: 100%;
+
+  transform: scale(1.05);
+  
+  overflow: hidden;
+  position: fixed;
+  
+  right: 1.5em;
+  
+  @media screen and (min-width:1372px) {
+    margin-right: calc(50% - 1372px / 2);
+  }
+
+  @media @desktop {
+    transform: scale(.95);  
+    right: .5em;
+  }
+
+  transition: bottom .3s ease-in-out, filter .1s ease-in-out;
+  filter: drop-shadow(0 0 1em #14326060);
+
+  .sticky & {
+    bottom: 1.5em;
+
+    transition: bottom .3s ease-in-out, filter .1s ease-in-out;
+    
+    @media @desktop {
+      bottom: .5em;
+    }
+  }
+
+  
+  &:hover {
+    animation: pulse-blue-outside 2s infinite;
+    animation-delay: 2s;
+  }
+  
+  svg {
+    position: absolute;
+    
+    left: -8%;
+    top: -8%;
+    
+    width: 116%;
+    height: 116%;
+    
+    border-radius: 100%;
+    
+    background-color: rgba(255, 255, 255, 0.6);
+    
+    fill: #143260dd;
+    
+    transition: fill .1s ease-in-out;
+    :active & {
+      filter: hue-rotate(25deg) brightness(1.2);
+    }
+  }
+} 
+
+/**
  * Blog Page
  */
 @column-gap: 1.4em;
@@ -3826,13 +3902,12 @@ body .calendly-overlay .calendly-popup {
   background-position: 35% 50px;
   background-repeat: no-repeat;
   color: #0e2a55;
-  
+
   padding: 0 0 @sectionOffset;
 
   @media @tablet {
     padding: 0 0 @sectionOffsetTablet;
   }
-  
 
   .wrapper-1100 > div {
     padding-left: @padding-lr;
@@ -3925,7 +4000,14 @@ body .calendly-overlay .calendly-popup {
     }
   }
 
-  p, li, ol, ul, blockquote, dl, dd, dt {
+  p,
+  li,
+  ol,
+  ul,
+  blockquote,
+  dl,
+  dd,
+  dt {
     font-size: 1em;
     font-weight: 200;
     // font-weight: 400;
@@ -3963,12 +4045,12 @@ body .calendly-overlay .calendly-popup {
   .single-post-title-section {
     .blog-post & {
       padding-top: 66px;
-      
+
       @media @phone {
         padding-top: 56px;
       }
     }
-    
+
     max-width: 100%;
     margin: 0 auto;
 
@@ -4079,6 +4161,8 @@ body .calendly-overlay .calendly-popup {
 .single-post-cover-image {
   position: relative;
   margin-bottom: 4em;
+
+  user-select: none;
 
   filter: drop-shadow(0 0.6em 2em #bbb);
 

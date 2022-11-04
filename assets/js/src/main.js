@@ -30,7 +30,8 @@ const nodes = {
     content: document.getElementById("body-content"),
     mainMenu: document.getElementById("main-menu"),
     menuItems: document.querySelectorAll("a.spa-menu-item:not(.spa-handled)"),
-    mobileMenuButton: document.querySelector("#mobile-menu-button .button-3x")
+    mobileMenuButton: document.querySelector("#mobile-menu-button .button-3x"),
+    scrollToTopButton: document.getElementById("scroll-to-top-button")
 };
 
 // Array of the possible body classes, that will be filed by the
@@ -44,6 +45,16 @@ function addStickyClass() {
     } else if (window.pageYOffset < 36 && nodes.mainMenu.classList.contains("sticky")) {
         nodes.mainMenu.classList.remove("sticky");
     }
+}
+
+// Handle scroll to top button
+function scrollToTop() {
+    nodes.scrollToTopButton.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
 }
 
 // Handle the mobile menu
@@ -223,6 +234,7 @@ window.addEventListener("load", function () {
 
     interfaceSetUp(3);
     addStickyClass();
+    scrollToTop();
     heroCounter();
 
     window.addEventListener("scroll", function () {
