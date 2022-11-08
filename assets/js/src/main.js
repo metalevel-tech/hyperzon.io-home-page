@@ -34,17 +34,46 @@ const nodes = {
     scrollToTopButton: document.getElementById("scroll-to-top-button")
 };
 
-// Array of the possible body classes, that will be filed by the
+// Detect whether the browser is Safari or not
+function browserDetect() {
+    // const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    const isSafari = window.safari !== undefined;
+    if (isSafari) {
+        document.body.classList.add("browser-safari");
+    } else {
+        document.body.classList.add("browser-not-safari");
+    }
+}
+
+// Array of the possible body classes, that will be used by the SPA functionality.
 const bodyClasses = [];
 
 // Add class .sticky {position:fixed} to the main menu when the page is scrolled.
-// Within this condition we should create back to top button to pop up.
+// Detect the scroll direction and add class .scrolling-up or .scrolling-down
+let lastScrollTop = 0;
+
 function addStickyClass() {
-    if (window.pageYOffset >= 56 && !nodes.mainMenu.classList.contains("sticky")) {
+    const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (currentScrollTop >= 56 && !nodes.mainMenu.classList.contains("sticky")) {
         nodes.mainMenu.classList.add("sticky");
-    } else if (window.pageYOffset < 36 && nodes.mainMenu.classList.contains("sticky")) {
+    } else if (currentScrollTop < 36 && nodes.mainMenu.classList.contains("sticky")) {
         nodes.mainMenu.classList.remove("sticky");
     }
+
+    nodes.mainMenu.classList.remove("scrolling-none");
+
+    if (!document.body.classList.contains("no-scroll")) {
+        if (currentScrollTop > lastScrollTop) {
+            nodes.mainMenu.classList.remove("scrolling-up");
+            nodes.mainMenu.classList.add("scrolling-down");
+        } else {
+            nodes.mainMenu.classList.remove("scrolling-down");
+            nodes.mainMenu.classList.add("scrolling-up");
+        }
+    }
+
+    lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
 }
 
 // Handle scroll to top button
@@ -116,6 +145,9 @@ function interfaceSetUp(callFrom = 0) {
     addSpaFuncToPageContent();
 
     // console.log(callFrom);
+    nodes.mainMenu.classList.remove("scrolling-up");
+    nodes.mainMenu.classList.remove("scrolling-down");
+    nodes.mainMenu.classList.add("scrolling-none");
 }
 
 // Process single menu element (this is the main function)
@@ -195,7 +227,7 @@ const addSpaFuncToNavNode = async (e) => {
                 nodes.mainMenu.innerHTML = e.state.mainMenu;
                 document.title = e.state.pageTitle;
                 document.body.className = e.state.bodyClassList;
-                
+
                 // Evaluate the page content restored from the history
                 setTimeout(() => { interfaceSetUp(1); }, 100);
             }
@@ -232,6 +264,7 @@ window.addEventListener("load", function () {
         }
     }, 100);
 
+    browserDetect();
     interfaceSetUp(3);
     addStickyClass();
     scrollToTop();

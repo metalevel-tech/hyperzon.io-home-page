@@ -10,7 +10,7 @@ const nodes = {
     galleryButtonBack: document.getElementById("gallery-preview-overlay").querySelector(".gallery-preview-back")
 };
 
-const isSafari = window.safari !== undefined;
+// const isSafari = window.safari !== undefined;
 
 // Gallery accumulator class, used by the gallery handlers below
 // The following functions could be methods of this class
@@ -59,12 +59,54 @@ function galleryOverlayClear() {
     nodes.galleryButtonNext.removeEventListener("click", galleryChange_Image);
 
     // Clear additional classes from DOM
-    document.body.classList.remove("no-scroll");
+    windowScroll(true); // Enable scrolling
     nodes.galleryOverlay.classList.remove("active");
     nodes.galleryButtonClose.classList.remove("active");
     nodes.galleryButtonNext.classList.remove("active");
     nodes.galleryButtonBack.classList.remove("active");
 }
+
+// https://www.geeksforgeeks.org/how-to-disable-scrolling-temporarily-using-javascript/
+function windowScroll(enabled = true) {
+    if (enabled) {
+        window.onscroll = () => { };
+        document.body.classList.remove("no-scroll");
+    } else {
+        // Add specified class to body
+        document.body.classList.add("no-scroll");
+
+        // Get the current page scroll position
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+
+        // if any scroll is attempted,
+        // set this to the previous value
+        window.onscroll = (e) => {
+            e.preventDefault();
+            window.scrollTo(scrollLeft, scrollTop);
+        };
+    }
+}
+
+
+// var winX = null;
+// var winY = null;
+
+// window.addEventListener('scroll', function () {
+//     if (winX !== null && winY !== null) {
+//         window.scrollTo(winX, winY);
+//     }
+// });
+
+// function disableScroll() {
+//     winX = window.scrollX;
+//     winY = window.scrollY;
+// }
+
+// function windowScroll(false) {
+//     winX = null;
+//     winY = null;
+// }
 
 // Function to change the image within the gallery overlay
 function galleryChange_Image(currentGallery, forward = true) {
@@ -103,7 +145,9 @@ function galleryChange_Video(currentGallery, forward = true) {
 
 // Function to activate the overlay
 function overlayActivate() {
-    document.body.classList.add("no-scroll");
+
+    // Show the overlay and disable scrolling
+    windowScroll(false);
     nodes.galleryOverlay.classList.add("active");
 
     setTimeout(function () {
@@ -133,11 +177,11 @@ function galleryOverlayCreate_Image(image, currentGallery) {
     imagePreview.setAttribute("class", "image-preview");
     imagePreview.setAttribute("src", currentGallery.current);
 
-    if (isSafari) {
-        imagePreview.classList.add("browser-safari");
-    } else {
-        imagePreview.classList.add("browser-not-safari");
-    }
+    // if (isSafari) {
+    //     imagePreview.classList.add("browser-safari");
+    // } else {
+    //     imagePreview.classList.add("browser-not-safari");
+    // }
 
     nodes.galleryContent.appendChild(imagePreview);
 
@@ -168,11 +212,11 @@ function galleryOverlayCreate_Video(video, currentGallery) {
         galleryChange_Video(currentGallery, true);
     };
 
-    if (isSafari) {
-        videoPlayer.classList.add("browser-safari");
-    } else {
-        videoPlayer.classList.add("browser-not-safari");
-    }
+    // if (isSafari) {
+    //     videoPlayer.classList.add("browser-safari");
+    // } else {
+    //     videoPlayer.classList.add("browser-not-safari");
+    // }
 
     nodes.galleryContent.appendChild(videoPlayer);
 
@@ -232,6 +276,10 @@ function galleryHandler_Images() {
 
         // Close gallery Button functionality
         nodes.galleryButtonClose.addEventListener("click", galleryOverlayClear);
+        window.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") galleryOverlayClear();
+
+        });
 
         // Process each image in the gallery
         imageItemsList.forEach((image) => {
@@ -261,6 +309,10 @@ function galleryHandler_PostPageImgs() {
 
     // Close gallery Button functionality
     nodes.galleryButtonClose.addEventListener("click", galleryOverlayClear);
+    window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") galleryOverlayClear();
+
+    });
 
     // Process each image in the gallery
     postPageAsImageGallery.forEach((image) => {
@@ -294,6 +346,10 @@ function galleryHandler_Videos() {
 
         // Close gallery Button functionality
         nodes.galleryButtonClose.addEventListener("click", galleryOverlayClear);
+        window.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") galleryOverlayClear();
+
+        });
 
         // Process each video in the gallery
         videoItemsList.forEach((video) => {

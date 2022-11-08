@@ -170,9 +170,9 @@
                         <img src="/public/blog/authors/author_radoslav-mazganov.webp" alt="Author photo decorated" loading="lazy" decoding="async" width="320" height="320">
                     </div>
                     <div class="about-title">
-                        <h3>
+                        <h2>
                             About the author
-                        </h3>
+                        </h2>
                     </div>
                     <div class="about-text">
                         <p>

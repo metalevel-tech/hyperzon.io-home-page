@@ -1,4 +1,12 @@
 <div id="main-menu" class="main-menu">
+<div id="scroll-to-top-button">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+            <metadata> Svg Vector Icons : http://www.onlinewebfonts.com/icon </metadata>
+            <g>
+                <path d="M10,500c0,270.6,219.4,490,490,490c270.6,0,490-219.4,490-490c0-270.6-219.4-490-490-490C229.4,10,10,229.4,10,500z M549.5,310.5l198,198c27.3,27.3,27.3,71.7,0,99c-27.3,27.3-71.7,27.3-99,0L500,459L351.5,607.5c-27.3,27.3-71.7,27.3-99,0c-27.3-27.3-27.3-71.7,0-99l198-198c13.7-13.7,31.6-20.5,49.5-20.5C517.9,290,535.8,296.8,549.5,310.5z" />
+            </g>
+        </svg>
+    </div>
     <div class="wrapper-1366 menu-wrapper">
         <!-- Main menu / Mobile menu - Logo Home button-->
         <?php
@@ -76,13 +84,4 @@
             </div>
         </div>
     </div>
-    <div id="scroll-to-top-button">
-        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
-            <metadata> Svg Vector Icons : http://www.onlinewebfonts.com/icon </metadata>
-            <g>
-                <path d="M10,500c0,270.6,219.4,490,490,490c270.6,0,490-219.4,490-490c0-270.6-219.4-490-490-490C229.4,10,10,229.4,10,500z M549.5,310.5l198,198c27.3,27.3,27.3,71.7,0,99c-27.3,27.3-71.7,27.3-99,0L500,459L351.5,607.5c-27.3,27.3-71.7,27.3-99,0c-27.3-27.3-27.3-71.7,0-99l198-198c13.7-13.7,31.6-20.5,49.5-20.5C517.9,290,535.8,296.8,549.5,310.5z" />
-            </g>
-        </svg>
-    </div>
-
 </div>

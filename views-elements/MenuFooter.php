@@ -1,8 +1,5 @@
 <div id="footer-content" class="footer">
     <div class="footer__grid">
-        <div class="scroll-to-top-wrapper">
-            123
-        </div>
         <div class="footer__col">
             <div class="footer__title">
                 Services
