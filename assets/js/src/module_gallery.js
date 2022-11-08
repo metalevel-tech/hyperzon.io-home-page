@@ -66,7 +66,13 @@ function galleryOverlayClear() {
     nodes.galleryButtonBack.classList.remove("active");
 }
 
+// Disable window scrolling - currently two ways of disabling are applied:
+// 1. The body class "no-scroll" is added, which disables scrolling via CSS, 
+//    this class is used also by the mobile menu.
+// 2. The window.onscroll event is disabled, which prevents the user from scrolling,
+//    this could be safely removed.
 // https://www.geeksforgeeks.org/how-to-disable-scrolling-temporarily-using-javascript/
+// https://stackoverflow.com/questions/4770025/how-to-disable-scrolling-temporarily
 function windowScroll(enabled = true) {
     if (enabled) {
         window.onscroll = () => { };
@@ -87,26 +93,6 @@ function windowScroll(enabled = true) {
         };
     }
 }
-
-
-// var winX = null;
-// var winY = null;
-
-// window.addEventListener('scroll', function () {
-//     if (winX !== null && winY !== null) {
-//         window.scrollTo(winX, winY);
-//     }
-// });
-
-// function disableScroll() {
-//     winX = window.scrollX;
-//     winY = window.scrollY;
-// }
-
-// function windowScroll(false) {
-//     winX = null;
-//     winY = null;
-// }
 
 // Function to change the image within the gallery overlay
 function galleryChange_Image(currentGallery, forward = true) {
@@ -177,12 +163,6 @@ function galleryOverlayCreate_Image(image, currentGallery) {
     imagePreview.setAttribute("class", "image-preview");
     imagePreview.setAttribute("src", currentGallery.current);
 
-    // if (isSafari) {
-    //     imagePreview.classList.add("browser-safari");
-    // } else {
-    //     imagePreview.classList.add("browser-not-safari");
-    // }
-
     nodes.galleryContent.appendChild(imagePreview);
 
     overlayActivate();
@@ -211,12 +191,6 @@ function galleryOverlayCreate_Video(video, currentGallery) {
     videoPlayer.onended = (e) => {
         galleryChange_Video(currentGallery, true);
     };
-
-    // if (isSafari) {
-    //     videoPlayer.classList.add("browser-safari");
-    // } else {
-    //     videoPlayer.classList.add("browser-not-safari");
-    // }
 
     nodes.galleryContent.appendChild(videoPlayer);
 

@@ -52,6 +52,15 @@ HEIGHT="230"
 convert -resize "x${HEIGHT}" "$FILE" "${FILE%.*}_${HEIGHT}.png"
 ```
 
+```bash
+HEIGHT="720"
+
+for FILE in *.png;
+do
+    convert -resize "x${HEIGHT}" "$FILE" "${FILE%.*}_${HEIGHT}.png"
+done
+```
+
 ### Convert an image to WebP
 
 ```bash
@@ -80,7 +89,7 @@ done
 
 ```bash
 FILE="Input_image.png"
-identify -format "%h x %w \n" "$FILE"
+identify -format "%w x %h \n" "$FILE"
 ```
 
 ## FFmpeg hints

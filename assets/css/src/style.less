@@ -168,19 +168,18 @@ body when ((@mode = debug) or (@mode = resolution)) {
 }
 
 body {
-  // &.no-scroll {
-  //   overflow: hidden;
-  //   padding-right: 16px;
-  // }
+  &.no-scroll {
+    overflow: hidden;
+  }
 
   background-color: #f4f4f4;
 }
 
-// #body-content {
-//   .no-scroll & {
-//     padding-right: 17px;
-//   }
-// }
+#body-content {
+  .no-scroll & {
+    padding-right: 15px;
+  }
+}
 
 * when (@mode = debug) {
   -webkit-box-shadow: inset 0px 0px 0px 1px red;
@@ -216,9 +215,9 @@ div#app {
   // transition: background-color 1s;
   transition: height 1s ease-in-out;
 
-  // body.no-scroll &:not(.mobile-menu) {
-  //   padding-right: 17px;
-  // }
+  body.no-scroll &:not(.mobile-menu) {
+    padding-right: 15px;
+  }
 
   .menu-wrapper {
     display: grid;
@@ -730,7 +729,7 @@ div#app {
     align-items: center;
     flex-direction: column;
 
-    background-color: rgba(0, 0, 0, 0.85);
+    background-color: rgba(0, 0, 0, 0.385);
     z-index: 110;
   }
 
@@ -1749,7 +1748,7 @@ div#app {
     padding-top: (552 / 982) * 100%;
     margin: 0 auto;
 
-    background: url(/public/images/videos/video_01_reduced.webp) center center
+    background: url(/public/images/videos_old-testimonials-to-delete/video_01_reduced.webp) center center
       no-repeat;
     background-size: cover;
 
