@@ -496,7 +496,7 @@ div#app {
           border-radius: 3px;
           padding: 0.3em 1em;
           margin: 0.8em auto;
-          
+
           body.browser-not-safari & {
             outline: 3px solid transparent;
             outline-offset: 4px;
@@ -505,7 +505,7 @@ div#app {
           body.browser-not-safari &.selected-item {
             outline-color: #0e2a55;
           }
-          
+
           // Outline with border-radius doesn't work in Safari
           body.browser-safari &.selected-item {
             outline: none;
@@ -1743,23 +1743,28 @@ div#app {
 
   .testimonials {
     max-width: 982px;
-    // height:552px;
     border: 2px solid #c0fd45;
-    padding-top: (552 / 982) * 100%;
     margin: 0 auto;
-
-    background: url(/public/images/videos_old-testimonials-to-delete/video_01_reduced.webp) center center
-      no-repeat;
-    background-size: cover;
-
     position: relative;
+   
+    &__selected {
+
+      // The images should be the exact same size,
+      // because they define the height of the container
+      img {
+        height: auto;
+        width: 100%;
+        display: block;
+      }
+    }
 
     &__thumb {
       &__wrapper {
         position: absolute;
-        bottom: 30px;
         left: 0;
         right: 0;
+        bottom: 1em;
+        padding-bottom: 2px;
 
         @media @tablet {
           bottom: -1em;
@@ -3841,7 +3846,7 @@ body .calendly-overlay .calendly-popup {
 
   bottom: -6em;
 
-  width: 3.1em;  // 3em
+  width: 3.1em; // 3em
   height: 3.1em; // 3em
   // transform: scale(1.05);
 
@@ -3851,12 +3856,12 @@ body .calendly-overlay .calendly-popup {
 
   overflow: hidden;
   position: fixed;
-  
+
   filter: drop-shadow(0 0 1em #14326060);
-  
+
   transition: bottom 0.3s ease-in-out, background-color 0.3s ease-in-out,
-  border-color 0.3s ease-in-out;
-  
+    border-color 0.3s ease-in-out;
+
   right: 1.5em;
 
   @media screen and (min-width: 1386px) {
@@ -3875,7 +3880,8 @@ body .calendly-overlay .calendly-popup {
     :hover {
       background-color: white;
       border-color: white;
-      transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+      transition: background-color 0.3s ease-in-out,
+        border-color 0.3s ease-in-out;
     }
   }
 
@@ -3889,7 +3895,7 @@ body .calendly-overlay .calendly-popup {
     body.browser-safari & {
       filter: drop-shadow(0 0 2em #143260);
     }
-    
+
     body.browser-not-safari & {
       filter: drop-shadow(0 0 2em #143260);
     }
