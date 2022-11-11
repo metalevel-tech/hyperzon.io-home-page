@@ -9,12 +9,12 @@ import {
 import {
     galleryHandler_Images,
     galleryHandler_PostPageImgs,
-    galleryHandler_Videos
+    galleryHandler_Videos,
+    galleryHandler_Testimonials
 } from "./module_gallery.js";
 
 import {
     bookACallHandler,
-    testimonialsSlider,
     latestBlogPostsSlider,
     hrefToClass,
     jQueryRemovePassiveListeners,
@@ -133,9 +133,9 @@ function addSpaFuncToPageContent() {
 // each interaction with the main menu,
 // and at the page load.
 function interfaceSetUp(callFrom = 0) {
-    testimonialsSlider();
     latestBlogPostsSlider();
     vimeoLoader();
+    galleryHandler_Testimonials();
     galleryHandler_Videos();
     galleryHandler_Images();
     galleryHandler_PostPageImgs();

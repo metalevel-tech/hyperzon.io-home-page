@@ -128,42 +128,6 @@ function bookACallHandler() {
 }
 
 /**
- * @ includes/Testimonials.php
- */
-function testimonialsSlider() {
-    setTimeout(function () {
-        try {
-            $(".testimonials__slider").slick({
-                infinite: true,
-                slidesToShow: 4,
-                slidesToScroll: 1,
-                dots: false,
-                arrows: true,
-                autoplay: false,
-                autoplaySpeed: 5000,
-                responsive: [
-                    {
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToShow: 3,
-                            slidesToScroll: 1,
-                            infinite: true
-                        }
-                    },
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 2
-                        }
-                    }
-                ]
-            });
-        } catch (error) { }
-    }, 50);
-}
-
-/**
  * @ includes/BlogPostsLatest.php
  */
 function latestBlogPostsSlider() {
@@ -241,7 +205,6 @@ function latestBlogPostsSlider() {
 
 export {
     bookACallHandler, 
-    testimonialsSlider, 
     latestBlogPostsSlider,
     hrefToClass,
     isPartVisible, 

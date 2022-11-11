@@ -1,7 +1,6 @@
 /**
  * Gallery Handler scripts begin
  */
-
 const nodes = {
     galleryOverlay: document.getElementById("gallery-preview-overlay"),
     galleryContent: document.getElementById("gallery-preview-overlay").querySelector(".gallery-preview-content"),
@@ -10,14 +9,18 @@ const nodes = {
     galleryButtonBack: document.getElementById("gallery-preview-overlay").querySelector(".gallery-preview-back")
 };
 
-// const isSafari = window.safari !== undefined;
-
 // Gallery accumulator class, used by the gallery handlers below
 // The following functions could be methods of this class
 class galleryUrlArray {
     constructor(current = false, list = []) {
         this.current = current;
         this.list = list;
+    }
+    get currentSrc() {
+        if (this.current.nodeName === "IMG") return this.current.src;
+        else if (this.current.nodeName === "A") return this.current.href;
+        else if (this.current.nodeName === "VIDEO") return this.current.querySelector("source").src;
+        return false;
     }
     findNext() {
         const index = this.list.indexOf(this.current);
@@ -66,6 +69,28 @@ function galleryOverlayClear() {
     nodes.galleryButtonBack.classList.remove("active");
 }
 
+// Gallery Close Button functionality
+function galleryOverlayCloseButtonAddAction() {
+    nodes.galleryButtonClose.addEventListener("click", galleryOverlayClear);
+
+    window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") galleryOverlayClear();
+    });
+}
+
+// Function to activate the overlay
+function overlayActivate() {
+    // Show the overlay and disable scrolling
+    windowScroll(false);
+    nodes.galleryOverlay.classList.add("active");
+
+    setTimeout(function () {
+        nodes.galleryButtonClose.classList.add("active");
+        nodes.galleryButtonNext.classList.add("active");
+        nodes.galleryButtonBack.classList.add("active");
+    }, 100);
+}
+
 // Disable window scrolling - currently two ways of disabling are applied:
 // 1. The body class "no-scroll" is added, which disables scrolling via CSS, 
 //    this class is used also by the mobile menu.
@@ -108,8 +133,9 @@ function galleryChange_Image(currentGallery, forward = true) {
 
     setTimeout(function () {
         imagePreview.setAttribute("src", "");
+
         setTimeout(function () {
-            imagePreview.setAttribute("src", newImage);
+            imagePreview.setAttribute("src", currentGallery.currentSrc);
             imagePreview.classList.remove("static");
         }, 150);
     }, 150);
@@ -120,48 +146,24 @@ function galleryChange_Video(currentGallery, forward = true) {
     const videoPlayer = nodes.galleryContent.querySelector("video.video-preview");
     if (!videoPlayer) return false;
 
+
     const newVideo = (forward) ? currentGallery.findNext() : currentGallery.findBack();
     if (!newVideo) return false;
 
     currentGallery.current = newVideo;
 
-    // videoPlayer.pause();
-    videoPlayer.src = newVideo;
-}
-
-// Function to activate the overlay
-function overlayActivate() {
-
-    // Show the overlay and disable scrolling
-    windowScroll(false);
-    nodes.galleryOverlay.classList.add("active");
-
-    setTimeout(function () {
-        nodes.galleryButtonClose.classList.add("active");
-        nodes.galleryButtonNext.classList.add("active");
-        nodes.galleryButtonBack.classList.add("active");
-    }, 100);
+    videoPlayer.src = currentGallery.currentSrc;
 }
 
 // Function to open the gallery overlay and prepare for image preview
 function galleryOverlayCreate_Image(image, currentGallery) {
     galleryOverlayClear();
 
-    if (image.nodeName === "IMG") {
-        // The case when the HQ image is already loaded on the page,
-        // as it is the case with the blog post pages
-        currentGallery.current = image.src;
-    } else if (image.nodeName === "A") {
-        // The case when the image is wrapped by anchor
-        // <a> that holds link to the HQ image
-        currentGallery.current = image.href;
-    } else {
-        return false;
-    }
+    currentGallery.current = image;
 
     const imagePreview = document.createElement("img");
     imagePreview.setAttribute("class", "image-preview");
-    imagePreview.setAttribute("src", currentGallery.current);
+    imagePreview.setAttribute("src", currentGallery.currentSrc);
 
     nodes.galleryContent.appendChild(imagePreview);
 
@@ -174,10 +176,13 @@ function galleryOverlayCreate_Image(image, currentGallery) {
 // Function to open the gallery overlay and prepare for video preview
 function galleryOverlayCreate_Video(video, currentGallery) {
     galleryOverlayClear();
+    galleryOverlayCloseButtonAddAction();
 
-    currentGallery.current = video.querySelector("source").src;
+    currentGallery.current = video;
 
     const videoPlayer = document.createElement("video");
+    const videoSource = document.createElement("source");
+
     videoPlayer.setAttribute("autoplay", "");
     videoPlayer.setAttribute("controls", "");
     videoPlayer.setAttribute("playsinline", "");
@@ -186,7 +191,12 @@ function galleryOverlayCreate_Video(video, currentGallery) {
     // videoPlayer.setAttribute("loop", "");  // auto change is not possible with loop
 
     videoPlayer.volume = 0.4;
-    videoPlayer.setAttribute("src", currentGallery.current);
+    videoPlayer.setAttribute("src", currentGallery.currentSrc);
+
+    videoSource.setAttribute("src", currentGallery.currentSrc);
+    videoSource.setAttribute("type", "video/webm");
+
+    videoPlayer.appendChild(videoSource);
 
     videoPlayer.onended = (e) => {
         galleryChange_Video(currentGallery, true);
@@ -213,7 +223,6 @@ function setHeight_16_9(node) {
     if (!node) return false; // `+ n` px to compensate the border width
     node.style.height = `${Math.floor((node.offsetWidth * 9 / 16) + 2)}px`;
 }
-
 function calcHeightOnDeviceTilt(node) {
     if (!node) return false;
 
@@ -233,30 +242,59 @@ function calcHeightOnDeviceTilt(node) {
     }, 100);
 }
 
+// Create the testimonials slider.
+// Currently we are using the Slick library for this.
+// But probably this function will be rewrote in the future,
+// to use the native JS slider, because we use jQuery only for this.
+function createTestimonialsSlider(wrapper) {
+    $(wrapper).slick({
+        infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        dots: false,
+        arrows: true,
+        autoplay: false,
+        autoplaySpeed: 5000,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    infinite: true
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+            }
+        ]
+    });
+}
+
+// Set the chosen (from the slider) 
+// Testimonial gallery item as active/current
+// function setTestimonialAsActive(testimonial) {
+// }
+
 /**
  * Image (Photo) Gallery handler
- * Little bit ugly solution but it works for now.
  */
 function galleryHandler_Images() {
-    const imageGalleriesOnAPage = document.querySelectorAll(".image-gallery");
+    const imageGalleriesOnAPage = [...document.querySelectorAll(".image-gallery")];
     if (!imageGalleriesOnAPage.length) return;
 
     imageGalleriesOnAPage.forEach(function (gallery) {
         const imageItemsList = [...gallery.querySelectorAll(".image-item")];
-        const currentGallery = new galleryUrlArray(
-            false,
-            imageItemsList.map(item => item.href)
-        );
+        const currentGallery = new galleryUrlArray(false, imageItemsList);
 
-        // Close gallery Button functionality
-        nodes.galleryButtonClose.addEventListener("click", galleryOverlayClear);
-        window.addEventListener("keydown", (e) => {
-            if (e.key === "Escape") galleryOverlayClear();
-
-        });
+        // galleryOverlayCloseButtonAddAction();
 
         // Process each image in the gallery
-        imageItemsList.forEach((image) => {
+        currentGallery.list.forEach((image) => {
             image.addEventListener("click", (e) => {
                 e.preventDefault();
                 galleryOverlayClear();
@@ -269,27 +307,18 @@ function galleryHandler_Images() {
 }
 
 /**
- * Image (Photo) Blog Post page as Gallery handler
- * Little bit ugly solution but it works for now.
+ * Image (Photo) Blog Post pages as Gallery handler
  */
 function galleryHandler_PostPageImgs() {
     const postPageAsImageGallery = [...document.querySelectorAll(".single-post-content-section img")];
     if (!postPageAsImageGallery.length) return;
 
-    const currentGallery = new galleryUrlArray(
-        false,
-        postPageAsImageGallery.map(item => item.src)
-    );
+    const currentGallery = new galleryUrlArray(false, postPageAsImageGallery);
 
-    // Close gallery Button functionality
-    nodes.galleryButtonClose.addEventListener("click", galleryOverlayClear);
-    window.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") galleryOverlayClear();
-
-    });
+    // galleryOverlayCloseButtonAddAction();
 
     // Process each image in the gallery
-    postPageAsImageGallery.forEach((image) => {
+    currentGallery.list.forEach((image) => {
         image.style.cursor = "pointer";
 
         image.addEventListener("click", (e) => {
@@ -304,29 +333,20 @@ function galleryHandler_PostPageImgs() {
 
 /**
  * Video Gallery handler
- * Little bit ugly solution but it works for now.
  */
 function galleryHandler_Videos() {
-    const videoGalleriesOnAPage = document.querySelectorAll(".video-gallery");
+    const videoGalleriesOnAPage = [...document.querySelectorAll(".video-gallery")];
     if (!videoGalleriesOnAPage.length) return;
 
     // Process each video gallery on the page
     videoGalleriesOnAPage.forEach((gallery) => {
         const videoItemsList = [...gallery.querySelectorAll(".video-item")];
-        const currentGallery = new galleryUrlArray(
-            false,
-            videoItemsList.map(item => item.querySelector("source").src)
-        );
+        const currentGallery = new galleryUrlArray(false, videoItemsList);
 
-        // Close gallery Button functionality
-        nodes.galleryButtonClose.addEventListener("click", galleryOverlayClear);
-        window.addEventListener("keydown", (e) => {
-            if (e.key === "Escape") galleryOverlayClear();
-
-        });
+        // galleryOverlayCloseButtonAddAction();
 
         // Process each video in the gallery
-        videoItemsList.forEach((video) => {
+        currentGallery.list.forEach((video) => {
             video.addEventListener("loadeddata", () => {
                 if (video.loaded) return;
                 video.loaded = true;
@@ -355,8 +375,106 @@ function galleryHandler_Videos() {
     });
 }
 
+/**
+ * Testimonials (Image and Video) Gallery handler
+ */
+function galleryHandler_Testimonials() {
+    const testimonialsGalleriesOnAPage = [...document.querySelectorAll(".testimonials .testimonials__gallery")];
+    if (!testimonialsGalleriesOnAPage.length) return;
+
+    testimonialsGalleriesOnAPage.forEach((gallery) => {
+        // Create the slider
+        const sliderWrapper = gallery.querySelector(".testimonials__slider__wrapper");
+        createTestimonialsSlider(sliderWrapper);
+
+        // Create array of gallery items - for the actual gallery with the large images an pulse button
+        const galleryItems = [...gallery.querySelectorAll(".testimonials__gallery__item")];
+        const currentGallery = new galleryUrlArray(false, galleryItems);
+
+        // Create array of gallery items - for the slider with the thumb images
+        const sliderItems = [...sliderWrapper.querySelectorAll(".testimonials__slider__item")];
+        const currentSliderGallery = new galleryUrlArray(false, sliderItems);
+
+        // Add the functionality to the slider items
+        currentSliderGallery.list.forEach((sliderItem) => {
+            if (
+                currentSliderGallery.current === false &&
+                sliderItem.classList.contains("selected") &&
+                sliderItem.classList.contains("slick-active")
+            ) {
+                currentSliderGallery.current = sliderItem;
+            }
+
+            sliderItem.addEventListener("click", (e) => {
+                e.preventDefault();
+                if (e.currentTarget.classList.contains("selected")) return;
+
+                currentSliderGallery.current.classList.remove("selected");
+                // Just in case scan the slider items again
+                currentSliderGallery.list.forEach((item) => {
+                    item.classList.remove("selected");
+                });
+
+                e.currentTarget.classList.add("selected");
+                currentSliderGallery.current = e.currentTarget;
+
+                // Fix the height of the testimonials gallery for a smooth transition
+                gallery.style.height = gallery.offsetHeight + "px";
+
+                // Change the selected/active item in the actual gallery
+                currentGallery.list.forEach((item) => {
+                    item.classList.remove("selected");
+                    item.classList.add("hidden");
+                });
+
+                currentGallery.current = currentGallery.list.find(
+                    (item) => item.dataset.id === currentSliderGallery.current.dataset.id
+                );
+
+                currentGallery.current.classList.remove("hidden");
+                currentGallery.current.classList.add("selected");
+
+                // Release the height of the testimonials gallery for better responsiveness
+                gallery.style.height = "";
+            });
+        });
+
+        // The actual gallery with the large images and pulse button functionality
+        const currentVideoGallery = new galleryUrlArray(
+            false,
+            currentGallery.list.map((item) => {
+                const srcUrl = item.querySelector(".video-anchor").href;
+                const video = document.createElement("video");
+                const source = document.createElement("source");
+                source.src = srcUrl
+                video.appendChild(source);
+                video.setAttribute("src", srcUrl);
+                return video;
+            })
+        );
+
+        // galleryOverlayCloseButtonAddAction();
+
+        currentGallery.list.forEach((videoItem) => {
+            videoItem.addEventListener("click", (e) => {
+                e.preventDefault();
+                galleryOverlayClear();
+
+                const currentVideo = currentVideoGallery.list.find((item) =>
+                    item.src === e.currentTarget.querySelector(".video-anchor").href
+                );
+                
+                galleryOverlayCreate_Video(currentVideo, currentVideoGallery);
+            });
+        });
+
+
+    });
+}
+
 export {
     galleryHandler_Images,
     galleryHandler_PostPageImgs,
-    galleryHandler_Videos
+    galleryHandler_Videos,
+    galleryHandler_Testimonials
 };
