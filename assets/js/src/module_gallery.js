@@ -71,6 +71,9 @@ function galleryOverlayClear() {
 
 // Gallery Close Button functionality
 function galleryOverlayCloseButtonAddAction() {
+    if (nodes.galleryButtonClose.handled) return;
+
+    nodes.galleryButtonClose.handled = true;  
     nodes.galleryButtonClose.addEventListener("click", galleryOverlayClear);
 
     window.addEventListener("keydown", (e) => {
@@ -88,6 +91,7 @@ function overlayActivate() {
         nodes.galleryButtonClose.classList.add("active");
         nodes.galleryButtonNext.classList.add("active");
         nodes.galleryButtonBack.classList.add("active");
+        galleryOverlayCloseButtonAddAction();
     }, 100);
 }
 
@@ -176,7 +180,7 @@ function galleryOverlayCreate_Image(image, currentGallery) {
 // Function to open the gallery overlay and prepare for video preview
 function galleryOverlayCreate_Video(video, currentGallery) {
     galleryOverlayClear();
-    galleryOverlayCloseButtonAddAction();
+    // galleryOverlayCloseButtonAddAction();
 
     currentGallery.current = video;
 
