@@ -1883,7 +1883,7 @@ div#app {
 
       position: relative;
 
-      ::before {
+      &::before {
         content: url(/public/images/interface/hyperzon-logo_play-button-square.svg);
         display: block;
         position: absolute;
@@ -1904,7 +1904,7 @@ div#app {
         transition: transform 0.3s, opacity 0.3s, filter 0.3s;
       }
 
-      :hover:before {
+      &:hover:before {
         opacity: 1;
         filter: drop-shadow(0 0 0.3em #c0fd45) brightness(0.95);
         transform: scale(1.2);
@@ -1920,22 +1920,27 @@ div#app {
         max-width: 100%;
       }
 
+      // &.selected img {
+      // }
+      
       // Deactivate the selected item
       // This cause a little bug in slick, when you scroll the slider...
       // body &.selected { display: none !important; }
       // Another way is to keep is visible, but not clickable via JS..!?
       &.selected {
-        .hq-image-anchor {
+        a.hq-image-anchor {
+          filter: grayscale(1);
           pointer-events: none;
           cursor: not-allowed;
         }
 
-        ::before,
-        :hover:before {
+        &::before,
+        &:hover:before {
           opacity: 0.85;
           transform: scale(1);
-          filter: grayscale(1) brightness(0.8)
-            drop-shadow(0 0 0.3em rgba(204, 204, 204, 0.685));
+          z-index: 1;
+
+          filter: grayscale(1) brightness(0.8) drop-shadow(0 0 0.3em rgba(204, 204, 204, 0.685));
         }
       }
     }

@@ -409,20 +409,38 @@ function galleryHandler_Testimonials() {
                 currentSliderGallery.current = sliderItem;
             }
 
+            // Click on a slider item
             sliderItem.addEventListener("click", (e) => {
                 e.preventDefault();
                 if (e.currentTarget.classList.contains("selected")) return;
 
-                currentSliderGallery.current.classList.remove("selected");
-                // Just in case scan the slider items again
+                /**
+                 * Process the slider items
+                 * 
+                 * Because the Slick slider logic the following is not enough for all cases:
+                 * > currentSliderGallery.current.classList.remove("selected"); ...
+                 * > currentSliderGallery.current.classList.add("selected");
+                 * 
+                 * !? There is a small visual bug which appears only when,
+                 *    the selected item contains the 'VETS.webp' image ?!
+                 */
                 currentSliderGallery.list.forEach((item) => {
                     item.classList.remove("selected");
                 });
-
-                e.currentTarget.classList.add("selected");
+                
                 currentSliderGallery.current = e.currentTarget;
 
-                // Fix the height of the testimonials gallery for a smooth transition
+                // Process all slider items with the same Id as the selected one.
+                currentSliderGallery.list.forEach((item) => {
+                    if (item.dataset.id === currentSliderGallery.current.dataset.id) {
+                        item.classList.add("selected");
+                    }
+                });
+
+                /**
+                 * Process the actual gallery
+                 */
+                // Hold the height of the testimonials gallery for a smooth transition
                 gallery.style.height = gallery.offsetHeight + "px";
 
                 // Change the selected/active item in the actual gallery
