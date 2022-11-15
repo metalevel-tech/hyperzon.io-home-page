@@ -420,9 +420,6 @@ function galleryHandler_Testimonials() {
                  * Because the Slick slider logic the following is not enough for all cases:
                  * > currentSliderGallery.current.classList.remove("selected"); // and later...
                  * > currentSliderGallery.current.classList.add("selected");
-                 * 
-                 * !? There is a small visual bug which appears only when,
-                 *    the selected item contains the 'VETS.webp' image ?!
                  */
                 currentSliderGallery.list.forEach((item) => {
                     item.classList.remove("selected");
