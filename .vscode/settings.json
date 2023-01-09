@@ -101,7 +101,18 @@
     "dbuser",
     "dbpass",
     "siteurl",
-    "Visualisations"
+    "Visualisations",
+    "HTML",
+    "HTML5",
+    "Frontend",
+    "frontend",
+    "Backend",
+    "backend",
+    "Minification",
+    "minification",
+    "prioritization",
+    "CSS3",
+    "CodeIgniter"
   ],
   "cSpell.words": [
     "async",
@@ -205,7 +216,17 @@
     "dbname",
     "dbuser",
     "dbpass",
-    "siteurl"
+    "siteurl",
+    "HTML",
+    "HTML5",
+    "Frontend",
+    "frontend",
+    "Backend",
+    "backend",
+    "Minification",
+    "minification",
+    "CSS3",
+    "CodeIgniter"
   ],
   "cSpell.ignoreWords": [
     "enim",
