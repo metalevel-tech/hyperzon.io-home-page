@@ -22,7 +22,7 @@
 # Generate random number and invalidate some resources from here
 // $random = rand(1, 10000);
 // $version = $random;
-$version = 230;
+$version = 231;
 
 ResourceLoader::add( # Favicon.ico
     "head",
