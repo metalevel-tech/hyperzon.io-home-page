@@ -17,7 +17,7 @@ Options -MultiViews
 	# RewriteCond %{REQUEST_FILENAME} !-f
 	# RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_URI} !^/.*\.(ico|css|js|js\.map|less|png|jpg|jpeg|webp|webm|mp4|mp3pdf|avi|flv|mov|wmv|wav|m4v|ogg|aac|eot|ttf|otf|woff|woff2|svg)$
-    RewriteCond %{REQUEST_URI} !^/(robots\.txt|manifest\.json|\.well-known|hz-wp|hz-api|hz-evaluate-me).*$
+    RewriteCond %{REQUEST_URI} !^/(robots\.txt|manifest\.json|\.well-known|hzwp|hz-api|hz-evaluate-me|let-me-in).*$
     RewriteRule (.*) index.php?uri=$1 [L,QSA]
 
 	# Ensure Authorization header is passed along
