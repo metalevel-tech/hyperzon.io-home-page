@@ -1,6 +1,6 @@
 # Don't upload these files to GitHub,
 # because of the annoying Dependabot alerts
-# and the fact that the vulnerable versions
+# and the fact that the vulnerable version
 # of "clean-css" is not needed in production
 package-lock.json
 
