@@ -1,3 +1,9 @@
+# Don't upload these files to GitHub,
+# because of the annoyng Dependabot alerts
+# and the fact that the vulnerable versions
+# of "clean-css" is not needed in production
+package-lock.json
+
 # WordPress
 hz-wp/
 hzwp/
