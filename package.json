@@ -26,16 +26,16 @@
   },
   "homepage": "https://github.com/metalevel-tech/php-simple-mvc#readme",
   "dependencies": {
-    "@babel/cli": "^7.19.3",
-    "@babel/core": "^7.19.3",
-    "@babel/plugin-transform-regenerator": "^7.18.6",
-    "@babel/plugin-transform-spread": "^7.19.0",
-    "@babel/preset-env": "^7.19.3",
-    "jquery": "^3.6.1",
+    "@babel/cli": "^7.22.10",
+    "@babel/core": "^7.22.11",
+    "@babel/plugin-transform-regenerator": "^7.22.10",
+    "@babel/plugin-transform-spread": "^7.22.5",
+    "@babel/preset-env": "^7.22.10",
+    "jquery": "^3.7.1",
     "jquery.easing": "^1.4.1",
-    "less": "^4.1.3",
+    "less": "^4.2.0",
     "less-plugin-clean-css": "^1.5.1",
     "onchange": "^7.1.0",
-    "uglify-js": "^3.17.2"
+    "uglify-js": "^3.17.4"
   }
 }
